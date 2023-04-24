@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('medium', function (Blueprint $table) {
             $table->char('medium_id', 36);
             $table->char('medium_name', 32)->unique();
+            $table->dateTime('add_medium_day', $precision = 0);
+            $table->dateTime('last_medium_edit_day', $precision = 0);
             $table->timestamps();
         });
     }

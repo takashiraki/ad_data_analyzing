@@ -14,6 +14,8 @@ class AddMediumController extends Controller
 
     public function handle(Request $request)
     {
+
+        $create_time = now();
         $validate = $request->validate([
             'medium_name' => ['required', 'string', 'min:1', 'max:32'],
         ]);
@@ -21,6 +23,8 @@ class AddMediumController extends Controller
         $medium = new Medium([
             'medium_id' => (string)Str::uuid(),
             'medium_name' => $validate['medium_name'],
+            'add_medium_day' => $create_time,
+            'last_medium_edit_day' => $create_time,
         ]);
 
         $medium->save();
