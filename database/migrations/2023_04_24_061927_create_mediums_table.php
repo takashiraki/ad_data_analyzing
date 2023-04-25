@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medium', function (Blueprint $table) {
+        Schema::create('mediums', function (Blueprint $table) {
             $table->char('medium_id', 36);
             $table->char('medium_name', 32)->unique();
             $table->dateTime('add_medium_day', $precision = 0);
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medium');
+        Schema::dropIfExists('mediums');
     }
 };

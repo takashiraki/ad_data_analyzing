@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Medium\MediumController;
 use App\Http\Controllers\Medium\AddMediumController;
 
 /*
@@ -20,9 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/medium', function () {
-    return view('medium.add');
-});
+Route::get('/medium', [MediumController::class, 'index']);
 
 Route::get('/medium/add', [AddMediumController::class, 'index']);
 Route::post('/medium/add', [AddMediumController::class, 'handle']);

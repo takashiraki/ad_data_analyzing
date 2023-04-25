@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Medium;
 
 use App\Http\Controllers\Controller;
+use app\Models\Medium;
+use illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class AddMediumController extends Controller
