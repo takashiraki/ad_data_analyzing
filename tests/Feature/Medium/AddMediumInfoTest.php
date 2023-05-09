@@ -9,6 +9,8 @@ use Tests\TestCase;
 
 class AddMediumInfoTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testShowMediumAdd(): void
     {
         $this->withoutVite();
@@ -25,10 +27,7 @@ class AddMediumInfoTest extends TestCase
         $response = $this->post(
             '/medium/add',
             [
-                'medium_id' => (string)Str::uuid(),
                 'medium_name' => 'hoge fuga',
-                'add_medium_day' => now(),
-                'last_medium_edit_day' => now(),
             ]
         );
 

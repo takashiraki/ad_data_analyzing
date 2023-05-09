@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Medium extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'medium_name'
+    ];
 }

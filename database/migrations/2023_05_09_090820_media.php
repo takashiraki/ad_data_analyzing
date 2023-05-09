@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mediums', function (Blueprint $table) {
-            $table->char('medium_id', 36);
+        Schema::create('media', function (Blueprint $table) {
+            $table->id();
             $table->char('medium_name', 32)->unique();
-            $table->dateTime('add_medium_day', $precision = 0);
-            $table->dateTime('last_medium_edit_day', $precision = 0);
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mediums');
+        Schema::dropIfExists('media');
     }
 };
