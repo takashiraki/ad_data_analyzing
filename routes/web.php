@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Medium\MediumController;
 use App\Http\Controllers\Medium\AddMediumController;
+use App\Http\Controllers\Medium\SearchMediumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/medium', [MediumController::class, 'index']);
+Route::get('/media', [MediumController::class, 'index']);
 
-Route::get('/medium/add', [AddMediumController::class, 'index']);
-Route::post('/medium/add', [AddMediumController::class, 'handle']);
+Route::get('/medium/create', [AddMediumController::class, 'index']);
+Route::post('/medium/store', [AddMediumController::class, 'handle']);
+
+Route::get('/medium/search', [SearchMediumController::class, 'index']);
