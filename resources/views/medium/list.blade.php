@@ -10,7 +10,7 @@
 
     @foreach ($data as $user_data)
         <ul>
-            <li>{{ $user_data->medium_name }} : {{ $user_data->id }}</li>
+            <li>{{ $user_data->medium_name }} : {{ $user_data->id }} : {{ $user_data->created_at }} : {{ $user_data->updated_at }}</li>
         </ul>
     @endforeach
     
