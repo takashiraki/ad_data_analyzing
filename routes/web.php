@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Medium\MediumController;
 use App\Http\Controllers\Medium\AddMediumController;
 use App\Http\Controllers\Medium\SearchMediumController;
+use App\Http\Controllers\MediumDtl\MediumDtlController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,5 @@ Route::get('/medium/create', [AddMediumController::class, 'index']);
 Route::post('/medium/store', [AddMediumController::class, 'handle']);
 
 Route::get('/medium/search', [SearchMediumController::class, 'index']);
+
+Route::get('medium-dtls', [MediumDtlController::class, 'index']);
