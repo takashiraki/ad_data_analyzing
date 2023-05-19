@@ -9,15 +9,15 @@
 <body>
     <form action="/medium/search" method="get">
         <label>媒体名</label>
-        <input type="text" name="name">
+        <input type="text" name="medium_name">
         <label>媒体ID</label>
-        <input type="text" name="id">
+        <input type="text" name="medium_id">
         <button type="submit">検索する</button>
     </form>
 
-    @foreach ($data as $user_data)
+    @foreach ($data as $media_data)
         <ul>
-            <li>{{ $user_data->medium_name }} : {{ $user_data->id }}</li>
+            <li>{{ $media_data->medium_name }} : {{ $media_data->medium_id }}</li>
         </ul>
     @endforeach
 </body>

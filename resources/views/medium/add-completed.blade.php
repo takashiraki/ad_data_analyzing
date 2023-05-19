@@ -10,7 +10,7 @@
     <p>登録完了</p>
     @foreach ($data as $user_data)
         <ul>
-            <li>{{ $user_data->medium_name }} : {{ $user_data->id }}</li>
+            <li>{{ $user_data->medium_name }} : {{ $user_data->medium_id }}</li>
         </ul>
     @endforeach
 </body>

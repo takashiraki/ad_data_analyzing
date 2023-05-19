@@ -25,7 +25,7 @@ class AddMediumController extends Controller
         ]);
 
         $medium = new Medium([
-            'id' => (string)Str::uuid(),
+            'medium_id' => (string)Str::uuid(),
             'medium_name' => $validate['medium_name'],
         ]);
 

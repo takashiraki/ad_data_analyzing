@@ -11,25 +11,25 @@ class SearchMediumController extends Controller
     public function index(Request $request)
     {
         $medium = new Medium();
-        $get_parameter = $request->only('name', 'id');
+        $get_parameter = $request->only('medium_name', 'medium_id');
 
-        if (empty($get_parameter) || ($get_parameter['name'] === null && $get_parameter['id'] === null)) {
+        if (empty($get_parameter) || ($get_parameter['medium_name'] === null && $get_parameter['medium_id'] === null)) {
             $records = $medium->get_all_records();
         } else {
 
-            if (!empty($get_parameter['name'])) {
-                $name = $get_parameter['name'];
+            if (!empty($get_parameter['medium_name'])) {
+                $medium_name = $get_parameter['medium_name'];
             } else {
-                $name = null;
+                $medium_name = null;
             }
 
-            if (!empty($get_parameter['id'])) {
-                $id = $get_parameter['id'];
+            if (!empty($get_parameter['medium_id'])) {
+                $medium_id = $get_parameter['medium_id'];
             } else {
-                $id = null;
+                $medium_id = null;
             }
 
-            $records = $medium->get_records($name, $id);
+            $records = $medium->get_records($medium_name, $medium_id);
         }
 
         return view('medium.search', ['data' => $records]);

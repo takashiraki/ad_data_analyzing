@@ -9,9 +9,39 @@ class Medium extends Model
 {
     use HasFactory;
 
+
+    /**
+     * The Primary key for the model.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'medium_id';
+
+
+    /**
+     * The "type" of the primary key ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'medium_name'
+        'medium_id',
+        'medium_name',
     ];
+
+
+    public function medium_dtl()
+    {
+        return $this->hasMany(MediaDtl::class, 'medium_dtl_id');
+    }
+
 
     /**
      * Get all Records order by desc
@@ -20,11 +50,10 @@ class Medium extends Model
      */
     public function get_all_records()
     {
-        $all_data = $this->orderBy('id', 'desc')->get();
+        $all_data = $this->orderBy('medium_id', 'desc')->get();
 
         return $all_data;
     }
-
 
 
     /**
@@ -37,11 +66,14 @@ class Medium extends Model
     public function get_records(string $name = null, string $id = null)
     {
         if ($name !== null && $id !== null) {
-            $records = $this->where('medium_name', 'LIKE', '%' . $name . '%')->where('id', 'LIKE', '%' . $id . '%')->orderBy('id', 'desc')->get();
+            $records = $this->where('medium_name', 'LIKE', '%' . $name . '%')
+                ->where('medium_id', 'LIKE', '%' . $id . '%')->orderBy('id', 'desc')->get();
         } elseif ($name !== null && $id === null) {
-            $records = $this->where('medium_name', 'LIKE', '%' . $name . '%')->orderBy('id', 'desc')->get();
+            $records = $this->where('medium_name', 'LIKE', '%' . $name . '%')
+                ->orderBy('medium_id', 'desc')->get();
         } elseif ($name === null && $id !== null) {
-            $records = $this->where('id', 'LIKE', '%' . $id . '%')->orderBy('id', 'desc')->get();
+            $records = $this->where('medium_id', 'LIKE', '%' . $id . '%')
+                ->orderBy('medium_id', 'desc')->get();
         }
 
         return $records;
