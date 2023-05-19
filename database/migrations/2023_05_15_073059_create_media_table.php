@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('media_dtls', function (Blueprint $table) {
-            $table->id();
-            $table->char('medium_dtl_name', 32)->unique();
-            $table->foreignId('medium_id')->constrained('media');
+        Schema::create('media', function (Blueprint $table) {
+            $table->char('medium_id', 36)->primary();
+            $table->string('medium_name', 32)->unique();
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('media_dtls');
+        Schema::dropIfExists('media');
     }
 };
