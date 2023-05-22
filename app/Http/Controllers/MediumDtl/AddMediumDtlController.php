@@ -4,7 +4,7 @@ namespace App\Http\Controllers\MediumDtl;
 
 use App\Http\Controllers\Controller;
 use App\Models\mediaDtl;
-use App\Models\Medium;
+use Illuminate\Support\Facades\DB;
 use illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -12,11 +12,10 @@ class AddMediumDtlController extends Controller
 {
     public function index()
     {
-        $medium = new Medium();
+        $query = DB::table('media');
+        $records = $query->orderBy('created_at', 'desc')->get();
 
-        $all_medium_records = $medium->get_all_records();
-
-        return view('mediumDtl.add', ['data' => $all_medium_records]);
+        return view('mediumDtl.add', ['records' => $records]);
     }
 
     public function handle(Request $request)
@@ -34,8 +33,6 @@ class AddMediumDtlController extends Controller
 
         $medim_dtl->save();
 
-        $all_medium_dtl_records = $medim_dtl->get_all_records();
-
-        return view('mediumDtl.add-completed', ['data' => $all_medium_dtl_records]);
+        return view('mediumDtl.add-completed');
     }
 }
