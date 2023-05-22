@@ -11,11 +11,7 @@ class AddMediumController extends Controller
 {
     public function index()
     {
-        $medium = new Medium();
-
-        $records = $medium->get_all_records();
-
-        return view('medium.add', ['data' => $records]);
+        return view('medium.add');
     }
 
     public function handle(Request $request)
@@ -31,8 +27,6 @@ class AddMediumController extends Controller
 
         $medium->save();
 
-        $records = $medium->get_all_records();
-
-        return view('medium.add-completed', ['data' => $records]);
+        return view('medium.add-completed');
     }
 }

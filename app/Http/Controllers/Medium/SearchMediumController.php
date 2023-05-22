@@ -3,35 +3,35 @@
 namespace App\Http\Controllers\Medium;
 
 use App\Http\Controllers\Controller;
-use App\Models\Medium;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class SearchMediumController extends Controller
 {
     public function index(Request $request)
     {
-        $medium = new Medium();
-        $get_parameter = $request->only('medium_name', 'medium_id');
+        /**
+         * Get parameter for make query about medium_name.
+         */
+        $medium_name_parameter = $request->query('medium_name');
 
-        if (empty($get_parameter) || ($get_parameter['medium_name'] === null && $get_parameter['medium_id'] === null)) {
-            $records = $medium->get_all_records();
-        } else {
 
-            if (!empty($get_parameter['medium_name'])) {
-                $medium_name = $get_parameter['medium_name'];
-            } else {
-                $medium_name = null;
-            }
+        /**
+         * Get parameter for make query about medium_id.
+         */
+        $medium_id_parameter = $request->query('medium_id');
 
-            if (!empty($get_parameter['medium_id'])) {
-                $medium_id = $get_parameter['medium_id'];
-            } else {
-                $medium_id = null;
-            }
+        $query = DB::table('media');
 
-            $records = $medium->get_records($medium_name, $medium_id);
+        if (!empty($medium_name_parameter)) {
+            $query->where('medium_name', 'LIKE', '%' . $medium_name_parameter . '%');
         }
 
-        return view('medium.search', ['data' => $records]);
+        if (!empty($medium_id_parameter)) {
+            $query->where('medium_id', 'LIKE', '%' . $medium_id_parameter . '%');
+        }
+
+        $records = $query->orderBy('created_at', 'desc')->get();
+        return view('medium.search', ['records' => $records]);
     }
 }

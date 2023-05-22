@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Medium list</title>
+    <title>媒体一覧 | ADAS</title>
 </head>
 <body>
 
-    @foreach ($data as $user_data)
+    @foreach ($records as $media_record)
         <ul>
-            <li>{{ $user_data->medium_name }} : {{ $user_data->id }} : {{ $user_data->created_at }} : {{ $user_data->updated_at }}</li>
+            <li>{{ $media_record->medium_name }} : {{ $media_record->medium_id }} : {{ $media_record->created_at }} : {{ $media_record->updated_at }} <a href="/medium/{{ $media_record->medium_id }}/edit">編集する</a><a href="/medium/{{ $media_record->medium_id }}/delete">削除する</a></li>
         </ul>
     @endforeach
     

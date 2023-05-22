@@ -15,10 +15,11 @@
         <button type="submit">検索する</button>
     </form>
 
-    @foreach ($data as $media_data)
+    @foreach ($records as $media_record)
         <ul>
-            <li>{{ $media_data->medium_name }} : {{ $media_data->medium_id }}</li>
+            <li>{{ $media_record->medium_name }} : {{ $media_record->medium_id }} <a href="/medium/{{ $media_record->medium_id }}/edit">編集する</a><a href="/medium/{{ $media_record->medium_id }}/delete">削除する</a></li>
         </ul>
     @endforeach
+    
 </body>
 </html>
