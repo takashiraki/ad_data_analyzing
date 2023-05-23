@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lp extends Model
+class LpRemark extends Model
 {
     use HasFactory;
 
@@ -33,7 +33,6 @@ class Lp extends Model
      */
     protected $fillable = [
         'lp_id',
-        'lp_name',
-        'route,'
+        'lp_remark',
     ];
 }

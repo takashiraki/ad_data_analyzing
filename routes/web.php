@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Lp\AddLpController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Medium\MediumController;
 use App\Http\Controllers\Medium\AddMediumController;
@@ -54,3 +55,11 @@ Route::get('/medium-dtls/{medium_dtl_id}/edit', [EditMediumDtlController::class,
 Route::post('/medium-dtls/{medium_dtl_id}/update', [EditMediumDtlController::class, 'update']);
 
 Route::get('/medium-dtls/{medium_dtl_id}/delete', [DeleteMediumDtlController::class, 'delete']);
+
+// About LP screen
+Route::get('/lps', function () {
+    echo 'success';
+});
+
+Route::get('/lps/create', [AddLpController::class, 'create']);
+Route::post('/lps', [AddLpController::class, 'store']);
