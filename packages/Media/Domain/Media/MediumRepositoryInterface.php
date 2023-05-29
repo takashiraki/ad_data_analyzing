@@ -25,6 +25,25 @@ interface MediumRepositoryInterface
 
 
     /**
+     * # Update medium info.
+     *
+     * @param Medium $medium
+     * @return void
+     */
+    public function update(Medium $medium);
+
+
+    /**
+     * # Delete medium info.
+     *
+     * @param Medium $medium
+     * @return void
+     */
+    public function delete(Medium $medium);
+
+
+
+    /**
      * # Find by medium id.
      *
      * @param MediumId $medium_id

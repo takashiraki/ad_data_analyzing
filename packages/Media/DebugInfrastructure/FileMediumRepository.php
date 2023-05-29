@@ -27,12 +27,25 @@ class FileMediumRepository implements MediumRepositoryInterface
 {
     public function save(Medium $medium)
     {
-        return null;
+        return $medium;
+    }
+
+    public function update(Medium $medium)
+    {
+        return $medium;
+    }
+
+    public function delete(Medium $medium)
+    {
+        //
     }
 
     public function find(MediumId $medium_id): ?Medium
     {
-        return null;
+        return new Medium(
+            new MediumId($medium_id->getMediumId()),
+            new MediumName('hogehoge')
+        );
     }
 
     public function findByName(MediumName $medium_name): ?Medium

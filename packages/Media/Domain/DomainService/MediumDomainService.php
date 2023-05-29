@@ -2,6 +2,7 @@
 
 namespace Media\Domain\DomainService;
 
+use Media\Domain\Media\MediumId;
 use Media\Domain\Media\MediumName;
 use Media\Domain\Media\MediumRepositoryInterface;
 
@@ -53,5 +54,15 @@ class MediumDomainService
         $check_medium_exist = $this->medium_repository->findByName($medium_name_for_check);
 
         return !empty($check_medium_exist) ? true : false;
+    }
+
+
+    public function checkMediumExistById(string $value)
+    {
+        $medium_id_for_check = new MediumId($value);
+
+        $check_data_of_media = $this->medium_repository->find($medium_id_for_check);
+
+        return !empty($check_data_of_media) ? $check_data_of_media : false;
     }
 }

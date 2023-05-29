@@ -7,6 +7,7 @@ use Media\Domain\Media\MediumId;
 use Media\Domain\Media\MediumName;
 use Media\Domain\Media\MediumRepositoryInterface;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 /**
  * --------------------------------------------------------------------------
@@ -25,15 +26,34 @@ class EloquentMediumRepository implements MediumRepositoryInterface
     {
         $query = DB::table('media');
 
-        $query->updateOrInsert(
-            ['medium_id' => $medium->getMediumId()->getValue()],
-            ['medium_name' => $medium->getMediumName()->getValue()]
+        $query->insert(
+            [
+                'medium_id' => $medium->getMediumId()->getValue(),
+                'medium_name' => $medium->getMediumName()->getValue(),
+                'created_at' => Carbon::parse(Carbon::now())->timezone('Asia/Tokyo'),
+                'updated_at' => Carbon::parse(Carbon::now())->timezone('Asia/Tokyo')
+            ]
+        );
+    }
+
+    public function update(Medium $medium)
+    {
+        $query = DB::table('media');
+
+        $query->where(
+            'medium_id',
+            $medium->getMediumId()->getValue()
+        )->update(
+            [
+                'medium_name' => $medium->getMediumName()->getValue(),
+                'updated_at' => Carbon::parse(Carbon::now())->timezone('Asia/Tokyo')
+            ]
         );
     }
 
     public function find(MediumId $medium_id): ?Medium
     {
-        $query = DB::table('Media');
+        $query = DB::table('media');
 
         $record = $query->where('medium_id', $medium_id->getMediumId())->first();
 
