@@ -4,16 +4,19 @@ namespace Media\Domain\Media;
 
 /**
  * --------------------------------------------------------------------------
- * Repository
+ * # Repository
  * --------------------------------------------------------------------------
  * 
+ * ## Responsibility
+ * The responsibility this class has is Dependency injection principle for Media.
+ * This class has to protect dependency for Infrastructure.
  * 
  */
 interface MediumRepositoryInterface
 {
 
     /**
-     * Save medium info
+     * # Save medium info
      *
      * @param Medium $medium
      * @return void
@@ -22,7 +25,7 @@ interface MediumRepositoryInterface
 
 
     /**
-     * Find by medium id.
+     * # Find by medium id.
      *
      * @param MediumId $medium_id
      * @return Medium|null
@@ -31,7 +34,7 @@ interface MediumRepositoryInterface
 
 
     /**
-     * Find medium info using medium name.
+     * # Find medium info using medium name.
      *
      * @param MediumName $medium_name
      * @return Medium

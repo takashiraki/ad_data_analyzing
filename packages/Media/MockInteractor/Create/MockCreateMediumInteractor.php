@@ -15,21 +15,21 @@ use Media\UseCase\CreateMediumUseCase\CreateMediumUseCaseInterface;
 
 /**
  * --------------------------------------------------------------------------
- * Mock input boundary.
+ * # Mock input boundary.
  * --------------------------------------------------------------------------
  * 
  * 
- * --- Responsibility ---
- * The responsibility that this class has is to compose the application usecase.
+ * ## Responsibility
+ * The responsibility that this class has is to compose the application usecase for Media.
  * 
- * --- UseCase ---
+ * ## UseCase
  * The usecase of this class is media registration.
  */
 class MockCreateMediumInteractor implements CreateMediumUseCaseInterface
 {
 
     /**
-     * DomainServie.
+     * # DomainServie.
      *
      * @var MediumDomainService.
      */
@@ -37,13 +37,19 @@ class MockCreateMediumInteractor implements CreateMediumUseCaseInterface
 
 
     /**
-     * RepositoryInterfae
+     * # RepositoryInterfae
      *
      * @var MediumRepositoryInterface
      */
     private $repository;
 
 
+    /**
+     * # Constructer.
+     *
+     * @param MediumDomainService $medium_domain_service
+     * @param MediumRepositoryInterface $repository
+     */
     public function __construct(
         MediumDomainService $medium_domain_service,
         MediumRepositoryInterface $repository
@@ -53,12 +59,12 @@ class MockCreateMediumInteractor implements CreateMediumUseCaseInterface
     }
 
     /**
-     * Create mock response.
+     * Achieving UseCase of create medium.
      *
      * @param CreateMediumRequest $request
      * @return CreateMediumResponse
      */
-    public function createResponse(CreateMediumRequest $request): CreateMediumResponse
+    public function handle(CreateMediumRequest $request): CreateMediumResponse
     {
         $check_duplicated_medium_name = $this->medium_domain_service->checkingMediumExistByName($request->getMediumName());
 
@@ -73,8 +79,11 @@ class MockCreateMediumInteractor implements CreateMediumUseCaseInterface
             new MediumName($request->getMediumName()),
         );
 
-        $save_medium_instance = $this->repository->save($medium_instance);
+        $this->repository->save($medium_instance);
 
-        return new CreateMediumResponse($medium_id, $request->getMediumName());
+        return new CreateMediumResponse(
+            $medium_instance->getMediumId()->getValue(),
+            $medium_instance->getMediumName()->getValue()
+        );
     }
 }

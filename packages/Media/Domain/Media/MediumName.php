@@ -2,17 +2,20 @@
 
 namespace Media\Domain\Media;
 
+use Basic\DomainService\StringValueObject;
 use InvalidArgumentException;
 use LengthException;
 
 /**
- * --- ValueObject of medium name. ---
+ * --------------------------------------------------------------------------
+ * # ValueObject of medium name
+ * --------------------------------------------------------------------------
  */
-class MediumName
+class MediumName extends StringValueObject
 {
 
     /**
-     * Medium name.
+     * # Medium name.
      *
      * @var string
      */
@@ -20,19 +23,19 @@ class MediumName
 
 
     /**
-     * Maximum number of characters for the Medium name.
+     * # Maximum number of characters for the Medium name.
      */
     const MAXIMUM_NUMBER_OF_CHARACTERS = 30;
 
 
     /**
-     * Minimum number of characters for the Medium name.
+     * # Minimum number of characters for the Medium name.
      */
     const MINIMUM_NUMBER_OF_CHARACTERS = 1;
 
 
     /**
-     * Constructer.
+     * # Constructer.
      *
      * @param string $value
      */
@@ -46,12 +49,14 @@ class MediumName
             throw new LengthException('Medium name must be between 1 and 30 characters long');
         }
 
+        parent::__construct($value);
+
         $this->medium_name = $value;
     }
 
 
     /**
-     * Getter of medium name.
+     * # Getter of medium name.
      *
      * @return string
      */

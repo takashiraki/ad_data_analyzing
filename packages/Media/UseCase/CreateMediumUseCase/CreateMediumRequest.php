@@ -3,17 +3,21 @@
 namespace Media\UseCase\CreateMediumUseCase;
 
 /**
- * --- Data structure ---
+ * --------------------------------------------------------------------------
+ * # Data structure
+ * --------------------------------------------------------------------------
  * This class composes the request component.
  * 
- * --- Responsibility ---
+ * 
+ * ## Responsibility
+ * 
  * The responsibility that this class has is make data structure of request.
  */
 class CreateMediumRequest
 {
 
     /**
-     * Medium name user inputing from form.
+     * # Medium name user inputing from form.
      *
      * @var string
      */
@@ -21,7 +25,7 @@ class CreateMediumRequest
 
 
     /**
-     * Constructer.
+     * # Constructer.
      *
      * @param string $value
      */
@@ -32,7 +36,7 @@ class CreateMediumRequest
 
 
     /**
-     * Getter of medium name user inputing from form.
+     * # Getter of medium name user inputing from form.
      *
      * @return string
      */

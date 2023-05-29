@@ -3,12 +3,14 @@
 namespace Media\Domain\Media;
 
 /**
- * --- ValueObject of medium. ---
+ * --------------------------------------------------------------------------
+ * # ValueObject of medium
+ * --------------------------------------------------------------------------
  */
 class Medium
 {
     /**
-     * Medium Id.
+     * # Medium Id.
      *
      * @var MediumId
      */
@@ -16,12 +18,19 @@ class Medium
 
 
     /**
-     * Medium Name.
+     * # Medium Name.
      *
      * @var MediumName
      */
     private $medium_name;
 
+
+    /**
+     * # Constructer.
+     *
+     * @param MediumId $medium_id
+     * @param MediumName $medium_name
+     */
     public function __construct(MediumId $medium_id, MediumName $medium_name)
     {
         $this->medium_id = $medium_id;
@@ -30,7 +39,7 @@ class Medium
 
 
     /**
-     * Getter of medium id.
+     * # Getter of medium id.
      *
      * @return MediumId
      */
@@ -41,7 +50,7 @@ class Medium
 
 
     /**
-     * Getter of medium name.
+     * # Getter of medium name.
      *
      * @return MediumName
      */

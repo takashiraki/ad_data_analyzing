@@ -7,20 +7,22 @@ use Media\Domain\Media\MediumRepositoryInterface;
 
 /**
  * --------------------------------------------------------------------------
- * Domain Service
+ * # Domain Service
  * --------------------------------------------------------------------------
  * 
  * 
- * --- Responsibility ---
+ * ## Responsibility
+ * 
  * The responsibility of this class is to help medium ValueObject.
  * But if you are not sure whether to write ValueObject or DomainService, you should write in DomainService.
  * And you have to check make sure there is no discomfort.
+ * 
  */
 class MediumDomainService
 {
 
     /**
-     * Medium repository.
+     * # Medium repository.
      *
      * @var MediumRepositoryInterface
      */
@@ -28,7 +30,7 @@ class MediumDomainService
 
 
     /**
-     * Constructer.
+     * # Constructer.
      *
      * @param MediumRepositoryInterface $repository
      */
@@ -39,7 +41,7 @@ class MediumDomainService
 
 
     /**
-     * Check existing medium name.
+     * # Check existing medium name.
      *
      * @param string $value
      * @return void

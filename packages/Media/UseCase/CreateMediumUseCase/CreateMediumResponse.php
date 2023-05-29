@@ -2,21 +2,22 @@
 
 namespace Media\UseCase\CreateMediumUseCase;
 
-use Media\Domain\Media\MediumId;
-use Media\Domain\Media\MediumName;
-
 /**
- * --- Data structure ---
+ * --------------------------------------------------------------------------
+ * # Data structure
+ * --------------------------------------------------------------------------
  * This class composes the response component.
  * 
- * --- Responsibility ---
+ * 
+ * ## Responsibility
+ * 
  * The responsibility that this class has is make data structure of response.
  */
 class CreateMediumResponse
 {
 
     /**
-     * Medium id
+     * # Medium id
      *
      * @var string
      */
@@ -24,7 +25,7 @@ class CreateMediumResponse
 
 
     /**
-     * Medium name
+     * # Medium name
      *
      * @var string
      */
@@ -32,7 +33,7 @@ class CreateMediumResponse
 
 
     /**
-     * Constructer.
+     * # Constructer.
      *
      * @param string $id
      * @param string $name
@@ -45,7 +46,7 @@ class CreateMediumResponse
 
 
     /**
-     * Getter of medium id.
+     * # Getter of medium id.
      *
      * @return string
      */
@@ -56,7 +57,7 @@ class CreateMediumResponse
 
 
     /**
-     * Getter of medium name.
+     * # Getter of medium name.
      *
      * @return string
      */

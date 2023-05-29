@@ -4,28 +4,31 @@ namespace Media\Domain\Media;
 
 use InvalidArgumentException;
 use LengthException;
+use Basic\DomainService\StringValueObject;
 
 /**
- * --- ValueObject of medium id. ---
+ * --------------------------------------------------------------------------
+ * # ValueObject of medium id
+ * --------------------------------------------------------------------------
  */
-class MediumId
+class MediumId extends StringValueObject
 {
 
     /**
-     * Medium Id.
+     * # Medium Id.
      *
-     * @var [type]
+     * @var string
      */
     private $medium_id;
 
     /**
-     * Number of characters for a medium id.
+     * # Number of characters for a medium id.
      */
     const LENGTH = 36;
 
 
     /**
-     * Constructer.
+     * # Constructer.
      *
      * @param string $value
      */
@@ -38,6 +41,20 @@ class MediumId
         if (mb_strlen($value) !== self::LENGTH) {
             throw new LengthException('Medium id must be 36 characters in length');
         }
+
+        parent::__construct($value);
+
         $this->medium_id = $value;
+    }
+
+
+    /**
+     * # Getter of medium id.
+     *
+     * @return string
+     */
+    public function getMediumId()
+    {
+        return $this->medium_id;
     }
 }

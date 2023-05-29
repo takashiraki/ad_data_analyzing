@@ -2,14 +2,22 @@
 
 namespace App\Http\Model;
 
-use Media\Domain\Media\MediumId;
-use Media\Domain\Media\MediumName;
-
+/**
+ * --------------------------------------------------------------------------
+ * # Data Structure of ViewModel
+ * --------------------------------------------------------------------------
+ * 
+ * ## Responsibility
+ * 
+ * The responsibility this class has is for Media.
+ * This class has to create view model.
+ * 
+ */
 class CreateMediumViewModel
 {
 
     /**
-     * Medium id.
+     * # Medium id.
      *
      * @var string
      */
@@ -17,7 +25,7 @@ class CreateMediumViewModel
 
 
     /**
-     * Medium name.
+     * # Medium name.
      *
      * @var string
      */
@@ -25,7 +33,7 @@ class CreateMediumViewModel
 
 
     /**
-     * Constructer.
+     * # Constructer.
      *
      * @param string $id
      * @param string $name
@@ -38,7 +46,7 @@ class CreateMediumViewModel
 
 
     /**
-     * Getter of Medium id.
+     * # Getter of Medium id.
      *
      * @return string
      */
@@ -49,7 +57,7 @@ class CreateMediumViewModel
 
 
     /**
-     * Getter of Medium name.
+     * # Getter of Medium name.
      *
      * @return string
      */

@@ -9,15 +9,19 @@ use Media\Domain\Media\MediumRepositoryInterface;
 
 /**
  * --------------------------------------------------------------------------
- * Debug Infrastructure
+ * # Debug Infrastructure
  * --------------------------------------------------------------------------
  * 
  * 
- * --- Responsibility ---
- * The responsibility that this class has is for Media.
+ * ## Responsibility
  * 
- * --- Debug Infrastructure ---
+ * The responsibility this class has is for Media.
+ * 
+ * 
+ * ## Debug Infrastructure
+ * 
  * This class is including code about infrastructure for debug.
+ * 
  */
 class FileMediumRepository implements MediumRepositoryInterface
 {

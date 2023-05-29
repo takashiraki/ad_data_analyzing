@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * --------------------------------------------------------------------------
- * Repository
+ * # Repository
  * --------------------------------------------------------------------------
  * 
- * --- Responsibility ---
+ * 
+ * ## Responsibility
+ * 
  * The responsibility this class has is for Media.
  * This class use Database so you can test useing database.
  */
