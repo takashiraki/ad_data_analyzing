@@ -15,23 +15,15 @@ class MediumName extends StringValueObject
 {
 
     /**
-     * # Medium name.
-     *
-     * @var string
-     */
-    private $medium_name;
-
-
-    /**
      * # Maximum number of characters for the Medium name.
      */
-    const MAXIMUM_NUMBER_OF_CHARACTERS = 30;
+    private const MAX_LENGTH = 30;
 
 
     /**
      * # Minimum number of characters for the Medium name.
      */
-    const MINIMUM_NUMBER_OF_CHARACTERS = 1;
+    private const MIN_LENGTH = 1;
 
 
     /**
@@ -45,23 +37,10 @@ class MediumName extends StringValueObject
             throw new InvalidArgumentException('Medium name need any characters');
         }
 
-        if (mb_strlen($value) < self::MINIMUM_NUMBER_OF_CHARACTERS || self::MAXIMUM_NUMBER_OF_CHARACTERS < mb_strlen($value)) {
+        if (mb_strlen($value) < self::MIN_LENGTH || self::MAX_LENGTH < mb_strlen($value)) {
             throw new LengthException('Medium name must be between 1 and 30 characters long');
         }
 
         parent::__construct($value);
-
-        $this->medium_name = $value;
-    }
-
-
-    /**
-     * # Getter of medium name.
-     *
-     * @return string
-     */
-    public function getMediumName(): string
-    {
-        return $this->medium_name;
     }
 }

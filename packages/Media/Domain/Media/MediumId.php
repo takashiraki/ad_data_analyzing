@@ -13,18 +13,10 @@ use Basic\DomainService\StringValueObject;
  */
 class MediumId extends StringValueObject
 {
-
-    /**
-     * # Medium Id.
-     *
-     * @var string
-     */
-    private $medium_id;
-
     /**
      * # Number of characters for a medium id.
      */
-    const LENGTH = 36;
+    private const LENGTH = 36;
 
 
     /**
@@ -43,18 +35,5 @@ class MediumId extends StringValueObject
         }
 
         parent::__construct($value);
-
-        $this->medium_id = $value;
-    }
-
-
-    /**
-     * # Getter of medium id.
-     *
-     * @return string
-     */
-    public function getMediumId()
-    {
-        return $this->medium_id;
     }
 }

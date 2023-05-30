@@ -44,12 +44,12 @@ class MediumDomainService
     /**
      * # Check existing medium name.
      *
-     * @param string $value
-     * @return void
+     * @param string $name
+     * @return boolean
      */
-    public function checkingMediumExistByName(string $value)
+    public function ExistByName(string $name): bool
     {
-        $medium_name_for_check = new MediumName($value);
+        $medium_name_for_check = new MediumName($name);
 
         $check_medium_exist = $this->medium_repository->findByName($medium_name_for_check);
 
@@ -57,12 +57,18 @@ class MediumDomainService
     }
 
 
-    public function checkMediumExistById(string $value)
+    /**
+     * # Check existing medium id.
+     *
+     * @param string $id
+     * @return boolean
+     */
+    public function ExistById(string $id): bool
     {
-        $medium_id_for_check = new MediumId($value);
+        $medium_id_for_check = new MediumId($id);
 
         $check_data_of_media = $this->medium_repository->find($medium_id_for_check);
 
-        return !empty($check_data_of_media) ? $check_data_of_media : false;
+        return !empty($check_data_of_media) ? true : false;
     }
 }
