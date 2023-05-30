@@ -25,7 +25,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Media\\": "packages/Media/"
+            "Media\\": "packages/Media/",
+            "Basic\\": "packages/Basic/"
         }
     },
     "autoload-dev": {

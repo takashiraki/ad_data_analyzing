@@ -66,7 +66,7 @@ class MockCreateMediumInteractor implements CreateMediumUseCaseInterface
      */
     public function handle(CreateMediumRequest $request): CreateMediumResponse
     {
-        $check_duplicated_medium_name = $this->medium_domain_service->checkingMediumExistByName($request->getMediumName());
+        $check_duplicated_medium_name = $this->medium_domain_service->ExistByName($request->getMediumName());
 
         if ($check_duplicated_medium_name) {
             throw new UnexpectedValueException('This medium name is already existed');

@@ -6,9 +6,12 @@ use Illuminate\Support\ServiceProvider;
 use Media\DebugInfrastructure\FileMediumRepository;
 use Media\Domain\DomainService\MediumDomainService;
 use Media\Domain\Media\MediumRepositoryInterface;
+use Media\EloquentInfrastructure\Persistence\EloquentMediumRepository;
 use Media\MockInteractor\Create\MockCreateMediumInteractor;
+use Media\MockInteractor\Delete\MockDeleteMediumInteractor;
 use Media\UseCase\CreateMediumUseCase\CreateMediumUseCaseInterface;
 use Media\MockInteractor\Edit\MockEditMediumInteractor;
+use Media\UseCase\DeleteMediumUseCase\DeleteMediumUseCaseInterface;
 use Media\UseCase\EditMediumUseCase\EditMediumUseCaseInterface;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,13 +33,23 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Mocke services.
+     * Register any mocke services.
      */
     private function registerForMock()
     {
         $this->app->bind(
             CreateMediumUseCaseInterface::class,
             MockCreateMediumInteractor::class
+        );
+
+        $this->app->bind(
+            EditMediumUseCaseInterface::class,
+            MockEditMediumInteractor::class
+        );
+
+        $this->app->bind(
+            DeleteMediumUseCaseInterface::class,
+            MockDeleteMediumInteractor::class
         );
 
         $this->app->bind(
@@ -53,5 +66,10 @@ class AppServiceProvider extends ServiceProvider
             MediumRepositoryInterface::class,
             FileMediumRepository::class
         );
+
+        // $this->app->bind(
+        //     MediumRepositoryInterface::class,
+        //     EloquentMediumRepository::class,
+        // );
     }
 }

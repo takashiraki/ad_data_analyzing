@@ -43,7 +43,7 @@ class FileMediumRepository implements MediumRepositoryInterface
     public function find(MediumId $medium_id): ?Medium
     {
         return new Medium(
-            new MediumId($medium_id->getMediumId()),
+            new MediumId($medium_id->getValue()),
             new MediumName('hogehoge')
         );
     }

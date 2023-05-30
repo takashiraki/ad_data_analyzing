@@ -51,11 +51,18 @@ class EloquentMediumRepository implements MediumRepositoryInterface
         );
     }
 
+    public function delete(Medium $medium)
+    {
+        $query = DB::table('media');
+
+        $query->where('medium_id', $medium->getMediumId()->getValue())->delete();
+    }
+
     public function find(MediumId $medium_id): ?Medium
     {
         $query = DB::table('media');
 
-        $record = $query->where('medium_id', $medium_id->getMediumId())->first();
+        $record = $query->where('medium_id', $medium_id->getValue())->first();
 
         if (!empty($record)) {
             $medium_instance = new Medium(
@@ -73,7 +80,7 @@ class EloquentMediumRepository implements MediumRepositoryInterface
     {
         $query = DB::table('media');
 
-        $record = $query->where('medium_name', $medium_name->getMediumName())->first();
+        $record = $query->where('medium_name', $medium_name->getValue())->first();
 
         if (!empty($record)) {
             $medium_instance = new Medium(

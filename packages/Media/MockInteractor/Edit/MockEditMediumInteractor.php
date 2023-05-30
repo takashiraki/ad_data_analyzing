@@ -68,15 +68,17 @@ class MockEditMediumInteractor implements EditMediumUseCaseInterface
     public function index(EditMediumRequest $request): EditMediumResponse
     {
 
-        $exist_medium_data = $this->medium_domain_service->checkMediumExistById($request->getMediumId());
+        $exist_medium_data = $this->medium_domain_service->ExistById($request->getMediumId());
 
         if (empty($exist_medium_data)) {
             throw new UnexpectedValueException('The Medium dose not exist');
         }
 
+        $medium_data = $this->repository->find(new MediumId($request->getMediumId()));
+
         $medium_instance = new Medium(
             new MediumId($request->getMediumId()),
-            new MediumName($exist_medium_data->getMediumName()->getValue())
+            new MediumName($medium_data->getMediumName()->getValue())
         );
 
         return new EditMediumResponse(
@@ -94,14 +96,16 @@ class MockEditMediumInteractor implements EditMediumUseCaseInterface
      */
     public function handle(EditMediumRequest $request): EditMediumResponse
     {
-        $exist_medium_data = $this->medium_domain_service->checkMediumExistById($request->getMediumId());
+        $exist_medium_data = $this->medium_domain_service->ExistById($request->getMediumId());
 
         if (!$exist_medium_data) {
             throw new UnexpectedValueException('The Medium dose not exist');
         }
 
+        $medium_data = $this->repository->find(new MediumId($request->getMediumId()));
+
         $medium_instance = new Medium(
-            new MediumId($exist_medium_data->getMediumId()->getValue()),
+            new MediumId($medium_data->getMediumId()->getValue()),
             new MediumName($request->getMediumName())
         );
 
