@@ -95,17 +95,17 @@ class EloquentMediumRepository implements MediumRepositoryInterface
         return $record;
     }
 
-    public function getRecords(SearchMediumRequest $request)
+    public function getRecords(?string $medium_id, ?string $medium_name)
     {
 
         $query = DB::table('media');
 
-        if ($request->getMediumId() !== null) {
-            $query->where('medium_id', 'LIKE', '%' . $request->getMediumId() . '%');
+        if (isset($medium_id)) {
+            $query->where('medium_id', 'LIKE', '%' . $medium_id . '%');
         }
 
-        if ($request->getMediumName() !== null) {
-            $query->where('medium_name', 'LIKE', '%' . $request->getMediumName() . '%');
+        if (isset($medium_name)) {
+            $query->where('medium_name', 'LIKE', '%' . $medium_name . '%');
         }
 
         $records = $query->get();

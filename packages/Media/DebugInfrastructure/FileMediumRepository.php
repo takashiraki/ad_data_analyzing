@@ -2,6 +2,7 @@
 
 namespace Media\DebugInfrastructure;
 
+use Illuminate\Support\Arr;
 use Media\Domain\Media\Medium;
 use Media\Domain\Media\MediumId;
 use Media\Domain\Media\MediumName;
@@ -54,8 +55,8 @@ class FileMediumRepository implements MediumRepositoryInterface
         return null;
     }
 
-    public function getRecords(SearchMediumRequest $request)
+    public function getRecords(?string $medium_id, ?string $medium_name): ?array
     {
-        //
+        return [];
     }
 }

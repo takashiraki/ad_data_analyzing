@@ -62,5 +62,5 @@ interface MediumRepositoryInterface
      */
     public function findByName(MediumName $medium_name): ?Medium;
 
-    public function getRecords(SearchMediumRequest $request);
+    public function getRecords(?string $medium_id, ?string $medium_name): ?array;
 }

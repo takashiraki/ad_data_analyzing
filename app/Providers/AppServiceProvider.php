@@ -69,14 +69,14 @@ class AppServiceProvider extends ServiceProvider
             MediumDomainService::class
         );
 
-        $this->app->bind(
-            MediumRepositoryInterface::class,
-            FileMediumRepository::class
-        );
-
         // $this->app->bind(
         //     MediumRepositoryInterface::class,
-        //     EloquentMediumRepository::class,
+        //     FileMediumRepository::class
         // );
+
+        $this->app->bind(
+            MediumRepositoryInterface::class,
+            EloquentMediumRepository::class,
+        );
     }
 }
