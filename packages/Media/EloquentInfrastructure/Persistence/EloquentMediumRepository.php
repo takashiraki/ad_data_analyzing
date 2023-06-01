@@ -8,6 +8,7 @@ use Media\Domain\Media\MediumName;
 use Media\Domain\Media\MediumRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Media\UseCase\SearchMediumUseCase\SearchMediumRequest;
 
 /**
  * --------------------------------------------------------------------------
@@ -92,5 +93,23 @@ class EloquentMediumRepository implements MediumRepositoryInterface
         }
 
         return $record;
+    }
+
+    public function getRecords(SearchMediumRequest $request)
+    {
+
+        $query = DB::table('media');
+
+        if ($request->getMediumId() !== null) {
+            $query->where('medium_id', 'LIKE', '%' . $request->getMediumId() . '%');
+        }
+
+        if ($request->getMediumName() !== null) {
+            $query->where('medium_name', 'LIKE', '%' . $request->getMediumName() . '%');
+        }
+
+        $records = $query->get();
+
+        return $records;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Media\Domain\Media;
 
+use Media\UseCase\SearchMediumUseCase\SearchMediumRequest;
+
 /**
  * --------------------------------------------------------------------------
  * # Repository
@@ -59,4 +61,6 @@ interface MediumRepositoryInterface
      * @return Medium
      */
     public function findByName(MediumName $medium_name): ?Medium;
+
+    public function getRecords(SearchMediumRequest $request);
 }

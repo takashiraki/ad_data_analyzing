@@ -6,6 +6,7 @@ use Media\Domain\Media\Medium;
 use Media\Domain\Media\MediumId;
 use Media\Domain\Media\MediumName;
 use Media\Domain\Media\MediumRepositoryInterface;
+use Media\UseCase\SearchMediumUseCase\SearchMediumRequest;
 
 /**
  * --------------------------------------------------------------------------
@@ -51,5 +52,10 @@ class FileMediumRepository implements MediumRepositoryInterface
     public function findByName(MediumName $medium_name): ?Medium
     {
         return null;
+    }
+
+    public function getRecords(SearchMediumRequest $request)
+    {
+        //
     }
 }

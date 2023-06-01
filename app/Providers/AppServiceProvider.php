@@ -11,8 +11,10 @@ use Media\MockInteractor\Create\MockCreateMediumInteractor;
 use Media\MockInteractor\Delete\MockDeleteMediumInteractor;
 use Media\UseCase\CreateMediumUseCase\CreateMediumUseCaseInterface;
 use Media\MockInteractor\Edit\MockEditMediumInteractor;
+use Media\MockInteractor\Search\MockSearchMediumInteractor;
 use Media\UseCase\DeleteMediumUseCase\DeleteMediumUseCaseInterface;
 use Media\UseCase\EditMediumUseCase\EditMediumUseCaseInterface;
+use Media\UseCase\SearchMediumUseCase\SearchMediumUseCaseInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -55,6 +57,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             EditMediumUseCaseInterface::class,
             MockEditMediumInteractor::class
+        );
+
+        $this->app->bind(
+            SearchMediumUseCaseInterface::class,
+            MockSearchMediumInteractor::class
         );
 
         $this->app->bind(
