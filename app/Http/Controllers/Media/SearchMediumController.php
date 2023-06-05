@@ -21,6 +21,6 @@ class SearchMediumController extends Controller
 
         $view_model = new SearchMediumViewModel($response_data_structure->getMediumRecords());
 
-        return view('media.list', compact('view_model'));
+        return view('media.search', compact('view_model'));
     }
 }
