@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('Media.layout')
+@section('title', '媒体削除確認')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>媒体削除確認 | ADAS</title>
-</head>
-
-<body>
+@section('contents')
     <p>下記媒体を削除しますか？</p>
     <p>※削除後は、データの復元はできません</p>
 
@@ -19,6 +12,4 @@
         <input type="hidden" name="medium_id" value="{{ $view_model->getMediumId() }}">
         <button type="submit">削除する</button>
     </form>
-</body>
-
-</html>
+@endsection

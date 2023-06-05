@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('Media.layout')
+@section('title', '媒体削除完了')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>削除完了 | ADAS</title>
-</head>
-
-<body>
+@section('contents')
     <p>削除完了</p>
     <a href="/media">媒体一覧へ</a>
 
@@ -17,6 +10,4 @@
 
     <p>媒体名</p>
     <p>{{ $view_model->getMediumName() }}</p>
-</body>
-
-</html>
+@endsection
