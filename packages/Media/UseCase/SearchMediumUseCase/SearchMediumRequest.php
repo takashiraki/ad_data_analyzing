@@ -2,11 +2,6 @@
 
 namespace Media\UseCase\SearchMediumUseCase;
 
-enum EnumSearchMediumRequest
-{
-    case null;
-}
-
 class SearchMediumRequest
 {
 
@@ -14,12 +9,12 @@ class SearchMediumRequest
     private $medium_name;
 
     public function __construct(
-        ?string $medium_id,
-        ?string $medium_name
+        null|string $medium_id,
+        null|string $medium_name
 
     ) {
-        $this->medium_id = $medium_id !== null ? $medium_id : EnumSearchMediumRequest::null;
-        $this->medium_name = $medium_name !== null ? $medium_name : EnumSearchMediumRequest::null;
+        $this->medium_id = $medium_id;
+        $this->medium_name = $medium_name;
     }
 
 

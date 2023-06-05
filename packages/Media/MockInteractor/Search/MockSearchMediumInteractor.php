@@ -24,18 +24,16 @@ class MockSearchMediumInteractor implements SearchMediumUseCaseInterface
         $medium_id = '';
         $medium_name = '';
 
-        if ($request->getMediumId() !== EnumSearchMediumRequest::null) {
+        if ($request->getMediumId() !== null) {
             $medium_id = $request->getMediumId();
         }
 
-        if ($request->getMediumName() !== EnumSearchMediumRequest::null) {
+        if ($request->getMediumName() !== null) {
             $medium_name = $request->getMediumName();
         }
 
         $records = $this->repository->getRecords($medium_id, $medium_name);
 
-        dd($records);
-
-        return new SearchMediumResponse();
+        return new SearchMediumResponse($records);
     }
 }

@@ -95,9 +95,8 @@ class EloquentMediumRepository implements MediumRepositoryInterface
         return $record;
     }
 
-    public function getRecords(?string $medium_id, ?string $medium_name)
+    public function getRecords(?string $medium_id, ?string $medium_name): ?array
     {
-
         $query = DB::table('media');
 
         if (isset($medium_id)) {
@@ -108,8 +107,17 @@ class EloquentMediumRepository implements MediumRepositoryInterface
             $query->where('medium_name', 'LIKE', '%' . $medium_name . '%');
         }
 
-        $records = $query->get();
+        $all_records = $query->orderBy('created_at', 'desc')->get()->toArray();
 
-        return $records;
+        $return_records = [];
+
+        foreach ($all_records as $value) {
+            $return_records[] = new Medium(
+                new MediumId($value->medium_id),
+                new MediumName(($value->medium_name))
+            );
+        }
+
+        return $return_records;
     }
 }
