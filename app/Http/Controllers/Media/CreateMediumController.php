@@ -16,7 +16,6 @@ use Media\UseCase\CreateMediumUseCase\CreateMediumUseCaseInterface;
  * 
  * 
  * ## Responsibility
- * 
  * The responsibility this class has is to exchange data to give the data to UseCase.
  */
 class CreateMediumController extends Controller

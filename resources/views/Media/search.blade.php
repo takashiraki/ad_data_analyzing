@@ -10,11 +10,16 @@
         <button type="submit">検索する</button>
     </form>
 
-    @foreach ($view_model->getMediumRecords() as $media_record)
-        <ul>
-            <li>{{ $media_record->getMediumName()->getValue() }} : {{ $media_record->getMediumId()->getValue() }} <a
-                    href="/medium/{{ $media_record->getMediumId()->getValue() }}/edit">編集する</a><a
-                    href="/medium/{{ $media_record->getMediumId()->getValue() }}/delete">削除する</a></li>
-        </ul>
-    @endforeach
+    @empty($view_model->getMediumRecords())
+        <p>No data</p>
+    @else
+        @foreach ($view_model->getMediumRecords() as $media_record)
+            <ul>
+                <li>{{ $media_record->getMediumName()->getValue() }} : {{ $media_record->getMediumId()->getValue() }} <a
+                        href="/medium/{{ $media_record->getMediumId()->getValue() }}/edit">編集する</a><a
+                        href="/medium/{{ $media_record->getMediumId()->getValue() }}/delete">削除する</a></li>
+            </ul>
+        @endforeach
+    @endempty
+
 @endsection

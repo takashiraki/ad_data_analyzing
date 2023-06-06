@@ -15,13 +15,13 @@ use Media\UseCase\EditMediumUseCase\EditMediumUseCaseInterface;
  * 
  * 
  * ## Responsibility
- * 
  * The responsibility this class has is to exchange data to give the data  to  UseCase.
  */
 class EditMediumController extends Controller
 {
     /**
      * # Index of Media
+     * The intention of this method is to exchange data structure.
      *
      * @param string $medium_id
      * @param EditMediumUseCaseInterface $interactor
@@ -43,7 +43,8 @@ class EditMediumController extends Controller
 
 
     /**
-     * # Exchange data structure
+     * # Handle
+     * The intention of this method is to exchange data structure.
      *
      * @param Request $request
      * @param EditMediumUseCaseInterface $interactor

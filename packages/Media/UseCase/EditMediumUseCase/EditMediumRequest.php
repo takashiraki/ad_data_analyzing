@@ -4,12 +4,11 @@ namespace Media\UseCase\EditMediumUseCase;
 
 /**
  * --------------------------------------------------------------------------
- * Data structure
+ * # Data structure
  * --------------------------------------------------------------------------
- * 
+ * This class is compose the request component.
  * 
  * ## Responsibility
- * 
  * The responsibility this class has is to make data structure of request.
  */
 class EditMediumRequest
@@ -18,7 +17,7 @@ class EditMediumRequest
     /**
      * # Medium id.
      *
-     * @var [type]
+     * @var string
      */
     private $medium_id;
 
@@ -26,7 +25,7 @@ class EditMediumRequest
     /**
      * # Medium name user inputing from form.
      *
-     * @var [type]
+     * @var string
      */
     private $medium_name;
 

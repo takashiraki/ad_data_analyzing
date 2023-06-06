@@ -23,7 +23,6 @@ use UnexpectedValueException;
  * 
  * ## UseCase
  * The usecase of this class is media editing.
- * 
  */
 class MockEditMediumInteractor implements EditMediumUseCaseInterface
 {
@@ -45,7 +44,7 @@ class MockEditMediumInteractor implements EditMediumUseCaseInterface
 
 
     /**
-     * # Constructer
+     * # Constructer.
      *
      * @param MediumDomainService $medium_domain_service
      * @param MediumRepositoryInterface $repository
@@ -60,8 +59,8 @@ class MockEditMediumInteractor implements EditMediumUseCaseInterface
 
 
     /**
-     * # Mock index info if Media.
-     *
+     * # Mock index info of Media.
+     *The intention of this method is to achieve UseCase of show medium info before editing.
      * @param EditMediumRequest $request
      * @return EditMediumResponse
      */
@@ -70,7 +69,7 @@ class MockEditMediumInteractor implements EditMediumUseCaseInterface
 
         $exist_medium_data = $this->medium_domain_service->ExistById($request->getMediumId());
 
-        if (empty($exist_medium_data)) {
+        if (!$exist_medium_data) {
             throw new UnexpectedValueException('The Medium dose not exist');
         }
 
@@ -89,7 +88,8 @@ class MockEditMediumInteractor implements EditMediumUseCaseInterface
 
 
     /**
-     * Mock input boundary.
+     * # Mock of edit UseCase.
+     * The intention of this method is to achieve UseCase of update medium.
      *
      * @param EditMediumRequest $request
      * @return EditMediumResponse

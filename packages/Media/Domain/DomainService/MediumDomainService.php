@@ -13,7 +13,6 @@ use Media\Domain\Media\MediumRepositoryInterface;
  * 
  * 
  * ## Responsibility
- * 
  * The responsibility of this class is to help medium ValueObject.
  * But if you are not sure whether to write ValueObject or DomainService, you should write in DomainService.
  * And you have to check make sure there is no discomfort.

@@ -8,7 +8,6 @@ namespace App\Http\Model;
  * --------------------------------------------------------------------------
  * 
  * ## Responsibility
- * 
  * The responsibility this class has is for Media.
  * This class has to create view model.
  * 

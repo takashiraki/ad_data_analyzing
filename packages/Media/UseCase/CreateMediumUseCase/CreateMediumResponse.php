@@ -10,7 +10,6 @@ namespace Media\UseCase\CreateMediumUseCase;
  * 
  * 
  * ## Responsibility
- * 
  * The responsibility that this class has is make data structure of response.
  */
 class CreateMediumResponse

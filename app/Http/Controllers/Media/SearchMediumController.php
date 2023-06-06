@@ -8,8 +8,26 @@ use Illuminate\Http\Request;
 use Media\UseCase\SearchMediumUseCase\SearchMediumRequest;
 use Media\UseCase\SearchMediumUseCase\SearchMediumUseCaseInterface;
 
+/**
+ * --------------------------------------------------------------------------
+ * # Controller
+ * --------------------------------------------------------------------------
+ * 
+ * 
+ * ## Responsibility
+ * The responsibikity this class has is to exchange data to give the data to UseCase.
+ */
 class SearchMediumController extends Controller
 {
+
+    /**
+     * # Index
+     * The intention of this method is to exchange data.
+     *
+     * @param Request $request
+     * @param SearchMediumUseCaseInterface $interactor
+     * @return void
+     */
     public function index(Request $request, SearchMediumUseCaseInterface $interactor)
     {
         $medium_id_parameter = $request->input('medium_id');

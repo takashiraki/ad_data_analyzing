@@ -23,7 +23,7 @@ use Media\UseCase\CreateMediumUseCase\CreateMediumUseCaseInterface;
  * The responsibility that this class has is to compose the application usecase for Media.
  * 
  * ## UseCase
- * The usecase of this class is media registration.
+ * The UseCase of this class is media registration.
  */
 class MockCreateMediumInteractor implements CreateMediumUseCaseInterface
 {
@@ -37,7 +37,7 @@ class MockCreateMediumInteractor implements CreateMediumUseCaseInterface
 
 
     /**
-     * # RepositoryInterfae
+     * # RepositoryInterfae.
      *
      * @var MediumRepositoryInterface
      */
@@ -59,16 +59,17 @@ class MockCreateMediumInteractor implements CreateMediumUseCaseInterface
     }
 
     /**
-     * Achieving UseCase of create medium.
+     * # Mock index info of Media.
+     * The intention of this method is to achieve UseCase of create medium.
      *
      * @param CreateMediumRequest $request
      * @return CreateMediumResponse
      */
     public function handle(CreateMediumRequest $request): CreateMediumResponse
     {
-        $check_duplicated_medium_name = $this->medium_domain_service->ExistByName($request->getMediumName());
+        $exist_medium_name = $this->medium_domain_service->ExistByName($request->getMediumName());
 
-        if ($check_duplicated_medium_name) {
+        if ($exist_medium_name) {
             throw new UnexpectedValueException('This medium name is already existed');
         }
 

@@ -8,16 +8,16 @@ namespace Media\UseCase\EditMediumUseCase;
  * --------------------------------------------------------------------------
  * Achieving UseCase of edit medium.
  * 
- * ## Responsibility
  * 
+ * ## Responsibility
  * The responsibility of this interface is to compose the application Usecase.
  * 
- * ## Dependency injection
  * 
+ * ## Dependency injection
  * This interface doing dependency injection in the AppServiceProvider.
  * 
- * ## UseCase
  * 
+ * ## UseCase
  * The UseCas of this class is media editing.
  */
 interface EditMediumUseCaseInterface

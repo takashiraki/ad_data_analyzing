@@ -6,10 +6,9 @@ namespace Media\UseCase\EditMediumUseCase;
  * --------------------------------------------------------------------------
  * # Data Structure
  * --------------------------------------------------------------------------
- * 
+ * This class compose the response component.
  * 
  * ## Responsibility
- * 
  * The responsibility this class has is to make data structure of response.
  */
 class EditMediumResponse
@@ -18,7 +17,7 @@ class EditMediumResponse
     /**
      * # Medium id
      *
-     * @var [type]
+     * @var string
      */
     private $medium_id;
 
@@ -26,7 +25,7 @@ class EditMediumResponse
     /**
      * # Medium name
      *
-     * @var [type]
+     * @var string
      */
     private $medium_name;
 
