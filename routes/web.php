@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Lp\AddLpController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Medium\MediumController;
-use App\Http\Controllers\Medium\AddMediumController;
-use App\Http\Controllers\Medium\DeleteMediumController;
-use App\Http\Controllers\Medium\EditMediumController;
-use App\Http\Controllers\Medium\SearchMediumController;
+use App\Http\Controllers\Media\MediumController;
+use App\Http\Controllers\Media\CreateMediumController;
+use App\Http\Controllers\Media\DeleteMediumController;
+use App\Http\Controllers\Media\EditMediumController;
+use App\Http\Controllers\Media\SearchMediumController;
 use App\Http\Controllers\MediumDtl\AddMediumDtlController;
 use App\Http\Controllers\mediumDtl\DeleteMediumDtlController;
 use App\Http\Controllers\mediumDtl\EditMediumDtlController;
@@ -31,17 +31,18 @@ Route::get('/', function () {
 });
 
 // About media screen
-Route::get('/media', [MediumController::class, 'index']);
+Route::get('/media', [SearchMediumController::class, 'index']);
 
-Route::get('/medium/create', [AddMediumController::class, 'index']);
-Route::post('/medium/store', [AddMediumController::class, 'handle']);
+Route::get('/medium/create', [CreateMediumController::class, 'index']);
+Route::post('/medium/store', [CreateMediumController::class, 'handle']);
 
-Route::get('/medium/search', [SearchMediumController::class, 'index']);
+// Route::get('/medium/search', [SearchMediumController::class, 'index']);
 
 Route::get('/medium/{medium_id}/edit', [EditMediumController::class, 'index']);
 Route::post('/medium/{medium_id}/update', [EditMediumController::class, 'handle']);
 
-Route::get('medium/{medium_id}/delete', [DeleteMediumController::class, 'index']);
+Route::get('/medium/{medium_id}/delete', [DeleteMediumController::class, 'index']);
+Route::post('/medium/{medium_id}/destroy', [DeleteMediumController::class, 'destroy']);
 
 // About medium details screen
 Route::get('/medium-dtls', [MediumDtlController::class, 'index']);

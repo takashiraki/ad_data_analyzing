@@ -10,7 +10,9 @@
 
 <body>
     <ul>
+        @dd($medium_dtl_records)
         @foreach ($medium_dtl_records as $medium_dtl_record)
+            @dd($medium_dtl_record)
             <li>{{ $medium_dtl_record->medium_dtl_name }} : {{ $medium_dtl_record->medium_dtl_id }} :
                 {{ $medium_dtl_record->medium_name }}
                 {{ $medium_dtl_record->medium_id }}
