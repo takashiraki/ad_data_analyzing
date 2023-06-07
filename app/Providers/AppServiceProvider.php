@@ -3,26 +3,94 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Media\DebugInfrastructure\FileMediumRepository;
+use Media\Domain\DomainService\MediumDomainService;
+use Media\Domain\Media\MediumRepositoryInterface;
+use Media\EloquentInfrastructure\Persistence\EloquentMediumRepository;
+use Media\MockInteractor\Create\MockCreateMediumInteractor;
+use Media\MockInteractor\Delete\MockDeleteMediumInteractor;
+use Media\UseCase\CreateMediumUseCase\CreateMediumUseCaseInterface;
+use Media\MockInteractor\Edit\MockEditMediumInteractor;
+use Media\MockInteractor\Search\MockSearchMediumInteractor;
+use Media\UseCase\DeleteMediumUseCase\DeleteMediumUseCaseInterface;
+use Media\UseCase\EditMediumUseCase\EditMediumUseCaseInterface;
+use Media\UseCase\SearchMediumUseCase\SearchMediumUseCaseInterface;
+use MediaDtl\DebugInfrastructure\FileMediumDtlRepository;
+use MediaDtl\Domain\MediaDtl\MediumDtlRepositoryInterface;
+use MediaDtl\MockInteractor\Create\MockCreateMediumDtlInteractor;
+use MediaDtl\UseCase\CreateMediaDtlUseCase\CreateMediumDtlUseCaseInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
+    {
+        $this->registerForMock();
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
     {
         //
     }
 
     /**
-     * Bootstrap any application services.
-     *
-     * @return void
+     * Register any mocke services.
      */
-    public function boot()
+    private function registerForMock()
     {
-        //
+        $this->app->bind(
+            CreateMediumUseCaseInterface::class,
+            MockCreateMediumInteractor::class
+        );
+
+        $this->app->bind(
+            EditMediumUseCaseInterface::class,
+            MockEditMediumInteractor::class
+        );
+
+        $this->app->bind(
+            DeleteMediumUseCaseInterface::class,
+            MockDeleteMediumInteractor::class
+        );
+
+        $this->app->bind(
+            EditMediumUseCaseInterface::class,
+            MockEditMediumInteractor::class
+        );
+
+        $this->app->bind(
+            SearchMediumUseCaseInterface::class,
+            MockSearchMediumInteractor::class
+        );
+
+        $this->app->bind(
+            MediumDomainService::class,
+            MediumDomainService::class
+        );
+
+        $this->app->bind(
+            MediumRepositoryInterface::class,
+            FileMediumRepository::class
+        );
+
+        // $this->app->bind(
+        //     MediumRepositoryInterface::class,
+        //     EloquentMediumRepository::class,
+        // );
+
+        $this->app->bind(
+            CreateMediumDtlUseCaseInterface::class,
+            MockCreateMediumDtlInteractor::class,
+        );
+
+        $this->app->bind(
+            MediumDtlRepositoryInterface::class,
+            FileMediumDtlRepository::class
+        );
     }
 }
