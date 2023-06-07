@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\MediumDtl;
+namespace App\Http\Controllers\MediaDtl;
 
 use App\Http\Controllers\Controller;
 use App\Models\mediaDtl;
@@ -12,10 +12,7 @@ class AddMediumDtlController extends Controller
 {
     public function index()
     {
-        $query = DB::table('media');
-        $records = $query->orderBy('created_at', 'desc')->get();
-
-        return view('mediumDtl.add', ['records' => $records]);
+        return view('MediaDtl.create');
     }
 
     public function handle(Request $request)

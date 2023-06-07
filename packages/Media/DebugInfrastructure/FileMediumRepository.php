@@ -72,7 +72,6 @@ class FileMediumRepository implements MediumRepositoryInterface
             ],
         ];
 
-
         $records = [];
         foreach ($media as $value) {
             $records[] = new Medium(

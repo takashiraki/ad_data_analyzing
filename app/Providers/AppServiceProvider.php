@@ -15,6 +15,10 @@ use Media\MockInteractor\Search\MockSearchMediumInteractor;
 use Media\UseCase\DeleteMediumUseCase\DeleteMediumUseCaseInterface;
 use Media\UseCase\EditMediumUseCase\EditMediumUseCaseInterface;
 use Media\UseCase\SearchMediumUseCase\SearchMediumUseCaseInterface;
+use MediaDtl\DebugInfrastructure\FileMediumDtlRepository;
+use MediaDtl\Domain\MediaDtl\MediumDtlRepositoryInterface;
+use MediaDtl\MockInteractor\Create\MockCreateMediumDtlInteractor;
+use MediaDtl\UseCase\CreateMediaDtlUseCase\CreateMediumDtlUseCaseInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -78,5 +82,15 @@ class AppServiceProvider extends ServiceProvider
         //     MediumRepositoryInterface::class,
         //     EloquentMediumRepository::class,
         // );
+
+        $this->app->bind(
+            CreateMediumDtlUseCaseInterface::class,
+            MockCreateMediumDtlInteractor::class,
+        );
+
+        $this->app->bind(
+            MediumDtlRepositoryInterface::class,
+            FileMediumDtlRepository::class
+        );
     }
 }
