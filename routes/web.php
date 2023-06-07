@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Lp\AddLpController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Media\MediumController;
 use App\Http\Controllers\Media\CreateMediumController;
 use App\Http\Controllers\Media\DeleteMediumController;
 use App\Http\Controllers\Media\EditMediumController;
 use App\Http\Controllers\Media\SearchMediumController;
-use App\Http\Controllers\MediumDtl\AddMediumDtlController;
+use App\Http\Controllers\MediaDtl\CreateMediumDtlController;
 use App\Http\Controllers\mediumDtl\DeleteMediumDtlController;
 use App\Http\Controllers\mediumDtl\EditMediumDtlController;
 use App\Http\Controllers\MediumDtl\MediumDtlController;
@@ -30,7 +29,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// About media screen
+/**
+ * --------------------------------------------------------------------------
+ * Media
+ * --------------------------------------------------------------------------
+ */
+
 Route::get('/media', [SearchMediumController::class, 'index']);
 
 Route::get('/medium/create', [CreateMediumController::class, 'index']);
@@ -44,11 +48,17 @@ Route::post('/medium/{medium_id}/update', [EditMediumController::class, 'handle'
 Route::get('/medium/{medium_id}/delete', [DeleteMediumController::class, 'index']);
 Route::post('/medium/{medium_id}/destroy', [DeleteMediumController::class, 'destroy']);
 
-// About medium details screen
+
+/**
+ * --------------------------------------------------------------------------
+ * Media Details
+ * --------------------------------------------------------------------------
+ */
+
 Route::get('/medium-dtls', [MediumDtlController::class, 'index']);
 
-Route::get('/medium-dtls/create', [AddMediumDtlController::class, 'index']);
-Route::post('/medium-dtls/store', [AddMediumDtlController::class, 'handle']);
+Route::get('/medium-dtls/create', [CreateMediumDtlController::class, 'index']);
+Route::post('/medium-dtls/store', [CreateMediumDtlController::class, 'handle']);
 
 Route::get('/medium-dtls/search', [SearchMediumDtlController::class, 'index']);
 
@@ -57,7 +67,12 @@ Route::post('/medium-dtls/{medium_dtl_id}/update', [EditMediumDtlController::cla
 
 Route::get('/medium-dtls/{medium_dtl_id}/delete', [DeleteMediumDtlController::class, 'delete']);
 
-// About LP screen
+/**
+ * --------------------------------------------------------------------------
+ * LP
+ * --------------------------------------------------------------------------
+ */
+
 Route::get('/lps', function () {
     echo 'success';
 });
