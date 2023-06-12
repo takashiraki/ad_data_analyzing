@@ -1,0 +1,492 @@
+@use "mixin" as m;
+@use "variables" as v;
+
+
+/****************************************
+
+    /* ログイン画面
+
+*****************************************/
+/* ■ Login
+----------------------------- */
+#login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+
+    form {
+        width: 50vw;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 57vh;
+
+        p {
+            text-align: center;
+        }
+
+        .login_form_btm {
+            padding: 10px 0;
+            margin: 10px 0;
+        }
+
+        input {
+            width: 400px;
+            padding: 3px;
+            margin: 5px 0;
+            background-color: unset;
+            border-bottom: 2px solid v.$brand-color;
+            border-radius: 0;
+            font-size: 1.4em;
+
+            &::placeholder {
+                color: v.$font-color;
+                // font-size: 1.4em;
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: none;
+
+                &::placeholder {
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        button {
+            background: v.$brand-color;
+            color: v.$secondaly-color;
+            border: none;
+            border-radius: v.$border-radius;
+            border: 2px solid v.$brand-color;
+            padding: 30px;
+            width: 200px;
+            font-size: 1.4em;
+            transition-duration: .3s;
+
+            &:hover {
+                background-color: unset;
+                color: v.$brand-color;
+                transition-duration: .3s;
+            }
+        }
+    }
+
+    &>p {
+        background-color: v.$quinary-color;
+        text-align: center;
+        width: 50vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        line-height: 1.3;
+        align-items: center;
+    }
+}
+
+/****************************************
+
+    /* データ画面
+
+*****************************************/
+#bords {
+    padding: 3vw;
+    width: 100%;
+    max-width: v.$max-width;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+/* ■ Wrap
+----------------------------- */
+.wrap {
+    position: relative;
+    background-color: v.$tertiary-color;
+    width: 100%;
+    max-width: v.$wrap-width;
+    padding: 3vw;
+    margin: 0 auto;
+    border-radius: v.$border-radius;
+    box-sizing: border-box;
+
+    &:not(:first-child) {
+        margin-top: 2vw;
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+/* ■ inner
+----------------------------- */
+.inner {
+    position: relative;
+    z-index: 0;
+}
+
+/* ■ add/search
+----------------------------- */
+form {
+
+    display: flex;
+    flex-wrap: wrap;
+
+    label {
+        display: flex;
+        justify-content: space-between;
+        width: 40%;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        &:nth-child(n+3) {
+            margin-top: 20px;
+        }
+    }
+
+    input {
+        height: 44px;
+        padding: 0 16px;
+        border-radius: 10px;
+        border: none;
+        background-color: v.$quaternary-color;
+        color: v.$font-color;
+
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 0 2px v.$brand-color inset;
+            background-color: v.$senary-color;
+        }
+
+        &[type="search"] {
+            width: 70%;
+            margin-right: 30px;
+        }
+
+        &[type="submit"] {
+            position: absolute;
+            right: 0;
+            display: inline-block;
+            border: none;
+            width: 160px;
+            max-width: 20%;
+            background-color: v.$brand-color;
+            color: #fff;
+            cursor: pointer;
+            transition-duration: .3s;
+
+            &:hover {
+                background-color: inherit;
+                border: 2px solid v.$brand-color;
+                color: v.$brand-color;
+                transition-duration: .3s;
+            }
+
+            &:focus {
+                background-color: inherit;
+                border: 2px solid v.$brand-color;
+                color: v.$brand-color;
+                transition-duration: .3s;
+            }
+        }
+    }
+}
+
+#delete {
+    .message {
+        margin-bottom: 1vw;
+    }
+
+    input:read-only {
+        box-shadow: none;
+        cursor: default;
+    }
+}
+
+.complete {
+    position: relative;
+    min-height: 44px;
+
+    ul {
+        padding: 0 3px;
+        margin-top: 1vw;
+        opacity: 0.8;
+
+        li {
+            &::before {
+                content: '⚫︎';
+                display: inline;
+                color: v.$brand-color;
+                position: relative;
+                top: 0;
+                left: -5px;
+            }
+    
+            p {
+                display: inline-block;
+            }
+        }
+        
+    }
+}
+
+/* ■ back btn
+----------------------------- */
+.back-btn {
+    width: 40px;
+    display: block;
+    position: absolute;
+    right: 0;
+
+    p {
+        width: 30px;
+        height: 30px;
+        border: 1px solid v.$brand-color;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(180deg);
+        transition-duration: 0.3s;
+
+        &:hover {
+            background: v.$brand-color;
+            color: v.$secondaly-color;
+            transition-duration: 0.3s;
+        }
+    }
+}
+
+.close-btn {
+    text-align: center;
+    padding: 15px 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline-block;
+    border-radius: 10px;
+    width: 200px;
+    max-width: 20%;
+    vertical-align: middle;
+    background-color: v.$brand-color;
+    color: #fff;
+    cursor: pointer;
+    transition-duration: .3s;
+    border: 2px solid v.$brand-color;
+    box-sizing: border-box;
+
+    &:hover {
+        background-color: inherit;
+        border: 2px solid v.$brand-color;
+        color: v.$brand-color;
+        transition-duration: .3s;
+    }
+}
+
+/* ■ table
+----------------------------- */
+#table {
+    min-height: 0vh;
+    overflow: hidden;
+    border-bottom: 50px solid v.$tertiary-color;
+
+    table {
+        border-collapse: collapse;
+        text-align: left;
+        table-layout: fixed;
+        display: block;
+
+        thead {
+            display: block;
+            width: 100%;
+        }
+
+        tbody {
+            overflow: scroll;
+            display: block;
+            height: 900px;
+            width: 100%;
+            position: relative;
+
+            tr {
+                display: table-row;
+                transition-duration: .3s;
+                position: relative;
+
+                &:hover {
+                    background: v.$quaternary-color;
+                    transition-duration: .3s;
+                }
+
+                &::after {
+                    content: "…";
+                    position: absolute;
+                    right: 10px;
+                    cursor: pointer;
+                    height: 0;
+                    height: 44px;
+                    padding: 0.5vw;
+                    display: flex;
+                    align-items: center;
+                    z-index: -1;
+
+                    &:hover {
+                        color: v.$brand-color;
+
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: 30px solid v.$tertiary-color;
+
+                }
+
+                .btns {
+                    width: 100px;
+                    display: flex;
+                    float: right;
+                    padding-right: 38px;
+                    justify-content: flex-end;
+                    z-index: 3;
+
+                    li {
+                        padding-left: 10px;
+                        position: relative;
+
+                        p {
+                            width: 30px;
+                            height: 30px;
+                            border: 1px solid v.$brand-color;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            transition-duration: 0.3s;
+
+                            &:hover {
+                                background: v.$brand-color;
+                                color: v.$secondaly-color;
+                                transition-duration: 0.3s;
+                            }
+
+                            i {
+                                font-size: 14px;
+                            }
+                        }
+
+                        &:nth-child(1) {
+                            p:hover:before {
+                                content: '';
+                                position: absolute;
+                                top: 35px;
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: 0 3px 5px 3px;
+                                border-color: transparent transparent v.$brand-color transparent;
+                            }
+
+                            p:hover:after {
+                                content: '編集';
+                                position: absolute;
+                                top: 40px;
+                                color: v.$secondaly-color;
+                                background: v.$brand-color;
+                                padding: 3px 5px;
+                                white-space: nowrap;
+                            }
+                        }
+
+                        &:nth-child(2) {
+                            p:hover:before {
+                                content: '';
+                                position: absolute;
+                                top: 35px;
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: 0 3px 5px 3px;
+                                border-color: transparent transparent v.$brand-color transparent;
+                            }
+
+                            p:hover:after {
+                                content: '削除';
+                                position: absolute;
+                                top: 40px;
+                                color: v.$secondaly-color;
+                                background: v.$brand-color;
+                                padding: 3px 5px;
+                                white-space: nowrap;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+        th {
+            height: 24px;
+            padding: 0 0.5vw;
+            border-bottom: solid 2px #0F8390;
+            color: #0F8390;
+            word-break: break-word;
+            vertical-align: middle;
+            font-weight: normal;
+        }
+
+        td {
+            height: 44px;
+            padding: 0.5vw;
+            border-bottom: solid 1px v.$secondaly-color;
+            word-break: break-word;
+            line-height: 1.3;
+            vertical-align: middle;
+
+            img {
+                height: 24px;
+                width: 24px;
+                vertical-align: middle;
+                padding-right: 10px;
+                padding-bottom: 2px;
+            }
+        }
+
+        th:nth-child(1),
+        td:nth-child(1) {
+            min-width: 10px;
+        }
+
+        th:nth-child(n+2),
+        td:nth-child(n+2) {
+            min-width: 200px;
+        }
+
+        th:nth-last-child(2),
+        td:nth-last-child(2) {
+            min-width: 200px;
+            width: 100%;
+        }
+
+        th:last-child,
+        td:last-child {
+            min-width: 50px;
+            padding: 0;
+
+            &:not(:hover) {
+                opacity: 0;
+                position: relative;
+            }
+        }
+
+    }
+}

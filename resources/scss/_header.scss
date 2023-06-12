@@ -1,0 +1,73 @@
+@use "mixin" as m;
+@use "variables" as v;
+
+
+/****************************************
+
+    /* hedder
+
+*****************************************/
+
+/* ■ Header
+----------------------------- */
+
+.header {
+    max-width: v.$max-width;
+    display: block;
+
+    .inner {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        .title {
+            p {
+                color: v.$brand-color;
+                line-height: 1.3;
+            }
+        }
+
+        .btns {
+            display: flex;
+
+            li {
+                padding-left: 10px;
+                padding-bottom: 5px;
+
+                a {
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        box-sizing: border-box;
+                    }
+
+                    .hover {
+                        display: none;
+                        transition-duration: .3s;
+                    }
+
+                    &:hover {
+                        z-index: 10;
+
+                        img {
+                            display: none;
+                            transition-duration: .3s;
+                        }
+
+                        .hover {
+                            display: block;
+                            transition-duration: .3s;
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+
+
+
+
+}
