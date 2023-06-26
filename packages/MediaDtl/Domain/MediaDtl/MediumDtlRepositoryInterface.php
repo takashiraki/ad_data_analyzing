@@ -12,7 +12,11 @@ interface MediumDtlRepositoryInterface
 
     public function findMediumById(MediumId $id): ?Medium;
 
+    public function findById(MediumDtlId $id): ?MediumDtl;
+
     public function findByName(MediumDtlName $name): ?MediumDtl;
+
+    public function findByNameInMedium(MediumDtlName $name, MediumId $Id);
 
     public function getMediumRecords(): ?array;
 }

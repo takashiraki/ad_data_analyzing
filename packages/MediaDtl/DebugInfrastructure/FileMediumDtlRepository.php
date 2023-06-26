@@ -28,6 +28,15 @@ class FileMediumDtlRepository implements MediumDtlRepositoryInterface
         );
     }
 
+    public function findById(MediumDtlId $id): ?MediumDtl
+    {
+        return new MediumDtl(
+            $id,
+            new MediumDtlName('hogehoge'),
+            new MediumId((string)Str::uuid())
+        );
+    }
+
     public function findByName(MediumDtlName $name): ?MediumDtl
     {
         return new MediumDtl(

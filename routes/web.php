@@ -9,10 +9,7 @@ use App\Http\Controllers\Media\DeleteMediumController;
 use App\Http\Controllers\Media\EditMediumController;
 use App\Http\Controllers\Media\SearchMediumController;
 use App\Http\Controllers\MediaDtl\CreateMediumDtlController;
-use App\Http\Controllers\mediumDtl\DeleteMediumDtlController;
-use App\Http\Controllers\mediumDtl\EditMediumDtlController;
-use App\Http\Controllers\MediumDtl\MediumDtlController;
-use App\Http\Controllers\MediumDtl\SearchMediumDtlController;
+use App\Http\Controllers\mediaDtl\EditMediumDtlController;
 
 /*
 |--------------------------------------------------------------------------
