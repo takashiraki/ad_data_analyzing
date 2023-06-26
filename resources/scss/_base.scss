@@ -1,0 +1,97 @@
+@use "mixin" as m;
+@use "variables" as v;
+
+/****************************************
+
+    /* 共通設定
+
+*****************************************/
+
+body {
+    background-image: url(../image/bg.png);
+    background-size: cover;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    height: 100vh;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    transition-duration: .3s;
+
+    &:hover {
+        text-decoration: none;
+        transition-duration: .3s;
+
+        img {
+            transition-duration: .3s;
+        }
+
+    }
+
+}
+
+img,
+video,
+object {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+    border: none;
+    transition-duration: .3s;
+}
+
+/* ■ Wrap
+----------------------------- */
+
+.wrap {
+    position: relative;
+    background-color: v.$tertiary-color;
+    width: 100%;
+    max-width: v.$wrap-width;
+    padding: 50px;
+    margin: 0 auto;
+    border-radius: 30px;
+    box-sizing: border-box;
+    box-shadow: 0px 20px 50px 0px rgba(26, 63, 67, 0.16);
+
+    &:not(:first-child) {
+        margin-top: 30px;
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+
+/* ■ inner
+----------------------------- */
+
+.inner {
+    position: relative;
+}
+
+
+
+
+/* ■ PC/TAB/SP
+----------------------------- */
+
+.dispSP {
+    display: none !important;
+
+    @include m.mq(tab) {
+        display: block !important;
+    }
+}
+
+.dispPC {
+    @include m.mq(tab) {
+        display: none !important;
+    }
+}
