@@ -18,9 +18,13 @@ use Media\UseCase\SearchMediumUseCase\SearchMediumUseCaseInterface;
 use MediaDtl\DebugInfrastructure\FileMediumDtlRepository;
 use MediaDtl\Domain\MediaDtl\MediumDtlRepositoryInterface;
 use MediaDtl\MockInteractor\Create\MockCreateMediumDtlInteractor;
+use MediaDtl\MockInteractor\Delete\MockDeleteMediumDtlInteractor;
 use MediaDtl\MockInteractor\Edit\MockEditMediumDtlInteractor;
+use MediaDtl\MockInteractor\Search\MockSearchMediumDtlInteractor;
 use MediaDtl\UseCase\CreateMediaDtlUseCase\CreateMediumDtlUseCaseInterface;
+use MediaDtl\UseCase\DeleteMediumDtlUseCase\DeleteMediumDtlUseCaseInterface;
 use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlUseCaseInterface;
+use MediaDtl\UseCase\SearchMediumDtlUseCase\SearchMediumDtlUseCaseInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -93,6 +97,16 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             EditMediumDtlUseCaseInterface::class,
             MockEditMediumDtlInteractor::class
+        );
+
+        $this->app->bind(
+            DeleteMediumDtlUseCaseInterface::class,
+            MockDeleteMediumDtlInteractor::class
+        );
+
+        $this->app->bind(
+            SearchMediumDtlUseCaseInterface::class,
+            MockSearchMediumDtlInteractor::class
         );
 
         $this->app->bind(

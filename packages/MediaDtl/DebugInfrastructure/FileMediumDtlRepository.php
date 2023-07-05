@@ -10,12 +10,22 @@ use MediaDtl\Domain\MediaDtl\MediumDtlName;
 use MediaDtl\Domain\MediaDtl\MediumDtl;
 use MediaDtl\Domain\MediaDtl\MediumDtlId;
 use MediaDtl\Domain\MediaDtl\MediumDtlRepositoryInterface;
-
+use MediaDtl\Domain\MediaDtlSummary\MediaDtlSummary;
 
 class FileMediumDtlRepository implements MediumDtlRepositoryInterface
 {
 
     public function save(MediumDtl $medium_dtl): MediumDtl
+    {
+        return $medium_dtl;
+    }
+
+    public function update(MediumDtl $medium_dtl): MediumDtl
+    {
+        return $medium_dtl;
+    }
+
+    public function delete(MediumDtl $medium_dtl): MediumDtl
     {
         return $medium_dtl;
     }
@@ -39,11 +49,52 @@ class FileMediumDtlRepository implements MediumDtlRepositoryInterface
 
     public function findByName(MediumDtlName $name): ?MediumDtl
     {
-        return new MediumDtl(
-            new MediumDtlId((string)Str::uuid()),
-            new MediumDtlName('fugafuga'),
-            new MediumId((string)Str::uuid())
-        );
+        // return new MediumDtl(
+        //     new MediumDtlId((string)Str::uuid()),
+        //     new MediumDtlName('fugafuga'),
+        //     new MediumId((string)Str::uuid())
+        // );
+
+        return null;
+    }
+
+    public function findByNameInMedium(MediumDtlName $name, MediumId $Id)
+    {
+        //
+    }
+
+    public function findMediumDtlWithmedia(
+        ?string $medium_dtl_id,
+        ?string $medium_dtl_name,
+        ?string $medium_name
+    ) {
+        $media_dtl_summary = [
+            0 => [
+                "medium_dtl_id" => (string)Str::uuid(),
+                "medium_dtl_name" => "テスト媒体詳細100",
+                "medium_id" => (string)Str::uuid(),
+                "medium_name" => "テスト媒体100"
+            ],
+            1 => [
+                "medium_dtl_id" => (string)Str::uuid(),
+                "medium_dtl_name" => "テスト媒体詳細100",
+                "medium_id" => (string)Str::uuid(),
+                "medium_name" => "テスト媒体100"
+            ],
+        ];
+
+        $records = [];
+
+        foreach ($media_dtl_summary as $value) {
+            $records[] = new MediaDtlSummary(
+                new MediumDtlId($value['medium_dtl_id']),
+                new MediumDtlName($value['medium_dtl_name']),
+                new MediumId($value['medium_id']),
+                new MediumName($value['medium_name'])
+            );
+        }
+
+        return $records;
     }
 
     public function getMediumRecords(): ?array
