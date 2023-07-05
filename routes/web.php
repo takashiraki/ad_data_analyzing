@@ -9,10 +9,9 @@ use App\Http\Controllers\Media\DeleteMediumController;
 use App\Http\Controllers\Media\EditMediumController;
 use App\Http\Controllers\Media\SearchMediumController;
 use App\Http\Controllers\MediaDtl\CreateMediumDtlController;
-use App\Http\Controllers\mediumDtl\DeleteMediumDtlController;
-use App\Http\Controllers\mediumDtl\EditMediumDtlController;
-use App\Http\Controllers\MediumDtl\MediumDtlController;
-use App\Http\Controllers\MediumDtl\SearchMediumDtlController;
+use App\Http\Controllers\MediaDtl\DeleteMediumDtlController;
+use App\Http\Controllers\mediaDtl\EditMediumDtlController;
+use App\Http\Controllers\MediaDtl\SearchMediumDtlController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,17 +54,18 @@ Route::post('/medium/{medium_id}/destroy', [DeleteMediumController::class, 'dest
  * --------------------------------------------------------------------------
  */
 
-Route::get('/medium-dtls', [MediumDtlController::class, 'index']);
+Route::get('/medium-dtls', [SearchMediumDtlController::class, 'index']);
 
 Route::get('/medium-dtls/create', [CreateMediumDtlController::class, 'index']);
 Route::post('/medium-dtls/store', [CreateMediumDtlController::class, 'handle']);
 
-Route::get('/medium-dtls/search', [SearchMediumDtlController::class, 'index']);
+// Route::get('/medium-dtls/search', [SearchMediumDtlController::class, 'index']);
 
 Route::get('/medium-dtls/{medium_dtl_id}/edit', [EditMediumDtlController::class, 'edit']);
 Route::post('/medium-dtls/{medium_dtl_id}/update', [EditMediumDtlController::class, 'update']);
 
-Route::get('/medium-dtls/{medium_dtl_id}/delete', [DeleteMediumDtlController::class, 'delete']);
+Route::get('/medium-dtls/{medium_dtl_id}/delete', [DeleteMediumDtlController::class, 'index']);
+Route::post('/medium-dtls/{medium_dtl_id}/delete', [DeleteMediumDtlController::class, 'handle']);
 
 /**
  * --------------------------------------------------------------------------

@@ -1,59 +1,73 @@
 <?php
 
-namespace App\Http\Controllers\mediumDtl;
+namespace App\Http\Controllers\MediaDtl;
 
 use App\Http\Controllers\Controller;
+use App\Http\Model\MediaDtl\Edit\EditMediumDtlSaveViewModel;
+use App\Http\Model\MediaDtl\EditMediumDtlViewModel;
 use App\Models\MediaDtl;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlRequest\EditMediumDtlSaveRequest;
+use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlRequest\EditMediumDtlViewRequest;
+use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlUseCaseInterface;
 
 class EditMediumDtlController extends Controller
 {
-    public function edit(string $medium_dtl_id)
+    private const LENGTH = 36;
+
+    public function edit(string $medium_dtl_id, EditMediumDtlUseCaseInterface $interactor)
     {
-        $query_for_medium_dtl = DB::table('media_dtls');
+        if (mb_strlen($medium_dtl_id) !== self::LENGTH) {
+            //
+        }
 
-        $medium_dtl_record = $query_for_medium_dtl->where('medium_dtl_id', $medium_dtl_id)->first();
+        $request_data_structure = new EditMediumDtlViewRequest($medium_dtl_id);
 
-        $medium_id = $medium_dtl_record->medium_id;
+        $response_data_structure = $interactor->index($request_data_structure);
 
-        $query_for_medium = DB::table('media');
-        $medium_records = $query_for_medium->get();
+        $view_model = new EditMediumDtlViewModel(
+            $response_data_structure->getMediumDtlId(),
+            $response_data_structure->getMediumDtlName(),
+            $response_data_structure->getMediumId(),
+            $response_data_structure->getMediumRecords()
+        );
 
-        return view('mediumDtl.edit', [
-            'medium_dtl_record' => $medium_dtl_record,
-            'medium_records' => $medium_records
-        ]);
+        return view('MediaDtl.edit', compact('view_model'));
     }
 
-    public function update(Request $request, string $medium_dtl_id)
-    {
-        $medium_dtl_id_from_request = $request->input('medium_dtl_id');
-
-        $medium_id = $request->input('medium_id');
+    public function update(
+        Request $request,
+        string $medium_dtl_id,
+        EditMediumDtlUseCaseInterface $interactor
+    ) {
 
         $validate = $request->validate([
-            'medium_dtl_name' => ['required', 'string', 'min:1', 'max:32'],
+            'medium_dtl_name' => ['required', 'min:1', 'max:50'],
+            'medium_id' => ['required', 'min:35', 'max:36']
         ]);
 
-        if ($medium_dtl_id_from_request !== $medium_dtl_id) {
-            //例外
+        if (mb_strlen($medium_dtl_id) !== self::LENGTH) {
+            //
         }
 
-        $exiting_medium_dtl_record = MediaDtl::find($medium_dtl_id);
-
-        if (!empty($medium_dtl_record)) {
-            //例外
+        if (mb_strlen($validate['medium_id']) !== self::LENGTH) {
+            //
         }
 
-        $exiting_medium_dtl_record->medium_dtl_name = $validate['medium_dtl_name'];
+        $request_data_structure = new EditMediumDtlSaveRequest(
+            $medium_dtl_id,
+            $validate['medium_dtl_name'],
+            $validate['medium_id']
+        );
 
-        $exiting_medium_dtl_record->medium_id = $medium_id;
+        $response_data_structure = $interactor->handle($request_data_structure);
 
-        $new_medium_dtl_record = $exiting_medium_dtl_record;
+        $view_model = new EditMediumDtlSaveViewModel(
+            $response_data_structure->getMediumDtlId(),
+            $response_data_structure->getMediumDtlName(),
+            $response_data_structure->getMediumName()
+        );
 
-        $new_medium_dtl_record->save();
-
-        return redirect()->intended('/medium-dtls');
+        return view('MediaDtl.edit-completed', compact('view_model'));
     }
 }
