@@ -1,8 +1,8 @@
 <?php
 
-namespace MediaDtl\UseCase\EditMediumDtlUseCase;
+namespace MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlRequest;
 
-class EditMediumDtlRequest
+class EditMediumDtlViewRequest
 {
     private $medium_dtl_id;
 

@@ -2,12 +2,14 @@
 
 namespace MediaDtl\UseCase\EditMediumDtlUseCase;
 
-use Media\UseCase\EditMediumUseCase\EditMediumDtlResponse\EditMediumDtlSaveResponse;
+use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlRequest\EditMediumDtlViewRequest;
+use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlResponse\EditMediumDtlViewResponse;
 use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlRequest\EditMediumDtlSaveRequest;
+use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlResponse\EditMediumDtlSaveResponse;
 
 interface EditMediumDtlUseCaseInterface
 {
-    public function index(EditMediumDtlRequest $request): EditMediumDtlResponse;
+    public function index(EditMediumDtlViewRequest $request): EditMediumDtlViewResponse;
 
     public function handle(EditMediumDtlSaveRequest $request): EditMediumDtlSaveResponse;
 }

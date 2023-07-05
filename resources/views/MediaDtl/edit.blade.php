@@ -8,7 +8,7 @@
         @endforeach
     </ul>
 
-    <form action="#" method="post">
+    <form action="/medium-dtls/{{ $view_model->getMediumDtlId() }}/update" method="post">
         @csrf
         <label>媒体詳細名</label>
         <input type="text" name="medium_dtl_name" value="{{ $view_model->getMediumDtlName() }}">

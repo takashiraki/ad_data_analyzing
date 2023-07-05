@@ -1,12 +1,12 @@
 <?php
 
-namespace MediaDtl\UseCase\EditMediumDtlUseCase;
+namespace MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlResponse;
 
 use MediaDtl\Domain\Media\MediumId;
 use MediaDtl\Domain\MediaDtl\MediumDtlId;
 use MediaDtl\Domain\MediaDtl\MediumDtlName;
 
-class EditMediumDtlResponse
+class EditMediumDtlViewResponse
 {
     private $medium_dtl_id;
     private $medium_dtl_name;
