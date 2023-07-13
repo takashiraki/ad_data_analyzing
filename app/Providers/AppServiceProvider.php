@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Lp\DebugInfrastructure\FileLpRepository;
+use Lp\Domain\Lp\LpRepositoryInterface;
+use Lp\MockInteractor\Create\MockCreateLpInteractor;
+use Lp\UseCase\CreateLp\CreateLpUseCaseInterface;
 use Media\DebugInfrastructure\FileMediumRepository;
 use Media\Domain\DomainService\MediumDomainService;
 use Media\Domain\Media\MediumRepositoryInterface;
@@ -112,6 +116,16 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             MediumDtlRepositoryInterface::class,
             FileMediumDtlRepository::class
+        );
+
+        $this->app->bind(
+            LpRepositoryInterface::class,
+            FileLpRepository::class
+        );
+
+        $this->app->bind(
+            CreateLpUseCaseInterface::class,
+            MockCreateLpInteractor::class
         );
     }
 }

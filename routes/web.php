@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Lp\AddLpController;
+use App\Http\Controllers\Lp\CreateLpController;
 use App\Http\Controllers\Media\CreateMediumController;
 use App\Http\Controllers\Media\DeleteMediumController;
 use App\Http\Controllers\Media\EditMediumController;
@@ -89,7 +90,7 @@ Route::get('/lps', function () {
     echo 'success';
 });
 
-Route::get('/lps/create', [AddLpController::class, 'create']);
-Route::post('/lps', [AddLpController::class, 'store']);
+Route::get('/lps/create', [CreateLpController::class, 'index']);
+Route::post('/lps/store', [CreateLpController::class, 'handle']);
 
 require __DIR__ . '/auth.php';

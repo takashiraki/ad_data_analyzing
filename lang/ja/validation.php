@@ -249,7 +249,12 @@ return [
         'year' => '年',
 
         'medium_dtl_name' => '媒体詳細名',
-        'medium_id' => '媒体'
+        'medium_id' => '媒体',
+
+        'lp_id' => 'LP ID',
+        'lp_name' => 'LP名',
+        'lp_directory' => 'LPディレクトリ',
+        'lp_memo' => 'メモ'
     ],
 
 ];
