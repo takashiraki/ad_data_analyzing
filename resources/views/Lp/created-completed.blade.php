@@ -14,7 +14,7 @@
     <p>{{ $view_model->getLpDirectory() }}</p>
 
     <label>メモ</label>
-    <p>{{ $view_model->getLpMemo() }}</p>
+    <p>{!! nl2br(e($view_model->getLpMemo())) !!}</p>
 
     <a href="#">LP一覧へ</a>
     
