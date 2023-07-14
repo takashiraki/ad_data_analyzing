@@ -38,4 +38,13 @@ abstract class StringValueObject
     {
         return $this->value;
     }
+
+
+    public function equals(StringValueObject $value): bool
+    {
+        $this_value = $this->getValue();
+        $comparison_vale = $value->getValue();
+
+        return $this_value === $comparison_vale;
+    }
 }
