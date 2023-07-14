@@ -60,7 +60,7 @@ class MockCreateLpInteractor implements CreateLpUseCaseInterface
             $lp_instance->getLpId()->getValue(),
             $lp_instance->getLpName()->getValue(),
             $lp_instance->getLpDir()->getValue(),
-            $request->getLpMemo() === null ? null : $lp_instance->getLpMemo()->getValue()
+            $request->getLpMemo() === null ? null : $lp_instance->getLpMemo()->getLpMemo()
         );
     }
 
