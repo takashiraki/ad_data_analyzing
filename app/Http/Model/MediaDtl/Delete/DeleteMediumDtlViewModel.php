@@ -5,7 +5,9 @@ namespace App\Http\Model\MediaDtl\Delete;
 class DeleteMediumDtlViewModel
 {
     private $medium_dtl_id;
+
     private $medium_dtl_name;
+
     private $medium_name;
 
     public function __construct(

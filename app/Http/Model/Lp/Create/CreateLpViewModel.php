@@ -5,8 +5,11 @@ namespace App\Http\Model\Lp\Create;
 class CreateLpViewModel
 {
     private $lp_id;
+
     private $lp_name;
+
     private $lp_direcrtory;
+
     private $lp_memo;
 
     public function __construct(

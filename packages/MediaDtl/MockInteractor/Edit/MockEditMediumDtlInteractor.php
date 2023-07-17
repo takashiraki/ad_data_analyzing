@@ -10,14 +10,15 @@ use MediaDtl\Domain\MediaDtl\MediumDtlName;
 use MediaDtl\Domain\MediaDtl\MediumDtlRepositoryInterface;
 use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlRequest\EditMediumDtlSaveRequest;
 use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlRequest\EditMediumDtlViewRequest;
+use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlResponse\EditMediumDtlSaveResponse;
 use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlResponse\EditMediumDtlViewResponse;
 use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlUseCaseInterface;
-use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlResponse\EditMediumDtlSaveResponse;
 use UnexpectedValueException;
 
 class MockEditMediumDtlInteractor implements EditMediumDtlUseCaseInterface
 {
     private $medium_dtl_domain_service;
+
     private $repository;
 
     public function __construct(
@@ -30,13 +31,12 @@ class MockEditMediumDtlInteractor implements EditMediumDtlUseCaseInterface
 
     public function index(EditMediumDtlViewRequest $request): EditMediumDtlViewResponse
     {
-
         $medium_dtl_id = new MediumDtlId($request->getMediumDtlId());
 
         $exist_medium_dtl_record = $this->medium_dtl_domain_service
             ->existMediumDtlById($medium_dtl_id);
 
-        if (!$exist_medium_dtl_record) {
+        if (! $exist_medium_dtl_record) {
             throw new UnexpectedValueException('This medium detail dose not exist');
         }
 
@@ -46,7 +46,7 @@ class MockEditMediumDtlInteractor implements EditMediumDtlUseCaseInterface
 
         $exist_medium_record = $this->medium_dtl_domain_service->existMediumById($medium_id);
 
-        if (!$exist_medium_record) {
+        if (! $exist_medium_record) {
             throw new UnexpectedValueException('This medium dose not exist');
         }
 
@@ -62,7 +62,6 @@ class MockEditMediumDtlInteractor implements EditMediumDtlUseCaseInterface
 
     public function handle(EditMediumDtlSaveRequest $request): EditMediumDtlSaveResponse
     {
-
         $medium_id = new MediumId($request->getMediumId());
         $medium_dtl_id = new MediumDtlId($request->getMediumDtlId());
         $new_medium_dtl_name = new MediumDtlName($request->getMediumDtlName());
@@ -75,7 +74,6 @@ class MockEditMediumDtlInteractor implements EditMediumDtlUseCaseInterface
         }
         $medium_record = $this->repository
             ->findMediumById($medium_id);
-
 
         $exist_medium_dtl_record = $this->medium_dtl_domain_service
             ->existMediumDtlById($medium_dtl_id);
@@ -111,11 +109,11 @@ class MockEditMediumDtlInteractor implements EditMediumDtlUseCaseInterface
 
     private function isExisted($value): bool
     {
-        return $value === TRUE ? true : false;
+        return $value === true ? true : false;
     }
 
     private function isNotExisted($value): bool
     {
-        return $value !== TRUE ? true : false;
+        return $value !== true ? true : false;
     }
 }

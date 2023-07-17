@@ -2,12 +2,12 @@
 
 namespace App\Http\Model\MediaDtl\Delete;
 
-use PHPUnit\Framework\MockObject\ReturnValueNotConfiguredException;
-
 class DeleteMediumDtlHandleViewModel
 {
     private $medium_dtl_id;
+
     private $medium_dtl_name;
+
     private $medium_name;
 
     public function __construct(

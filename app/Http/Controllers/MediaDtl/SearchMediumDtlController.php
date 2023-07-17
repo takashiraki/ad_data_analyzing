@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\MediaDtl;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Model\MediaDtl\Search\SearchMediumDtlViewModel;
+use Illuminate\Http\Request;
 use MediaDtl\UseCase\SearchMediumDtlUseCase\SearchMediumDtlRequest\SearchMediumDtlRequest;
 use MediaDtl\UseCase\SearchMediumDtlUseCase\SearchMediumDtlUseCaseInterface;
 
 class SearchMediumDtlController extends Controller
 {
-    public function index(Request $request,  SearchMediumDtlUseCaseInterface $interactor)
+    public function index(Request $request, SearchMediumDtlUseCaseInterface $interactor)
     {
-
         $medium_name = $request->query('medium_name');
 
         $medium_dtl_name = $request->query('medium_dtl_name');

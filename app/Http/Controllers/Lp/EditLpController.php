@@ -39,11 +39,11 @@ class EditLpController extends Controller
         $validate = $request->validate([
             'lp_name' => ['required', 'string', 'min:1', 'max:50'],
             'lp_directory' => ['required', 'string', 'min:1', 'max:50'],
-            'lp_memo' => ['max:50']
+            'lp_memo' => ['max:50'],
         ]);
 
         if (mb_strlen($lp_id) !== self::LENGTH) {
-            throw new UnexpectedValueException("Bad lp id");
+            throw new UnexpectedValueException('Bad lp id');
         }
 
         $request_data_structure = new EditLpHandleRequest(

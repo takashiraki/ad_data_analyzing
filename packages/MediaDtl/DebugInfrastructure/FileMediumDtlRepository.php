@@ -3,18 +3,17 @@
 namespace MediaDtl\DebugInfrastructure;
 
 use illuminate\Support\Str;
-use MediaDtl\Domain\Media\MediumId;
 use MediaDtl\Domain\Media\Medium;
+use MediaDtl\Domain\Media\MediumId;
 use MediaDtl\Domain\Media\MediumName;
-use MediaDtl\Domain\MediaDtl\MediumDtlName;
 use MediaDtl\Domain\MediaDtl\MediumDtl;
 use MediaDtl\Domain\MediaDtl\MediumDtlId;
+use MediaDtl\Domain\MediaDtl\MediumDtlName;
 use MediaDtl\Domain\MediaDtl\MediumDtlRepositoryInterface;
 use MediaDtl\Domain\MediaDtlSummary\MediaDtlSummary;
 
 class FileMediumDtlRepository implements MediumDtlRepositoryInterface
 {
-
     public function save(MediumDtl $medium_dtl): MediumDtl
     {
         return $medium_dtl;
@@ -70,16 +69,16 @@ class FileMediumDtlRepository implements MediumDtlRepositoryInterface
     ) {
         $media_dtl_summary = [
             0 => [
-                "medium_dtl_id" => (string)Str::uuid(),
-                "medium_dtl_name" => "テスト媒体詳細100",
-                "medium_id" => (string)Str::uuid(),
-                "medium_name" => "テスト媒体100"
+                'medium_dtl_id' => (string)Str::uuid(),
+                'medium_dtl_name' => 'テスト媒体詳細100',
+                'medium_id' => (string)Str::uuid(),
+                'medium_name' => 'テスト媒体100',
             ],
             1 => [
-                "medium_dtl_id" => (string)Str::uuid(),
-                "medium_dtl_name" => "テスト媒体詳細100",
-                "medium_id" => (string)Str::uuid(),
-                "medium_name" => "テスト媒体100"
+                'medium_dtl_id' => (string)Str::uuid(),
+                'medium_dtl_name' => 'テスト媒体詳細100',
+                'medium_id' => (string)Str::uuid(),
+                'medium_name' => 'テスト媒体100',
             ],
         ];
 
@@ -101,16 +100,16 @@ class FileMediumDtlRepository implements MediumDtlRepositoryInterface
     {
         $media = [
             0 => [
-                "medium_id" => "7bbc275b-b13b-433b-890e-e986b7c28977",
-                "medium_name" => "テスト媒体100",
-                "created_at" => "2023-05-30 15:47:49",
-                "updated_at" => "2023-05-30 15:47:49"
+                'medium_id' => '7bbc275b-b13b-433b-890e-e986b7c28977',
+                'medium_name' => 'テスト媒体100',
+                'created_at' => '2023-05-30 15:47:49',
+                'updated_at' => '2023-05-30 15:47:49',
             ],
             1 => [
-                "medium_id" => "92590962-8310-4506-90c0-22272f82acad",
-                "medium_name" => "テスト媒体200",
-                "created_at" => "2023-05-30 15:47:43",
-                "updated_at" => "2023-05-30 15:47:43"
+                'medium_id' => '92590962-8310-4506-90c0-22272f82acad',
+                'medium_name' => 'テスト媒体200',
+                'created_at' => '2023-05-30 15:47:43',
+                'updated_at' => '2023-05-30 15:47:43',
             ],
         ];
 

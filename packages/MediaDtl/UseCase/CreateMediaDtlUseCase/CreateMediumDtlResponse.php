@@ -5,9 +5,13 @@ namespace MediaDtl\UseCase\CreateMediaDtlUseCase;
 class CreateMediumDtlResponse
 {
     private $medium_dtl_id;
+
     private $medium_dtl_name;
+
     private $medium_id;
+
     private $medium_name;
+
     private $medium_records;
 
     public function __construct(

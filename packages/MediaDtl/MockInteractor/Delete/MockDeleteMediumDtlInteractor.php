@@ -14,10 +14,9 @@ use UnexpectedValueException;
 
 class MockDeleteMediumDtlInteractor implements DeleteMediumDtlUseCaseInterface
 {
-
     private $medium_dtl_domain_service;
-    private $repository;
 
+    private $repository;
 
     public function __construct(
         MediumDtlDomainService $domain_service,
@@ -64,7 +63,7 @@ class MockDeleteMediumDtlInteractor implements DeleteMediumDtlUseCaseInterface
         $exist_medium_dtl = $this->medium_dtl_domain_service->existMediumDtlById($medium_dtl_id);
 
         if ($this->isNotExist($exist_medium_dtl)) {
-            throw new UnexpectedValueException("This medium detail dose not exist");
+            throw new UnexpectedValueException('This medium detail dose not exist');
         }
 
         $medium_dtl_record = $this->repository->findById($medium_dtl_id);

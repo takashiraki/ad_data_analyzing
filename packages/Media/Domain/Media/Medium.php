@@ -16,7 +16,6 @@ class Medium
      */
     private $medium_id;
 
-
     /**
      * # Medium Name.
      *
@@ -24,11 +23,10 @@ class Medium
      */
     private $medium_name;
 
-
     /**
      * # Constructer.
      *
-     * @param MediumId $medium_id
+     * @param MediumId   $medium_id
      * @param MediumName $medium_name
      */
     public function __construct(MediumId $medium_id, MediumName $medium_name)
@@ -36,7 +34,6 @@ class Medium
         $this->medium_id = $medium_id;
         $this->medium_name = $medium_name;
     }
-
 
     /**
      * # Getter of medium id.
@@ -47,7 +44,6 @@ class Medium
     {
         return $this->medium_id;
     }
-
 
     /**
      * # Getter of medium name.

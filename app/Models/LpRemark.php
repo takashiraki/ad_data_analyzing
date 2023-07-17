@@ -9,7 +9,6 @@ class LpRemark extends Model
 {
     use HasFactory;
 
-
     /**
      * The Primary key for the model.
      *
@@ -17,14 +16,12 @@ class LpRemark extends Model
      */
     protected $primaryKey = 'lp_id';
 
-
     /**
      * The "type" of the primary key ID.
      *
      * @var string
      */
     protected $keyType = 'string';
-
 
     /**
      * The attributes that are mass assignable.

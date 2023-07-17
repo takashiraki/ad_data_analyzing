@@ -5,7 +5,9 @@ namespace Lp\UseCase\CreateLp\Request;
 class CreateLpHandleRequest
 {
     private $lp_name;
+
     private $lp_directory;
+
     private $lp_memo;
 
     public function __construct(string $lp_name, string $lp_directory, ?string $lp_memo)

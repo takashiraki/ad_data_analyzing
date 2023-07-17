@@ -5,8 +5,11 @@ namespace App\Http\Model\MediaDtl;
 class EditMediumDtlViewModel
 {
     private $medium_dtl_id;
+
     private $medium_dtl_name;
+
     private $medium_id;
+
     private $medium_records;
 
     public function __construct(

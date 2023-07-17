@@ -2,9 +2,9 @@
 
 namespace Media\Domain\Media;
 
+use Basic\DomainService\StringValueObject;
 use InvalidArgumentException;
 use LengthException;
-use Basic\DomainService\StringValueObject;
 
 /**
  * --------------------------------------------------------------------------
@@ -17,7 +17,6 @@ class MediumId extends StringValueObject
      * # Number of characters for a medium id.
      */
     private const LENGTH = 36;
-
 
     /**
      * # Constructer.

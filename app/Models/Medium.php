@@ -9,7 +9,6 @@ class Medium extends Model
 {
     use HasFactory;
 
-
     /**
      * The Primary key for the model.
      *
@@ -17,14 +16,12 @@ class Medium extends Model
      */
     protected $primaryKey = 'medium_id';
 
-
     /**
      * The "type" of the primary key ID.
      *
      * @var string
      */
     protected $keyType = 'string';
-
 
     /**
      * The attributes that are mass assignable.
@@ -35,7 +32,6 @@ class Medium extends Model
         'medium_id',
         'medium_name',
     ];
-
 
     public function medium_dtl()
     {

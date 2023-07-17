@@ -9,6 +9,7 @@ use LengthException;
 class MediumName extends StringValueObject
 {
     private const MIN_LENGTH = 1;
+
     private const MAX_LENGTH = 30;
 
     public function __construct(string $name)

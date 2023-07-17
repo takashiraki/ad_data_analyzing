@@ -20,6 +20,7 @@ use UnexpectedValueException;
 class MockEditLpInteractor implements EditLpUseCaseInterface
 {
     private $lp_domain_service;
+
     private $lp_repository;
 
     public function __construct(LpDomainService $domain_service, LpRepositoryInterface $repositorty)
@@ -35,7 +36,7 @@ class MockEditLpInteractor implements EditLpUseCaseInterface
         $exist_lp_id = $this->lp_domain_service->existById($lp_id);
 
         if ($this->isNotExist($exist_lp_id)) {
-            throw new UnexpectedValueException("This lp dose not exist");
+            throw new UnexpectedValueException('This lp dose not exist');
         }
 
         $lp = $this->lp_repository->findById($lp_id);
@@ -55,7 +56,7 @@ class MockEditLpInteractor implements EditLpUseCaseInterface
         $exist_lp_id = $this->lp_domain_service->existById($lp_id);
 
         if ($this->isNotExist($exist_lp_id)) {
-            throw new UnexpectedValueException("This lp dose not exist");
+            throw new UnexpectedValueException('This lp dose not exist');
         }
 
         $old_lp_instance = new OldLp($this->lp_repository->findById($lp_id));
@@ -73,7 +74,7 @@ class MockEditLpInteractor implements EditLpUseCaseInterface
             $exist_lp_name = $this->lp_domain_service->existByName($new_lp_instance->getLpName());
 
             if ($this->isExist($exist_lp_name)) {
-                throw new UnexpectedValueException("This lp name already exist");
+                throw new UnexpectedValueException('This lp name already exist');
             }
         }
 
@@ -83,7 +84,7 @@ class MockEditLpInteractor implements EditLpUseCaseInterface
             $exist_lp_directory = $this->lp_domain_service->existByDirectory($new_lp_instance->getLpDir());
 
             if ($this->isExist($exist_lp_directory)) {
-                throw new UnexpectedValueException("This lp directory already exist");
+                throw new UnexpectedValueException('This lp directory already exist');
             }
         }
 

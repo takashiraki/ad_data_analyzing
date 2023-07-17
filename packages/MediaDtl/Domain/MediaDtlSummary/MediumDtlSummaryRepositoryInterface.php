@@ -2,10 +2,6 @@
 
 namespace MediaDtl\Domain\MediaDtlSummary;
 
-use MediaDtl\Domain\Media\MediumName;
-use MediaDtl\Domain\MediaDtl\MediumDtlId;
-use MediaDtl\Domain\MediaDtl\MediumDtlName;
-
 interface MediumDtlSummaryRepositoryInterface
 {
     public function find(

@@ -12,7 +12,6 @@ use MediaDtl\UseCase\DeleteMediumDtlUseCase\DeleteMediumDtlUseCaseInterface;
 
 class DeleteMediumDtlController extends Controller
 {
-
     private const LENGTH = 36;
 
     public function index(string $medium_dtl_id, DeleteMediumDtlUseCaseInterface $interactor)

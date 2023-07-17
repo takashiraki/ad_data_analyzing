@@ -7,14 +7,13 @@ namespace Media\UseCase\DeleteMediumUseCase;
  * # Data structure.
  * --------------------------------------------------------------------------
  * This class compose the response component.
- * 
- * 
+ *
+ *
  * ## Responsibility
  * The responsibility of this class has is make data structure of response.
  */
 class DeleteMediumResponse
 {
-
     /**
      * # Medium id.
      *
@@ -22,14 +21,12 @@ class DeleteMediumResponse
      */
     private $medium_id;
 
-
     /**
      * # Medium name.
      *
      * @var string
      */
     private $medium_name;
-
 
     /**
      * # Constructer.
@@ -43,7 +40,6 @@ class DeleteMediumResponse
         $this->medium_name = $medium_name;
     }
 
-
     /**
      * # Getter of medium id.
      *
@@ -53,7 +49,6 @@ class DeleteMediumResponse
     {
         return $this->medium_id;
     }
-
 
     /**
      * # Getter of medium name.

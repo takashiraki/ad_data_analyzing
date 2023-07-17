@@ -11,26 +11,24 @@ use Media\UseCase\SearchMediumUseCase\SearchMediumUseCaseInterface;
  * --------------------------------------------------------------------------
  * # Mock input boundary
  * --------------------------------------------------------------------------
- * 
- * 
+ *
+ *
  * ## Responsibility
- * The responsibility this class has is to 
+ * The responsibility this class has is to
  * compose the application usecase for media search.
- * 
- * 
+ *
+ *
  * ## UseCase
  * The UseCase of this class is media search.
  */
 class MockSearchMediumInteractor implements SearchMediumUseCaseInterface
 {
-
     /**
      * # RepositoryInterface.
      *
      * @var MediumRepositoryInterface
      */
     private $repository;
-
 
     /**
      * # Constructer.
@@ -42,16 +40,15 @@ class MockSearchMediumInteractor implements SearchMediumUseCaseInterface
         $this->repository = $repository;
     }
 
-
     /**
      * # Mock index info of media.
      *
      * @param SearchMediumRequest $request
+     *
      * @return SearchMediumResponse
      */
     public function index(SearchMediumRequest $request): SearchMediumResponse
     {
-
         $medium_id = '';
         $medium_name = '';
 

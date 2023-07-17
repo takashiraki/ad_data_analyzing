@@ -2,9 +2,6 @@
 
 namespace MediaDtl\MockInteractor\Search;
 
-use MediaDtl\Domain\Media\MediumName;
-use MediaDtl\Domain\MediaDtl\MediumDtlId;
-use MediaDtl\Domain\MediaDtl\MediumDtlName;
 use MediaDtl\Domain\MediaDtl\MediumDtlRepositoryInterface;
 use MediaDtl\UseCase\SearchMediumDtlUseCase\SearchMediumDtlRequest\SearchMediumDtlRequest;
 use MediaDtl\UseCase\SearchMediumDtlUseCase\SearchMediumDtlResponse\SearchMediumDtlResponse;
@@ -18,6 +15,7 @@ class MockSearchMediumDtlInteractor implements SearchMediumDtlUseCaseInterface
     {
         $this->repository = $repository;
     }
+
     public function index(SearchMediumDtlRequest $request): SearchMediumDtlResponse
     {
         $query_medium_dtl_id = null;

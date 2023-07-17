@@ -5,8 +5,11 @@ namespace Lp\UseCase\CreateLp\Response;
 class CreateLpHandleResponse
 {
     private $lp_id;
+
     private $lp_name;
+
     private $lp_directory;
+
     private $lp_memo;
 
     public function __construct(

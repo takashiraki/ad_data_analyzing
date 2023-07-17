@@ -254,7 +254,7 @@ return [
         'lp_id' => 'LP ID',
         'lp_name' => 'LP名',
         'lp_directory' => 'LPディレクトリ',
-        'lp_memo' => 'メモ'
+        'lp_memo' => 'メモ',
     ],
 
 ];

@@ -6,15 +6,13 @@ namespace App\Http\Model;
  * --------------------------------------------------------------------------
  * # Data Structure of ViewModel
  * --------------------------------------------------------------------------
- * 
+ *
  * ## Responsibility
  * The responsibility this class has is for Media.
  * This class has to create view model.
- * 
  */
 class CreateMediumViewModel
 {
-
     /**
      * # Medium id.
      *
@@ -22,14 +20,12 @@ class CreateMediumViewModel
      */
     private $medium_id;
 
-
     /**
      * # Medium name.
      *
      * @var string
      */
     private $medium_name;
-
 
     /**
      * # Constructer.
@@ -43,7 +39,6 @@ class CreateMediumViewModel
         $this->medium_name = $name;
     }
 
-
     /**
      * # Getter of Medium id.
      *
@@ -53,7 +48,6 @@ class CreateMediumViewModel
     {
         return $this->medium_id;
     }
-
 
     /**
      * # Getter of Medium name.

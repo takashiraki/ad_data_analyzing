@@ -12,28 +12,25 @@ use Media\UseCase\EditMediumUseCase\EditMediumResponse;
 use Media\UseCase\EditMediumUseCase\EditMediumUseCaseInterface;
 use UnexpectedValueException;
 
-
 /**
  * --------------------------------------------------------------------------
  * # Mock input boundary.
  * --------------------------------------------------------------------------
- * 
+ *
  * ## Responsibility
  * The responsibility this class has is to compose the application usecase for Media.
- * 
+ *
  * ## UseCase
  * The usecase of this class is media editing.
  */
 class MockEditMediumInteractor implements EditMediumUseCaseInterface
 {
-
     /**
      * # DomainService.
      *
      * @var MediumDomainService
      */
     private $medium_domain_service;
-
 
     /**
      * # RepositoryInterface.
@@ -42,11 +39,10 @@ class MockEditMediumInteractor implements EditMediumUseCaseInterface
      */
     private $repository;
 
-
     /**
      * # Constructer.
      *
-     * @param MediumDomainService $medium_domain_service
+     * @param MediumDomainService       $medium_domain_service
      * @param MediumRepositoryInterface $repository
      */
     public function __construct(
@@ -57,19 +53,19 @@ class MockEditMediumInteractor implements EditMediumUseCaseInterface
         $this->repository = $repository;
     }
 
-
     /**
      * # Mock index info of Media.
      *The intention of this method is to achieve UseCase of show medium info before editing.
+     *
      * @param EditMediumRequest $request
+     *
      * @return EditMediumResponse
      */
     public function index(EditMediumRequest $request): EditMediumResponse
     {
-
         $exist_medium_data = $this->medium_domain_service->ExistById($request->getMediumId());
 
-        if (!$exist_medium_data) {
+        if (! $exist_medium_data) {
             throw new UnexpectedValueException('The Medium dose not exist');
         }
 
@@ -86,19 +82,19 @@ class MockEditMediumInteractor implements EditMediumUseCaseInterface
         );
     }
 
-
     /**
      * # Mock of edit UseCase.
      * The intention of this method is to achieve UseCase of update medium.
      *
      * @param EditMediumRequest $request
+     *
      * @return EditMediumResponse
      */
     public function handle(EditMediumRequest $request): EditMediumResponse
     {
         $exist_medium_data = $this->medium_domain_service->ExistById($request->getMediumId());
 
-        if (!$exist_medium_data) {
+        if (! $exist_medium_data) {
             throw new UnexpectedValueException('The Medium dose not exist');
         }
 

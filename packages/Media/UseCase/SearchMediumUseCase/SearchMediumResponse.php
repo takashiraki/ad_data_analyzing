@@ -6,21 +6,19 @@ namespace Media\UseCase\SearchMediumUseCase;
  * --------------------------------------------------------------------------
  * # Data structure
  * --------------------------------------------------------------------------
- * 
- * 
+ *
+ *
  * ## Responsibility
  * The responsiblity this class has is to make data structure of response.
  */
 class SearchMediumResponse
 {
-
     /**
      * # medium records
      *
-     * @var null|array
+     * @var array|null
      */
     private $records;
-
 
     /**
      * # Constructer.
@@ -31,7 +29,6 @@ class SearchMediumResponse
     {
         $this->records = $records;
     }
-
 
     /**
      * # Getter of medium records.

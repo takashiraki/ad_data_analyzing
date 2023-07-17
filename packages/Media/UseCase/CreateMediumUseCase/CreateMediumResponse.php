@@ -7,14 +7,13 @@ namespace Media\UseCase\CreateMediumUseCase;
  * # Data structure
  * --------------------------------------------------------------------------
  * This class composes the response component.
- * 
- * 
+ *
+ *
  * ## Responsibility
  * The responsibility that this class has is make data structure of response.
  */
 class CreateMediumResponse
 {
-
     /**
      * # Medium id
      *
@@ -22,14 +21,12 @@ class CreateMediumResponse
      */
     private $medium_id;
 
-
     /**
      * # Medium name
      *
      * @var string
      */
     private $medium_name;
-
 
     /**
      * # Constructer.
@@ -43,7 +40,6 @@ class CreateMediumResponse
         $this->medium_name = $name;
     }
 
-
     /**
      * # Getter of medium id.
      *
@@ -53,7 +49,6 @@ class CreateMediumResponse
     {
         return $this->medium_id;
     }
-
 
     /**
      * # Getter of medium name.

@@ -5,6 +5,7 @@ namespace MediaDtl\Domain\Media;
 class Medium
 {
     private $medium_id;
+
     private $medium_name;
 
     public function __construct(MediumId $id, MediumName $name)

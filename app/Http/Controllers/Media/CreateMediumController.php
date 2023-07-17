@@ -8,19 +8,17 @@ use Illuminate\Http\Request;
 use Media\UseCase\CreateMediumUseCase\CreateMediumRequest;
 use Media\UseCase\CreateMediumUseCase\CreateMediumUseCaseInterface;
 
-
 /**
  * --------------------------------------------------------------------------
  * # Controller
  * --------------------------------------------------------------------------
- * 
- * 
+ *
+ *
  * ## Responsibility
  * The responsibility this class has is to exchange data to give the data to UseCase.
  */
 class CreateMediumController extends Controller
 {
-
     /**
      * # index
      *
@@ -31,12 +29,12 @@ class CreateMediumController extends Controller
         return view('media.create');
     }
 
-
     /**
      * # Exchange data structure
      *
      * @param CreateMediumUseCaseInterface $interactor
-     * @param Request $request
+     * @param Request                      $request
+     *
      * @return void
      */
     public function handle(CreateMediumUseCaseInterface $interactor, Request $request)

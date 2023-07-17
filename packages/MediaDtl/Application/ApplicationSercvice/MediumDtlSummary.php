@@ -5,8 +5,11 @@ namespace MediaDtl\Application\AplicationService;
 class MediumDtlSummary
 {
     private $medium_dtl_id;
+
     private $medium_dtl_name;
+
     private $medium_id;
+
     private $medium_name;
 
     public function __construct(
@@ -43,7 +46,6 @@ class MediumDtlSummary
 
     public function changeMediumdata(string $medium_id, string $medium_name): MediumDtlSummary
     {
-
         $new_instance = new MediumDtlSummary(
             $this->getMediumDtlId(),
             $this->getMediumDtlName(),

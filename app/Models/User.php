@@ -12,7 +12,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-
     /**
      * The primary key for the model.
      *
@@ -20,14 +19,12 @@ class User extends Authenticatable
      */
     protected $primaryKey = 'user_id';
 
-
     /**
      * The "type"of the primary key ID.
      *
      * @var string
      */
     protected $keyType = 'string';
-
 
     /**
      * The attributes that are mass assignable.
@@ -51,7 +48,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
 
     /**
      * The attributes that should be cast.
