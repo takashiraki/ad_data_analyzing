@@ -2,11 +2,9 @@
 
 namespace Lp\UseCase\EditLp\Request;
 
-
 class EditLpIndexRequest
 {
     private $lp_id;
-
 
     public function __construct(string $id)
     {

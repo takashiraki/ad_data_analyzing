@@ -5,8 +5,11 @@ namespace App\Http\Model\MediaDtl\Search;
 class SearchMediumDtlViewModel
 {
     private $query_medium_dtl_id;
+
     private $query_medium_dtl_name;
+
     private $query_medium_name;
+
     private $medium_dtl_reocords;
 
     public function __construct(

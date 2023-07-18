@@ -10,8 +10,11 @@ use MediaDtl\Domain\MediaDtl\MediumDtlName;
 class MediaDtlSummary
 {
     private $medium_dtl_id;
+
     private $medium_dtl_name;
+
     private $medium_id;
+
     private $medium_name;
 
     public function __construct(

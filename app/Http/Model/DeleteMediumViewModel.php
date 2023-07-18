@@ -6,15 +6,14 @@ namespace App\Http\Model;
  * --------------------------------------------------------------------------
  * # Data structure of ViewModel
  * --------------------------------------------------------------------------
- * 
- * 
+ *
+ *
  * ## Responsibility
  * The responsibility this class has is for Media.
  * This class has to create view model.
  */
 class DeleteMediumViewModel
 {
-
     /**
      * # Medium id.
      *
@@ -22,14 +21,12 @@ class DeleteMediumViewModel
      */
     private $medium_id;
 
-
     /**
      * # Medium name.
      *
      * @var string
      */
     private $medium_name;
-
 
     /**
      * # Constructer.
@@ -43,7 +40,6 @@ class DeleteMediumViewModel
         $this->medium_name = $medium_name;
     }
 
-
     /**
      * # Getter of Medium id.
      *
@@ -53,7 +49,6 @@ class DeleteMediumViewModel
     {
         return $this->medium_id;
     }
-
 
     /**
      * # Getter of Medium name.

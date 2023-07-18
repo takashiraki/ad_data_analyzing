@@ -29,7 +29,7 @@ class CreateMediumDtlController extends Controller
     {
         $validate = $request->validate([
             'medium_dtl_name' => ['required', 'string', 'min:1', 'max:30'],
-            'medium_id' => ['required', 'string', 'min:1', 'max:37']
+            'medium_id' => ['required', 'string', 'min:1', 'max:37'],
         ]);
 
         $request_data_structure = new CreateMediumDtlRequest(

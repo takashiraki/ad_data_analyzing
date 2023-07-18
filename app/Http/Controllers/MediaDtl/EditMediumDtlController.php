@@ -5,7 +5,6 @@ namespace App\Http\Controllers\MediaDtl;
 use App\Http\Controllers\Controller;
 use App\Http\Model\MediaDtl\Edit\EditMediumDtlSaveViewModel;
 use App\Http\Model\MediaDtl\EditMediumDtlViewModel;
-use App\Models\MediaDtl;
 use Illuminate\Http\Request;
 use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlRequest\EditMediumDtlSaveRequest;
 use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlRequest\EditMediumDtlViewRequest;
@@ -40,10 +39,9 @@ class EditMediumDtlController extends Controller
         string $medium_dtl_id,
         EditMediumDtlUseCaseInterface $interactor
     ) {
-
         $validate = $request->validate([
             'medium_dtl_name' => ['required', 'min:1', 'max:50'],
-            'medium_id' => ['required', 'min:35', 'max:36']
+            'medium_id' => ['required', 'min:35', 'max:36'],
         ]);
 
         if (mb_strlen($medium_dtl_id) !== self::LENGTH) {

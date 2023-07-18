@@ -7,13 +7,12 @@ namespace Media\UseCase\EditMediumUseCase;
  * # Data Structure
  * --------------------------------------------------------------------------
  * This class compose the response component.
- * 
+ *
  * ## Responsibility
  * The responsibility this class has is to make data structure of response.
  */
 class EditMediumResponse
 {
-
     /**
      * # Medium id
      *
@@ -21,14 +20,12 @@ class EditMediumResponse
      */
     private $medium_id;
 
-
     /**
      * # Medium name
      *
      * @var string
      */
     private $medium_name;
-
 
     /**
      * # Constructer.
@@ -42,7 +39,6 @@ class EditMediumResponse
         $this->medium_name = $value;
     }
 
-
     /**
      * # Getter of Medium id.
      *
@@ -52,7 +48,6 @@ class EditMediumResponse
     {
         return $this->medium_id;
     }
-
 
     /**
      * # Getter of Medium name.

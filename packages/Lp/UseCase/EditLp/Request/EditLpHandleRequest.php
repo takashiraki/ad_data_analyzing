@@ -5,8 +5,11 @@ namespace Lp\UseCase\EditLp\Request;
 class EditLpHandleRequest
 {
     private $lp_Id;
+
     private $lp_name;
+
     private $lp_directory;
+
     private $lp_memo;
 
     public function __construct(

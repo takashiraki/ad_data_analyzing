@@ -10,16 +10,16 @@ use Lp\Domain\Lp\LpRepositoryInterface;
 
 class FileLpRepository implements LpRepositoryInterface
 {
-
     public function findById(LpId $id): ?Lp
     {
         return new Lp(
             $id,
-            new LpName("hogehoge"),
-            new LpDirectory("directory"),
+            new LpName('hogehoge'),
+            new LpDirectory('directory'),
             null
         );
     }
+
     public function findByName(LpName $name): ?Lp
     {
         return null;

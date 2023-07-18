@@ -2,7 +2,6 @@
 
 namespace Media\MockInteractor\Create;
 
-use UnexpectedValueException;
 use illuminate\Support\Str;
 use Media\Domain\DomainService\MediumDomainService;
 use Media\Domain\Media\Medium;
@@ -12,29 +11,28 @@ use Media\Domain\Media\MediumRepositoryInterface;
 use Media\UseCase\CreateMediumUseCase\CreateMediumRequest;
 use Media\UseCase\CreateMediumUseCase\CreateMediumResponse;
 use Media\UseCase\CreateMediumUseCase\CreateMediumUseCaseInterface;
+use UnexpectedValueException;
 
 /**
  * --------------------------------------------------------------------------
  * # Mock input boundary.
  * --------------------------------------------------------------------------
- * 
- * 
+ *
+ *
  * ## Responsibility
  * The responsibility that this class has is to compose the application usecase for Media.
- * 
+ *
  * ## UseCase
  * The UseCase of this class is media registration.
  */
 class MockCreateMediumInteractor implements CreateMediumUseCaseInterface
 {
-
     /**
      * # DomainServie.
      *
      * @var MediumDomainService.
      */
     private $medium_domain_service;
-
 
     /**
      * # RepositoryInterfae.
@@ -43,11 +41,10 @@ class MockCreateMediumInteractor implements CreateMediumUseCaseInterface
      */
     private $repository;
 
-
     /**
      * # Constructer.
      *
-     * @param MediumDomainService $medium_domain_service
+     * @param MediumDomainService       $medium_domain_service
      * @param MediumRepositoryInterface $repository
      */
     public function __construct(
@@ -63,6 +60,7 @@ class MockCreateMediumInteractor implements CreateMediumUseCaseInterface
      * The intention of this method is to achieve UseCase of create medium.
      *
      * @param CreateMediumRequest $request
+     *
      * @return CreateMediumResponse
      */
     public function handle(CreateMediumRequest $request): CreateMediumResponse

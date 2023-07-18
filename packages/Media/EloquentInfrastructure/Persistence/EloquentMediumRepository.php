@@ -2,22 +2,21 @@
 
 namespace Media\EloquentInfrastructure\Persistence;
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Media\Domain\Media\Medium;
 use Media\Domain\Media\MediumId;
 use Media\Domain\Media\MediumName;
 use Media\Domain\Media\MediumRepositoryInterface;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Media\UseCase\SearchMediumUseCase\SearchMediumRequest;
 
 /**
  * --------------------------------------------------------------------------
  * # Repository
  * --------------------------------------------------------------------------
- * 
- * 
+ *
+ *
  * ## Responsibility
- * 
+ *
  * The responsibility this class has is for Media.
  * This class use Database so you can test useing database.
  */
@@ -32,7 +31,7 @@ class EloquentMediumRepository implements MediumRepositoryInterface
                 'medium_id' => $medium->getMediumId()->getValue(),
                 'medium_name' => $medium->getMediumName()->getValue(),
                 'created_at' => Carbon::parse(Carbon::now())->timezone('Asia/Tokyo'),
-                'updated_at' => Carbon::parse(Carbon::now())->timezone('Asia/Tokyo')
+                'updated_at' => Carbon::parse(Carbon::now())->timezone('Asia/Tokyo'),
             ]
         );
     }
@@ -47,7 +46,7 @@ class EloquentMediumRepository implements MediumRepositoryInterface
         )->update(
             [
                 'medium_name' => $medium->getMediumName()->getValue(),
-                'updated_at' => Carbon::parse(Carbon::now())->timezone('Asia/Tokyo')
+                'updated_at' => Carbon::parse(Carbon::now())->timezone('Asia/Tokyo'),
             ]
         );
     }
@@ -65,7 +64,7 @@ class EloquentMediumRepository implements MediumRepositoryInterface
 
         $record = $query->where('medium_id', $medium_id->getValue())->first();
 
-        if (!empty($record)) {
+        if (! empty($record)) {
             $medium_instance = new Medium(
                 new MediumId($record->medium_id),
                 new MediumName($record->medium_name)
@@ -83,7 +82,7 @@ class EloquentMediumRepository implements MediumRepositoryInterface
 
         $record = $query->where('medium_name', $medium_name->getValue())->first();
 
-        if (!empty($record)) {
+        if (! empty($record)) {
             $medium_instance = new Medium(
                 new MediumId($record->medium_id),
                 new MediumName($record->medium_name)

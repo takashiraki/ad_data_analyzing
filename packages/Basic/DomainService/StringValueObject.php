@@ -9,14 +9,12 @@ namespace Basic\DomainService;
  */
 abstract class StringValueObject
 {
-
     /**
      * # String value object.
      *
      * @var string
      */
     private $value;
-
 
     /**
      * # Constructer.
@@ -28,7 +26,6 @@ abstract class StringValueObject
         $this->value = $value;
     }
 
-
     /**
      * # Getter of value object.
      *
@@ -38,7 +35,6 @@ abstract class StringValueObject
     {
         return $this->value;
     }
-
 
     public function equals(StringValueObject $value): bool
     {

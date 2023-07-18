@@ -9,7 +9,9 @@ use MediaDtl\Domain\MediaDtl\MediumDtlName;
 class EditMediumDtlSaveResponse
 {
     private $medium_dtl_id;
+
     private $medium_dtl_name;
+
     private $medium_name;
 
     public function __construct(

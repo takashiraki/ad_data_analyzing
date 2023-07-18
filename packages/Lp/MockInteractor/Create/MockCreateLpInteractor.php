@@ -2,6 +2,7 @@
 
 namespace Lp\MockInteractor\Create;
 
+use illuminate\Support\Str;
 use Lp\Domain\DomainService\LpDomainService;
 use Lp\Domain\Lp\Lp;
 use Lp\Domain\Lp\LpDirectory;
@@ -12,13 +13,12 @@ use Lp\Domain\Lp\LpRepositoryInterface;
 use Lp\UseCase\CreateLp\CreateLpUseCaseInterface;
 use Lp\UseCase\CreateLp\Request\CreateLpHandleRequest;
 use Lp\UseCase\CreateLp\Response\CreateLpHandleResponse;
-use illuminate\Support\Str;
 use UnexpectedValueException;
 
 class MockCreateLpInteractor implements CreateLpUseCaseInterface
 {
-
     private $lp_domain_service;
+
     private $repository;
 
     public function __construct(
@@ -38,13 +38,13 @@ class MockCreateLpInteractor implements CreateLpUseCaseInterface
         $exist_lp_name = $this->lp_domain_service->existByName(new LpName($lp_name));
 
         if ($this->isExist($exist_lp_name)) {
-            throw new UnexpectedValueException("This name of lp is alrady exist");
+            throw new UnexpectedValueException('This name of lp is alrady exist');
         }
 
         $exist_lp_directory = $this->lp_domain_service->existByDirectory(new LpDirectory($lp_directory));
 
         if ($this->isExist($exist_lp_directory)) {
-            throw new UnexpectedValueException("This directory of lp is already exist");
+            throw new UnexpectedValueException('This directory of lp is already exist');
         }
 
         $lp_instance = new Lp(

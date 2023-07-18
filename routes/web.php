@@ -2,11 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Lp\CreateLpController;
 use App\Http\Controllers\Lp\EditLpController;
+
 use App\Http\Controllers\Media\CreateMediumController;
 use App\Http\Controllers\Media\DeleteMediumController;
 use App\Http\Controllers\Media\EditMediumController;
@@ -15,6 +13,8 @@ use App\Http\Controllers\MediaDtl\CreateMediumDtlController;
 use App\Http\Controllers\MediaDtl\DeleteMediumDtlController;
 use App\Http\Controllers\mediaDtl\EditMediumDtlController;
 use App\Http\Controllers\MediaDtl\SearchMediumDtlController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +46,6 @@ Route::middleware('auth')->group(function () {
  * Media
  * --------------------------------------------------------------------------
  */
-
 Route::get('/media', [SearchMediumController::class, 'index']);
 
 Route::get('/medium/create', [CreateMediumController::class, 'index']);
@@ -60,13 +59,11 @@ Route::post('/medium/{medium_id}/update', [EditMediumController::class, 'handle'
 Route::get('/medium/{medium_id}/delete', [DeleteMediumController::class, 'index']);
 Route::post('/medium/{medium_id}/destroy', [DeleteMediumController::class, 'destroy']);
 
-
 /**
  * --------------------------------------------------------------------------
  * Media Details
  * --------------------------------------------------------------------------
  */
-
 Route::get('/medium-dtls', [SearchMediumDtlController::class, 'index']);
 
 Route::get('/medium-dtls/create', [CreateMediumDtlController::class, 'index']);
@@ -85,7 +82,6 @@ Route::post('/medium-dtls/{medium_dtl_id}/delete', [DeleteMediumDtlController::c
  * LP
  * --------------------------------------------------------------------------
  */
-
 Route::get('/lps', function () {
     echo 'success';
 });

@@ -2,8 +2,8 @@
 
 namespace MediaDtl\MockInteractor\Create;
 
-use MediaDtl\DOmain\DomainService\MediumDtlDomainService;
 use illuminate\Support\Str;
+use MediaDtl\DOmain\DomainService\MediumDtlDomainService;
 use MediaDtl\Domain\Media\MediumId;
 use MediaDtl\Domain\MediaDtl\MediumDtl;
 use MediaDtl\Domain\MediaDtl\MediumDtlId;
@@ -17,6 +17,7 @@ use UnexpectedValueException;
 class MockCreateMediumDtlInteractor implements CreateMediumDtlUseCaseInterface
 {
     private $medium_dtl_domain_service;
+
     private $repository;
 
     public function __construct(
@@ -43,7 +44,7 @@ class MockCreateMediumDtlInteractor implements CreateMediumDtlUseCaseInterface
     {
         $exist_medium = $this->medium_dtl_domain_service->existMediumById($request->getMediumId());
 
-        if (!$exist_medium) {
+        if (! $exist_medium) {
             throw new UnexpectedValueException('This medium dose not exist');
         }
 

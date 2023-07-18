@@ -2,12 +2,12 @@
 
 namespace App\Http\Model\MediaDtl\Edit;
 
-use Dotenv\Util\Str;
-
 class EditMediumDtlSaveViewModel
 {
     private $medium_dtl_id;
+
     private $medium_dtl_name;
+
     private $medium_id;
 
     public function __construct(

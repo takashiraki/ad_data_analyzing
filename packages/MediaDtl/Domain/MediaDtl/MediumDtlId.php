@@ -9,6 +9,7 @@ use LengthException;
 class MediumDtlId extends StringValueObject
 {
     private const LENGTH = 36;
+
     public function __construct(string $id)
     {
         if (empty($id) || trim($id) === '') {

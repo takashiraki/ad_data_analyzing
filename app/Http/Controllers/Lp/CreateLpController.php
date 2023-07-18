@@ -20,7 +20,7 @@ class CreateLpController extends Controller
         $validate = $request->validate([
             'lp_name' => ['required', 'string', 'min:1', 'max:50'],
             'lp_directory' => ['required', 'string', 'min:1', 'max:10'],
-            'lp_memo' => ['max:50']
+            'lp_memo' => ['max:50'],
         ]);
 
         $request_data_structure = new CreateLpHandleRequest(

@@ -16,23 +16,21 @@ use UnexpectedValueException;
  * --------------------------------------------------------------------------
  * # Mock input boundary.
  * --------------------------------------------------------------------------
- * 
+ *
  * ## Responsibility
  * The responsibility this class has is to compose the application usecase for Media.
- * 
+ *
  * ## UseCase
  * The UseCase of this class is media delete.
  */
 class MockDeleteMediumInteractor implements DeleteMediumUseCaseInterface
 {
-
     /**
      * DomainService.
      *
      * @var MediumDomainService
      */
     private $medium_domain_servie;
-
 
     /**
      * RepositoryInterface.
@@ -41,11 +39,10 @@ class MockDeleteMediumInteractor implements DeleteMediumUseCaseInterface
      */
     private $repository;
 
-
     /**
      * Constructer.
      *
-     * @param MediumDomainService $medium_domain_servie
+     * @param MediumDomainService       $medium_domain_servie
      * @param MediumRepositoryInterface $repository
      */
     public function __construct(
@@ -56,12 +53,12 @@ class MockDeleteMediumInteractor implements DeleteMediumUseCaseInterface
         $this->repository = $repository;
     }
 
-
     /**
      * # Mock index info of Media.
      * The intention of this method is to achieve UseCase of confilm delete.
      *
      * @param DeleteMediumRequest $request
+     *
      * @return DeleteMediumResponse
      */
     public function index(DeleteMediumRequest $request): DeleteMediumResponse
@@ -85,19 +82,19 @@ class MockDeleteMediumInteractor implements DeleteMediumUseCaseInterface
         );
     }
 
-
     /**
      * # Mock of delete UseCase.
      * The intention is to achieve UseCase of delete medium.
      *
      * @param DeleteMediumRequest $request
+     *
      * @return DeleteMediumResponse
      */
     public function handle(DeleteMediumRequest $request): DeleteMediumResponse
     {
         $exist_medium_data = $this->medium_domain_servie->ExistById($request->getMediumId());
 
-        if (!$exist_medium_data) {
+        if (! $exist_medium_data) {
             throw new UnexpectedValueException('The medium dose not exist');
         }
         $medium_data = $this->repository->find(new MediumId($request->getMediumId()));

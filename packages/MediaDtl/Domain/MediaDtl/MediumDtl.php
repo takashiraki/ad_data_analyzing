@@ -7,7 +7,9 @@ use MediaDtl\Domain\Media\MediumId;
 class MediumDtl
 {
     private $medium_dtl_id;
+
     private $medium_dtl_name;
+
     private $medium_id;
 
     public function __construct(MediumDtlId $medium_dtl_id, MediumDtlName $name, MediumId $medium_id)

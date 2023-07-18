@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Media;
 
 use App\Http\Controllers\Controller;
 use App\Http\Model\DeleteMediumViewModel;
-use App\Models\Medium;
 use Illuminate\Http\Request;
 use Media\UseCase\DeleteMediumUseCase\DeleteMediumRequest;
 use Media\UseCase\DeleteMediumUseCase\DeleteMediumUseCaseInterface;
@@ -13,20 +12,20 @@ use Media\UseCase\DeleteMediumUseCase\DeleteMediumUseCaseInterface;
  * --------------------------------------------------------------------------
  * # Controller
  * --------------------------------------------------------------------------
- * 
- * 
+ *
+ *
  * ## Responsibility
  * The responsibility this class has is to exchange data to give the data to UseCase.
  */
 class DeleteMediumController extends Controller
 {
-
     /**
      * # Index
      * The intention of this method is to exchange data.
      *
-     * @param string $medium_id
+     * @param string                       $medium_id
      * @param DeleteMediumUseCaseInterface $interactor
+     *
      * @return void
      */
     public function index(string $medium_id, DeleteMediumUseCaseInterface $interactor)
@@ -43,13 +42,13 @@ class DeleteMediumController extends Controller
         return view('media.delete-confilm', compact('view_model'));
     }
 
-
     /**
      * # Handle
      * The intention of this method is to exchange data.
      *
-     * @param Request $request
+     * @param Request                      $request
      * @param DeleteMediumUseCaseInterface $interactor
+     *
      * @return void
      */
     public function destroy(Request $request, DeleteMediumUseCaseInterface $interactor)

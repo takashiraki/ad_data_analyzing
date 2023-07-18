@@ -13,18 +13,15 @@ use LengthException;
  */
 class MediumName extends StringValueObject
 {
-
     /**
      * # Maximum number of characters for the Medium name.
      */
     private const MAX_LENGTH = 30;
 
-
     /**
      * # Minimum number of characters for the Medium name.
      */
     private const MIN_LENGTH = 1;
-
 
     /**
      * # Constructer.

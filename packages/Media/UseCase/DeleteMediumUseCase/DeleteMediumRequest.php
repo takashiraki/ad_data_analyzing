@@ -7,21 +7,19 @@ namespace Media\UseCase\DeleteMediumUseCase;
  * # Data structure
  * --------------------------------------------------------------------------
  * This class compose the request componet.
- * 
- * 
+ *
+ *
  * ## Responsibility
  * The responsibility this class has is make data structure of request.
  */
 class DeleteMediumRequest
 {
-
     /**
      * # Medium id.
      *
      * @var string
      */
     private $medium_id;
-
 
     /**
      * # Constructer.
@@ -32,7 +30,6 @@ class DeleteMediumRequest
     {
         $this->medium_id = $id;
     }
-
 
     /**
      * # Getter of medium id.

@@ -4,11 +4,9 @@ namespace MediaDtl\Domain\MediaDtl;
 
 use MediaDtl\Domain\Media\Medium;
 use MediaDtl\Domain\Media\MediumId;
-use MediaDtl\Domain\Media\MediumName;
 
 interface MediumDtlRepositoryInterface
 {
-
     public function save(MediumDtl $medium_dtl): MediumDtl;
 
     public function update(MediumDtl $medium_dtl): MediumDtl;

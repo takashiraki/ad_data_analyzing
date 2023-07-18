@@ -4,9 +4,8 @@ namespace App\Http\Controllers\MediaDtl;
 
 use App\Http\Controllers\Controller;
 use App\Models\mediaDtl;
-use Illuminate\Support\Facades\DB;
-use illuminate\Support\Str;
 use Illuminate\Http\Request;
+use illuminate\Support\Str;
 
 class AddMediumDtlController extends Controller
 {

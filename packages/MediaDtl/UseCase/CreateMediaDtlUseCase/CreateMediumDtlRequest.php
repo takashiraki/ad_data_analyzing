@@ -5,6 +5,7 @@ namespace MediaDtl\UseCase\CreateMediaDtlUseCase;
 class CreateMediumDtlRequest
 {
     private $medium_dtl_name;
+
     private $medium_id;
 
     public function __construct(string $medium_dtl_name, string $medium_id)

@@ -5,7 +5,9 @@ namespace MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlRequest;
 class EditMediumDtlSaveRequest
 {
     private $medium_dtl_id;
+
     private $medium_dtl_name;
+
     private $medium_id;
 
     public function __construct(

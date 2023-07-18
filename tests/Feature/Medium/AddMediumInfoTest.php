@@ -3,8 +3,6 @@
 namespace Tests\Feature\Medium;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use illuminate\Support\Str;
 use Tests\TestCase;
 
 class AddMediumInfoTest extends TestCase
