@@ -29,6 +29,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/hoge', function() {
+    return File::get(public_path() . '/html/hoge.html');
+});
+
 /**
  * --------------------------------------------------------------------------
  * Media
