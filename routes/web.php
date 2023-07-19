@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Lp\CreateLpController;
+use App\Http\Controllers\Lp\DeleteLpController;
 use App\Http\Controllers\Lp\EditLpController;
 
 use App\Http\Controllers\Media\CreateMediumController;
@@ -89,7 +90,10 @@ Route::get('/lps', function () {
 Route::get('/lps/create', [CreateLpController::class, 'index']);
 Route::post('/lps/store', [CreateLpController::class, 'handle']);
 
-Route::get('lps/{lp_id}/edit', [EditLpController::class, 'index']);
-Route::post('lps/{lp_id}/update', [EditLpController::class, 'handle']);
+Route::get('/lps/{lp_id}/edit', [EditLpController::class, 'index']);
+Route::post('/lps/{lp_id}/update', [EditLpController::class, 'handle']);
+
+Route::get('/lps/{lp_id}/delete', [DeleteLpController::class, 'index']);
+Route::post('/lps/{lp_id}/delete', [DeleteLpController::class, 'handle']);
 
 require __DIR__ . '/auth.php';

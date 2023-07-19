@@ -6,8 +6,10 @@ use Illuminate\Support\ServiceProvider;
 use Lp\DebugInfrastructure\FileLpRepository;
 use Lp\Domain\Lp\LpRepositoryInterface;
 use Lp\MockInteractor\Create\MockCreateLpInteractor;
+use Lp\MockInteractor\Delete\MockDeleteLpInteractor;
 use Lp\MockInteractor\Edit\MockEditLpInteractor;
 use Lp\UseCase\CreateLp\CreateLpUseCaseInterface;
+use Lp\UseCase\DeleteLp\DeleteLpUseCaseInterface;
 use Lp\UseCase\EditLp\EditLpUseCaseInterface;
 use Media\DebugInfrastructure\FileMediumRepository;
 use Media\Domain\DomainService\MediumDomainService;
@@ -133,6 +135,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             EditLpUseCaseInterface::class,
             MockEditLpInteractor::class
+        );
+
+        $this->app->bind(
+            DeleteLpUseCaseInterface::class,
+            MockDeleteLpInteractor::class
         );
     }
 }

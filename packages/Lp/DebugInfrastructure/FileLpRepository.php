@@ -39,4 +39,9 @@ class FileLpRepository implements LpRepositoryInterface
     {
         return $lp;
     }
+
+    public function delete(Lp $lp): Lp
+    {
+        return $lp;
+    }
 }
