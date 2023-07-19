@@ -33,6 +33,7 @@
             "Media\\": "packages/Media/",
             "MediaDtl\\": "packages/MediaDtl/",
             "Lp\\": "packages/Lp/",
+            "Form\\": "packages/Form/",
             "Basic\\": "packages/Basic/"
         }
     },
