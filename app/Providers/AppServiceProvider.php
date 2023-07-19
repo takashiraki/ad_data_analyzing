@@ -8,9 +8,11 @@ use Lp\Domain\Lp\LpRepositoryInterface;
 use Lp\MockInteractor\Create\MockCreateLpInteractor;
 use Lp\MockInteractor\Delete\MockDeleteLpInteractor;
 use Lp\MockInteractor\Edit\MockEditLpInteractor;
+use Lp\MockInteractor\Search\MockSearchLpInteractor;
 use Lp\UseCase\CreateLp\CreateLpUseCaseInterface;
 use Lp\UseCase\DeleteLp\DeleteLpUseCaseInterface;
 use Lp\UseCase\EditLp\EditLpUseCaseInterface;
+use Lp\UseCase\SearchLp\SearchLpUseCaseInterface;
 use Media\DebugInfrastructure\FileMediumRepository;
 use Media\Domain\DomainService\MediumDomainService;
 use Media\Domain\Media\MediumRepositoryInterface;
@@ -140,6 +142,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             DeleteLpUseCaseInterface::class,
             MockDeleteLpInteractor::class
+        );
+
+        $this->app->bind(
+            SearchLpUseCaseInterface::class,
+            MockSearchLpInteractor::class
         );
     }
 }
