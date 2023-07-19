@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Lp\CreateLpController;
 use App\Http\Controllers\Lp\DeleteLpController;
 use App\Http\Controllers\Lp\EditLpController;
-
+use App\Http\Controllers\Lp\SearchLpController;
 use App\Http\Controllers\Media\CreateMediumController;
 use App\Http\Controllers\Media\DeleteMediumController;
 use App\Http\Controllers\Media\EditMediumController;
@@ -83,9 +83,7 @@ Route::post('/medium-dtls/{medium_dtl_id}/delete', [DeleteMediumDtlController::c
  * LP
  * --------------------------------------------------------------------------
  */
-Route::get('/lps', function () {
-    echo 'success';
-});
+Route::get('/lps', [SearchLpController::class, 'index']);
 
 Route::get('/lps/create', [CreateLpController::class, 'index']);
 Route::post('/lps/store', [CreateLpController::class, 'handle']);

@@ -15,4 +15,6 @@ interface LpRepositoryInterface
     public function update(Lp $lp): Lp;
 
     public function delete(Lp $lp): Lp;
+
+    public function search(?LpName $name, ?LpDirectory $dir): ?array;
 }
