@@ -13,4 +13,6 @@ interface LpRepositoryInterface
     public function save(Lp $lp): Lp;
 
     public function update(Lp $lp): Lp;
+
+    public function delete(Lp $lp): Lp;
 }
