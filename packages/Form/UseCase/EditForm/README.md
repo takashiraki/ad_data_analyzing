@@ -53,8 +53,8 @@ outpur: "Form情報ユースケースに関する仕様並びに設計"
     private $form_id;
     private $form_name;
     private $form_directory;
-    private $form_memo
-     ``
+    private $form_memo;
+    ```
 
 9. コントローラーはビューモデルの作成
 
@@ -63,8 +63,8 @@ outpur: "Form情報ユースケースに関する仕様並びに設計"
     private $form_id;
     private $form_name;
     private $form_directory;
-    private $form_memo
-     ``
+    private $form_memo;
+    ```
 
 ## 設計図 (Handle)
 
