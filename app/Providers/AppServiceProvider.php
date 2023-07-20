@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use Form\DebugInfrastructure\FileFormRepository;
+use Form\Domain\Form\FormRepositoryInterface;
+use Form\MockInteractor\Create\MockCreateFormInteractor;
+use Form\UseCase\CreateForm\CreateFormUseCaseInterface;
 use Illuminate\Support\ServiceProvider;
 use Lp\DebugInfrastructure\FileLpRepository;
 use Lp\Domain\Lp\LpRepositoryInterface;
@@ -147,6 +151,16 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             SearchLpUseCaseInterface::class,
             MockSearchLpInteractor::class
+        );
+
+        $this->app->bind(
+            FormRepositoryInterface::class,
+            FileFormRepository::class
+        );
+
+        $this->app->bind(
+            CreateFormUseCaseInterface::class,
+            MockCreateFormInteractor::class
         );
     }
 }
