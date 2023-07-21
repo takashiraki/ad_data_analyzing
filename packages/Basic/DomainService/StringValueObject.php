@@ -39,8 +39,8 @@ abstract class StringValueObject
     public function equals(StringValueObject $value): bool
     {
         $this_value = $this->getValue();
-        $comparison_vale = $value->getValue();
+        $comparison_value = $value->getValue();
 
-        return $this_value === $comparison_vale;
+        return $this_value === $comparison_value;
     }
 }

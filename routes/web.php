@@ -105,4 +105,5 @@ Route::get('/forms/create', [CreateFormController::class, 'index']);
 Route::post('/forms/store', [CreateFormController::class, 'handle']);
 
 Route::get('/forms/{form_id}/edit', [EditFormController::class, 'index']);
+Route::post('/forms/{form_id}/update', [EditFormController::class, 'handle']);
 require __DIR__ . '/auth.php';

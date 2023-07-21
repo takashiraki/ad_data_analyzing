@@ -34,4 +34,9 @@ class FileFormRepository implements FormRepositoryInterface
     {
         return $form;
     }
+
+    public function update(Form $form): Form
+    {
+        return $form;
+    }
 }
