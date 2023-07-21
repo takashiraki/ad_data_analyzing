@@ -34,4 +34,32 @@ class DeleteFormTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_handle_bad_id(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/forms/7bbc275b-b13b-433b-890e-e986b7c2897700/delete',
+            [
+                'form_id' => '7bbc275b-b13b-433b-890e-e986b7c28977',
+            ],
+        );
+
+        $response->assertStatus(500);
+    }
+
+    public function test_handle_bad_id_validation(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/forms/7bbc275b-b13b-433b-890e-e986b7c28977/delete',
+            [
+                'form_id' => '7bbc275b-b13b-433b-890e-e986b7c2897700',
+            ],
+        );
+
+        $response->assertStatus(302);
+    }
 }
