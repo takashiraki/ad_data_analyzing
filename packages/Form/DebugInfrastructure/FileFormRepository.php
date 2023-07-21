@@ -39,4 +39,9 @@ class FileFormRepository implements FormRepositoryInterface
     {
         return $form;
     }
+
+    public function delete(Form $form): Form
+    {
+        return $form;
+    }
 }

@@ -5,8 +5,10 @@ namespace App\Providers;
 use Form\DebugInfrastructure\FileFormRepository;
 use Form\Domain\Form\FormRepositoryInterface;
 use Form\MockInteractor\Create\MockCreateFormInteractor;
+use Form\MockInteractor\Delete\MockDeleteFormInteractor;
 use Form\MockInteractor\Edit\MockEditFormInteractor;
 use Form\UseCase\CreateForm\CreateFormUseCaseInterface;
+use Form\UseCase\DeleteForm\DeleteFormUseCaseInterface;
 use Form\UseCase\EditForm\EditFormUseCaseInterface;
 use Illuminate\Support\ServiceProvider;
 use Lp\DebugInfrastructure\FileLpRepository;
@@ -168,6 +170,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             EditFormUseCaseInterface::class,
             MockEditFormInteractor::class
+        );
+
+        $this->app->bind(
+            DeleteFormUseCaseInterface::class,
+            MockDeleteFormInteractor::class
         );
     }
 }
