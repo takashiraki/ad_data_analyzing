@@ -1,0 +1,133 @@
+---
+title: "Form情報編集ユースケース"
+outpur: "Form情報ユースケースに関する仕様並びに設計"
+---
+
+# Form情報編集ユースケース
+
+* 表示パターン(index)
+* 編集実行パターン(handle)
+
+に分けて設計を行う
+
+## 設計図 (Index)
+![設計図(index)](https://github.com/takashiraki/github_image/blob/master/images/adas/form/editIndex.png)
+
+## フロー (Index)
+
+1. コントローラーはURLから`form_id`を受け取る
+2. コントローラーはIDのバリデーション
+
+    バリデーション項目
+    | バリデーション項目 | バリデーション内容 |
+    | -- | -- |
+    |  `form_id` | 36文字か否か |
+
+3. バリデーション後、コントローラーリクエストの作成
+
+    リクエストのプロパティは
+    ```php
+    private $form_id;
+    ```
+
+4. インタラクターはリクエストから `form_id`の取得
+5. インタラクターは、インスタンスの作成
+6. インタラクターはドメインサービスに対して`form_id`のデータが存在するか否かを確かめる
+
+    下記関数をドメインサービスに追加
+    | 関数名 | 処理内容 | 引数 | 戻り値
+    | -- | -- | -- | -- |
+    |  `existById` | IDに該当するデータがあるか否か | `FormId` | `bool` |
+
+7. インタラクターはリポジトリに対してデータの取得を命令
+
+    下記関数をリポジトリインターフェースに追加する必要あり
+    | 関数名 | 処理内容 | 引数 | 戻り値
+    | -- | -- | -- | -- |
+    |  `findById` | IDに該当するデータの取得 | `FormId` | `?Form` |
+
+8. インタラクターは取得したデータを使ってレスポンスの作成
+
+    レスポンスのプロパティは
+    ```php
+    private $form_id;
+    private $form_name;
+    private $form_directory;
+    private $form_memo;
+    ```
+
+9. コントローラーはビューモデルの作成
+
+    ビューモデルのプロパティは
+    ```php
+    private $form_id;
+    private $form_name;
+    private $form_directory;
+    private $form_memo;
+    ```
+
+## 設計図 (Handle)
+![設計図](https://github.com/takashiraki/github_image/blob/master/images/adas/form/editHandle.png)
+
+## フロー (Handle)
+
+1. コントローラーはurlからidを受けとる
+2. コントローラーはフォームで渡ってきた値をバリデーションにかける
+
+    バリデーション項目
+    | バリデーション項目 | バリデーション内容 |
+    | -- | -- |
+    | `form_id` | 36文字か否か , 入力必須 , URLのIDと一致してるか |
+    | `form_name` | 1文字以上50文字以内か , 入力必須 |
+    | `form_directory` | 1文字以100文字以内か , 入力必須 |
+    | `form_memo` | 50文字以内か |
+
+3. バリデーションが問題なければ、コントローラーはリクエストを作成する
+
+    リクエストのプロパティは
+    ```php
+    private $form_id;
+    private $form_name;
+    private $form_directory;
+    private $form_memo;
+    ``` 
+
+4. インタラクターはリクエストからフォームの入力データを受け取る。
+5. インタラクターは`form_id`からデータの取得を行う。
+6. インタラクターは、名前、ディレクトリ、それぞれ変更があるかを比較する。更新されていた場合は名前重複の確認をする
+
+    ドメインサービスに下記関数を追加する必要あり
+    | 関数名 | 処理内容 | 引数 | 戻り値
+    | -- | -- | -- | -- |
+    |  `equalByname` | 同じ名前か否か | `Form` , `OldForm` | `bool` |
+    |  `equalByDirectory` | 同じディレクトリか否か | `Form` , `OldForm` | `bool` |
+
+7. インタラクターはインスタンス作成
+8. 重複が問題なければ、インタラクターはリポジトリに対してデータ更新を命令
+
+    下記関数をリポジトリインターフェースに追加する必要あり
+    | 関数名 | 処理内容 | 引数 | 戻り値
+    | -- | -- | -- | -- |
+    |  `update` | フォーム情報の更新 | `Form` | `Form` |
+
+9. インタラクターは、インスタンスを使ってレスポンスの作成
+
+    レスポンスのプロパティは
+    ```php
+    private $form_id;
+    private $form_name;
+    private $form_directory;
+    private $form_memo;
+    ``` 
+
+10. コントローラーはレスポンスを使ってビューモデルの作成
+
+    ビューモデルのプロパティは
+    ```php
+    private $form_id;
+    private $form_name;
+    private $form_directory;
+    private $form_memo;
+    ``` 
+
+11. ビューに返す。

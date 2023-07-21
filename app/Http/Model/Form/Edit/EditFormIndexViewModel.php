@@ -1,8 +1,8 @@
 <?php
 
-namespace Form\Domain\Form;
+namespace App\Http\Model\Form\Edit;
 
-class Form
+class EditFormIndexViewModel
 {
     private $form_id;
     private $form_name;
@@ -10,34 +10,34 @@ class Form
     private $form_memo;
 
     public function __construct(
-        FormId $id,
-        FormName $name,
-        FormDirectory $directory,
-        ?FormMemo $memo,
+        string $id,
+        string $name,
+        string $dir,
+        ?string $memo
     ) {
         $this->form_id = $id;
         $this->form_name = $name;
-        $this->form_directory = $directory;
+        $this->form_directory = $dir;
         $this->form_memo = $memo;
     }
 
-    public function getFormId(): FormId
+    public function getFormId(): string
     {
         return $this->form_id;
     }
 
-    public function getFormName(): FormName
+    public function getFormName(): string
     {
         return $this->form_name;
     }
 
-    public function getFormDirectory(): FormDirectory
+    public function getFormDirectory(): string
     {
         return $this->form_directory;
     }
 
-    public function getFormMemo(): ?FormMemo
+    public function getFormMemo(): ?string
     {
         return $this->form_memo;
     }
-};
+}
