@@ -44,7 +44,7 @@ class DeleteFormController extends Controller
         }
 
         $validate = $request->validate([
-            'form_id' => ["required", 'string'],
+            'form_id' => ["required", 'string', 'max:36'],
         ]);
 
         if ($validate['form_id'] !== $form_id) {
