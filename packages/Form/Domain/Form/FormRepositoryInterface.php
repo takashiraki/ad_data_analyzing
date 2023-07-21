@@ -15,4 +15,6 @@ interface FormRepositoryInterface
     public function update(Form $form): Form;
 
     public function delete(Form $form): Form;
+
+    public function search(?FormName $name, ?FormDirectory $dir): ?array;
 }
