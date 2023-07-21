@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Form\CreateFormController;
+use App\Http\Controllers\Form\DeleteFormController;
 use App\Http\Controllers\Form\EditFormController;
 use App\Http\Controllers\Lp\CreateLpController;
 use App\Http\Controllers\Lp\DeleteLpController;
@@ -106,4 +107,7 @@ Route::post('/forms/store', [CreateFormController::class, 'handle']);
 
 Route::get('/forms/{form_id}/edit', [EditFormController::class, 'index']);
 Route::post('/forms/{form_id}/update', [EditFormController::class, 'handle']);
+
+Route::get('/forms/{form_id}/delete', [DeleteFormController::class, 'index']);
+Route::post('/forms/{form_id}/delete', [DeleteFormController::class, 'handle']);
 require __DIR__ . '/auth.php';

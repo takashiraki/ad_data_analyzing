@@ -13,4 +13,6 @@ interface FormRepositoryInterface
     public function save(Form $form): Form;
 
     public function update(Form $form): Form;
+
+    public function delete(Form $form): Form;
 }
