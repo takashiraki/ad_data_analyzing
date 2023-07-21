@@ -7,9 +7,11 @@ use Form\Domain\Form\FormRepositoryInterface;
 use Form\MockInteractor\Create\MockCreateFormInteractor;
 use Form\MockInteractor\Delete\MockDeleteFormInteractor;
 use Form\MockInteractor\Edit\MockEditFormInteractor;
+use Form\MockInteractor\Search\MockSearchFormInteractor;
 use Form\UseCase\CreateForm\CreateFormUseCaseInterface;
 use Form\UseCase\DeleteForm\DeleteFormUseCaseInterface;
 use Form\UseCase\EditForm\EditFormUseCaseInterface;
+use Form\UseCase\SearchForm\SearchFormUseCaseInterface;
 use Illuminate\Support\ServiceProvider;
 use Lp\DebugInfrastructure\FileLpRepository;
 use Lp\Domain\Lp\LpRepositoryInterface;
@@ -175,6 +177,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             DeleteFormUseCaseInterface::class,
             MockDeleteFormInteractor::class
+        );
+
+        $this->app->bind(
+            SearchFormUseCaseInterface::class,
+            MockSearchFormInteractor::class,
         );
     }
 }

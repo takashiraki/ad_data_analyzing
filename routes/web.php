@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Form\CreateFormController;
 use App\Http\Controllers\Form\DeleteFormController;
 use App\Http\Controllers\Form\EditFormController;
+use App\Http\Controllers\Form\SearchFormController;
 use App\Http\Controllers\Lp\CreateLpController;
 use App\Http\Controllers\Lp\DeleteLpController;
 use App\Http\Controllers\Lp\EditLpController;
@@ -110,4 +111,6 @@ Route::post('/forms/{form_id}/update', [EditFormController::class, 'handle']);
 
 Route::get('/forms/{form_id}/delete', [DeleteFormController::class, 'index']);
 Route::post('/forms/{form_id}/delete', [DeleteFormController::class, 'handle']);
+
+Route::get('/forms', [SearchFormController::class, 'index']);
 require __DIR__ . '/auth.php';
