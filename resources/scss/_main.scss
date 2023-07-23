@@ -94,7 +94,7 @@
     /* データ画面
 
 *****************************************/
-#bords {
+#content {
     padding: 3vw;
     width: 100%;
     max-width: v.$max-width;
@@ -149,7 +149,7 @@ form {
         align-items: center;
 
         &:nth-child(n+3) {
-            margin-top: 20px;
+            // margin-top: 20px;
         }
     }
 
@@ -170,6 +170,14 @@ form {
         &[type="search"] {
             width: 70%;
             margin-right: 30px;
+
+        }
+
+        &:read-only.noevent {
+            pointer-events : none;
+            color: v.$font-color;
+            background-color: v.$quaternary-color;
+            box-shadow: 0 0 0 0px v.$brand-color inset;
         }
 
         &[type="submit"] {
@@ -206,9 +214,31 @@ form {
         margin-bottom: 1vw;
     }
 
-    input:read-only {
-        box-shadow: none;
-        cursor: default;
+    &[type="submit"] {
+        position: absolute;
+        right: 0;
+        display: inline-block;
+        border: none;
+        width: 160px;
+        max-width: 20%;
+        background-color: v.$brand-color;
+        color: #fff;
+        cursor: pointer;
+        transition-duration: .3s;
+
+        &:hover {
+            background-color: inherit;
+            border: 2px solid v.$brand-color;
+            color: v.$brand-color;
+            transition-duration: .3s;
+        }
+
+        &:focus {
+            background-color: inherit;
+            border: 2px solid v.$brand-color;
+            color: v.$brand-color;
+            transition-duration: .3s;
+        }
     }
 }
 

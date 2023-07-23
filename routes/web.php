@@ -29,10 +29,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hoge', function() {
-    return File::get(public_path() . '/html/hoge.html');
-});
-
 /**
  * --------------------------------------------------------------------------
  * Media
@@ -44,7 +40,7 @@ Route::get('/media', [SearchMediumController::class, 'index']);
 Route::get('/medium/create', [CreateMediumController::class, 'index']);
 Route::post('/medium/store', [CreateMediumController::class, 'handle']);
 
-// Route::get('/medium/search', [SearchMediumController::class, 'index']);
+Route::get('/medium/search', [SearchMediumController::class, 'index']);
 
 Route::get('/medium/{medium_id}/edit', [EditMediumController::class, 'index']);
 Route::post('/medium/{medium_id}/update', [EditMediumController::class, 'handle']);
