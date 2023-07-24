@@ -66,3 +66,25 @@ output: "User情報登録ユースケースの仕様並びに設計"
     | 関数名 | 処理内容 | 引数 | 戻り値
     | -- | -- | -- | -- |
     |  `save` | Userインスタンスの保存 | `User` | `User` |
+
+8. レスポンスの作成を行う
+
+    レスポンスのプロパティは
+    ```php
+    private $user_id;
+    private $user_name;
+    private $email;
+    private $passwordhash;
+    private privilege;
+    ```
+    
+9. コントローラーはビューモデルの作成を行う
+
+    ビューモデルのプロパティは
+    ```php
+    private $user_id;
+    private $user_name;
+    private $email;
+    private $passwordhash;
+    private privilege;
+    ```
