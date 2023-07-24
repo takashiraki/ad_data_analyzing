@@ -34,6 +34,7 @@
             "MediaDtl\\": "packages/MediaDtl/",
             "Lp\\": "packages/Lp/",
             "Form\\": "packages/Form/",
+            "User\\": "packages/User/",
             "Basic\\": "packages/Basic/"
         }
     },
