@@ -20,6 +20,7 @@ use App\Http\Controllers\mediaDtl\EditMediumDtlController;
 use App\Http\Controllers\MediaDtl\SearchMediumDtlController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CreateUserController;
+use App\Http\Controllers\User\EditUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -122,4 +123,12 @@ Route::get('/forms', [SearchFormController::class, 'index']);
  */
 Route::get('/users/create', [CreateUserController::class, 'index']);
 Route::post('/users/store', [CreateUserController::class, 'handle']);
+
+/**
+ * --------------------------------------------------------------------------
+ * Form
+ * --------------------------------------------------------------------------
+ */
+Route::get('/users/{user_id}/edit', [EditUserController::class, 'index']);
+Route::post('/users/{user_id}/update', [EditUserController::class, 'handle']);
 require __DIR__ . '/auth.php';

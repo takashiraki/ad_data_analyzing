@@ -4,10 +4,12 @@ namespace Tests\Feature\User;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use SebastianBergmann\Type\VoidType;
 use Tests\TestCase;
 
-class CreateUserTest extends TestCase
+class EditUserTest extends TestCase
 {
+    private $id = "7bbc275b-b13b-433b-890e-e986b7c28977";
     /**
      * A basic feature test example.
      */
@@ -15,9 +17,18 @@ class CreateUserTest extends TestCase
     {
         $this->withoutVite();
 
-        $response = $this->get('/users/create');
+        $response = $this->get('/users/' . $this->id . '/edit');
 
         $response->assertStatus(200);
+    }
+
+    public function test_index_bad_id(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->get('/users/hogehogehogehogehogehoge/edit');
+
+        $response->assertStatus(500);
     }
 
     public function test_handle(): void
@@ -25,12 +36,11 @@ class CreateUserTest extends TestCase
         $this->withoutVite();
 
         $response = $this->post(
-            '/users/store',
+            '/users/' . $this->id . '/update',
             [
-                'user_name' => 'hoge user1',
+                'user_id' => $this->id,
+                'user_name' => 'hogehoge',
                 'email' => $_ENV['TEST_MAIL'],
-                'password' => 'hogehogehogehoge',
-                'password_confirmation' => 'hogehogehogehoge',
                 'privilege' => 'admin',
             ],
         );
@@ -43,13 +53,46 @@ class CreateUserTest extends TestCase
         $this->withoutVite();
 
         $response = $this->post(
-            '/users/store',
+            '/users/' . $this->id . '/update',
             [
-                'user_name' => 'hogehogehogehogehogehogehogehogehogehogehogehogehogehogehoge',
+                'user_id' => $this->id,
+                'user_name' => 'hogehogehogehogehogehogeohgeohgeohgeohgehogehogehoge',
                 'email' => $_ENV['TEST_MAIL'],
-                'password' => 'hogehogehogehoge',
-                'password_confirmation' => 'hogehogehogehoge',
-                'privilege' => 'agency'
+                'privilege' => 'admin',
+            ],
+        );
+
+        $response->assertStatus(302);
+    }
+
+    public function test_handle_not_equal_id(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/users/' . $this->id . '33/update',
+            [
+                'user_id' => $this->id,
+                'user_name' => 'hogehoge',
+                'email' => $_ENV['TEST_MAIL'],
+                'privilege' => 'admin',
+            ],
+        );
+
+        $response->assertStatus(500);
+    }
+
+    public function test_handle_bad_id(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/users/' . $this->id . '/update',
+            [
+                'user_id' => $this->id . '33',
+                'user_name' => 'hogehoge',
+                'email' => $_ENV['TEST_MAIL'],
+                'privilege' => 'admin',
             ],
         );
 
@@ -61,48 +104,11 @@ class CreateUserTest extends TestCase
         $this->withoutVite();
 
         $response = $this->post(
-            '/users/store',
+            '/users/' . $this->id . '/update',
             [
+                'user_id' => $this->id,
                 'user_name' => 'hogehoge',
-                'email' => 'hogehoge@hoge.hoge',
-                'password' => 'hogehoge',
-                'password_confirmation' => 'hogehoge',
-                'privilege' => 'owner',
-            ],
-        );
-
-        $response->assertStatus(302);
-    }
-
-    public function test_handle_short_password(): void
-    {
-        $this->withoutVite();
-
-        $response = $this->post(
-            '/users/store',
-            [
-                'user_name' => 'hogehoge',
-                'email' => $_ENV['TEST_MAIL'],
-                'password' => 'hoge',
-                'password_confirmation' => 'hoge',
-                'privilege' => 'affiliater'
-            ],
-        );
-
-        $response->assertStatus(302);
-    }
-
-    public function test_handle_not_equal_email(): void
-    {
-        $this->withoutVite();
-
-        $response = $this->post(
-            '/users/store',
-            [
-                'user_name' => 'hoge',
-                'email' => $_ENV['TEST_MAIL'],
-                'password' => 'hogehogehoge',
-                'password_confirmation' => 'hogehogehogehogehoge',
+                'email' => 'hogehoge@hogehoge.hoge',
                 'privilege' => 'admin',
             ],
         );
@@ -115,12 +121,11 @@ class CreateUserTest extends TestCase
         $this->withoutVite();
 
         $response = $this->post(
-            '/users/store',
+            '/users/' . $this->id . '/update',
             [
-                'user_name' => 'hoge',
+                'user_id' => $this->id,
+                'user_name' => 'hogehoge',
                 'email' => $_ENV['TEST_MAIL'],
-                'password' => 'hogehogehoge',
-                'password_confirmation' => 'hogehogehoge',
                 'privilege' => 'hoge',
             ],
         );

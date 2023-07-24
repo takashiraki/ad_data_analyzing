@@ -7,5 +7,9 @@ interface UserRepositoryInterface
 
     public function save(User $user): User;
 
+    public function update(User $user): User;
+
+    public function findById(UserId $id): ?User;
+
     public function findByEmail(Email $email): ?User;
 }
