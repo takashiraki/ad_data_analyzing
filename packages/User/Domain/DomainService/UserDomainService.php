@@ -4,6 +4,7 @@ namespace User\Domain\DomainService;
 
 use User\Domain\User\Email;
 use User\Domain\User\PasswordHasher;
+use User\Domain\User\UserId;
 use User\Domain\User\UserRepositoryInterface;
 
 class UserDomainService
@@ -13,6 +14,12 @@ class UserDomainService
     public function __construct(UserRepositoryInterface $repository)
     {
         $this->repository = $repository;
+    }
+
+    public function existById(UserId $id): bool
+    {
+        return $this->repository->findById($id) !== null
+            ? true : false;
     }
 
     public function existByEmail(Email $email): bool
