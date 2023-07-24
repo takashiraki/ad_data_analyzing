@@ -28,7 +28,7 @@ class CreateUserTest extends TestCase
             '/users/store',
             [
                 'user_name' => 'hoge user1',
-                'email' => 'contact.ts.contact@gmail.com',
+                'email' => $_ENV['TEST_MAIL'],
                 'password' => 'hogehogehogehoge',
                 'password_confirmation' => 'hogehogehogehoge',
                 'privilege' => 'admin',
@@ -46,7 +46,7 @@ class CreateUserTest extends TestCase
             '/users/store',
             [
                 'user_name' => 'hogehogehogehogehogehogehogehogehogehogehogehogehogehogehoge',
-                'email' => 'contact.ts.contact@gmail.com',
+                'email' => $_ENV['TEST_MAIL'],
                 'password' => 'hogehogehogehoge',
                 'password_confirmation' => 'hogehogehogehoge',
                 'privilege' => 'agency'
@@ -82,7 +82,7 @@ class CreateUserTest extends TestCase
             '/users/store',
             [
                 'user_name' => 'hogehoge',
-                'email' => 'contact.ts.contact@gmail.com',
+                'email' => $_ENV['TEST_MAIL'],
                 'password' => 'hoge',
                 'password_confirmation' => 'hoge',
                 'privilege' => 'affiliater'
@@ -100,7 +100,7 @@ class CreateUserTest extends TestCase
             '/users/store',
             [
                 'user_name' => 'hoge',
-                'email' => 'contact.ts.contact@gmail.com',
+                'email' => $_ENV['TEST_MAIL'],
                 'password' => 'hogehogehoge',
                 'password_confirmation' => 'hogehogehogehogehoge',
                 'privilege' => 'admin',
@@ -118,7 +118,7 @@ class CreateUserTest extends TestCase
             '/users/store',
             [
                 'user_name' => 'hoge',
-                'email' => 'contact.ts.contact@gmail.com',
+                'email' => $_ENV['TEST_MAIL'],
                 'password' => 'hogehogehoge',
                 'password_confirmation' => 'hogehogehoge',
                 'privilege' => 'hoge',
