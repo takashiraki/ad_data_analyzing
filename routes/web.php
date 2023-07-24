@@ -19,6 +19,7 @@ use App\Http\Controllers\MediaDtl\DeleteMediumDtlController;
 use App\Http\Controllers\mediaDtl\EditMediumDtlController;
 use App\Http\Controllers\MediaDtl\SearchMediumDtlController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CreateUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -113,4 +114,12 @@ Route::get('/forms/{form_id}/delete', [DeleteFormController::class, 'index']);
 Route::post('/forms/{form_id}/delete', [DeleteFormController::class, 'handle']);
 
 Route::get('/forms', [SearchFormController::class, 'index']);
+
+/**
+ * --------------------------------------------------------------------------
+ * Form
+ * --------------------------------------------------------------------------
+ */
+Route::get('/users/create', [CreateUserController::class, 'index']);
+Route::post('/users/store', [CreateUserController::class, 'handle']);
 require __DIR__ . '/auth.php';

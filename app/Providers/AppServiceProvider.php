@@ -45,6 +45,10 @@ use MediaDtl\UseCase\CreateMediaDtlUseCase\CreateMediumDtlUseCaseInterface;
 use MediaDtl\UseCase\DeleteMediumDtlUseCase\DeleteMediumDtlUseCaseInterface;
 use MediaDtl\UseCase\EditMediumDtlUseCase\EditMediumDtlUseCaseInterface;
 use MediaDtl\UseCase\SearchMediumDtlUseCase\SearchMediumDtlUseCaseInterface;
+use User\DebugInfrastructure\FileUserRepository;
+use User\Domain\User\UserRepositoryInterface;
+use User\MockInteractor\Create\MockCreateUserInteractor;
+use User\UseCase\CreateUserUseCase\CreateUserUseCaseInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -182,6 +186,16 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             SearchFormUseCaseInterface::class,
             MockSearchFormInteractor::class,
+        );
+
+        $this->app->bind(
+            UserRepositoryInterface::class,
+            FileUserRepository::class,
+        );
+
+        $this->app->bind(
+            CreateUserUseCaseInterface::class,
+            MockCreateUserInteractor::class,
         );
     }
 }
