@@ -124,5 +124,11 @@ Route::get('/forms', [SearchFormController::class, 'index']);
 Route::get('/users/create', [CreateUserController::class, 'index']);
 Route::post('/users/store', [CreateUserController::class, 'handle']);
 
+/**
+ * --------------------------------------------------------------------------
+ * Form
+ * --------------------------------------------------------------------------
+ */
 Route::get('/users/{user_id}/edit', [EditUserController::class, 'index']);
+Route::post('/users/{user_id}/update', [EditUserController::class, 'handle']);
 require __DIR__ . '/auth.php';

@@ -28,6 +28,11 @@ class UserDomainService
             ? true : false;
     }
 
+    public function equalByEmail(Email $email, OldEmail $old_email)
+    {
+        return $old_email->getOldEmail()->equals($email);
+    }
+
     public function createHasedPassword(RawPassword $raw_password)
     {
         $hasher = new PasswordHasher();
