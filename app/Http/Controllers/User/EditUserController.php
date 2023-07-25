@@ -50,7 +50,7 @@ class EditUserController extends Controller
         }
 
         if ($user_id !== $validate['user_id']) {
-            throw new UnexpectedValueException("Form ID value did not match");
+            throw new UnexpectedValueException("User ID value did not match");
         }
 
         $request_data_structure = new EditUserHandleRequest(

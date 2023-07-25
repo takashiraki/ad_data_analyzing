@@ -22,6 +22,11 @@ class FileUserRepository implements UserRepositoryInterface
         return $user;
     }
 
+    public function delete(User $user): User
+    {
+        return $user;
+    }
+
     public function findById(UserId $id): ?User
     {
         return new User(
