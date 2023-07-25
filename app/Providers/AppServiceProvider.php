@@ -48,8 +48,10 @@ use MediaDtl\UseCase\SearchMediumDtlUseCase\SearchMediumDtlUseCaseInterface;
 use User\DebugInfrastructure\FileUserRepository;
 use User\Domain\User\UserRepositoryInterface;
 use User\MockInteractor\Create\MockCreateUserInteractor;
+use User\MockInteractor\Delete\MockDeleteUserInteractor;
 use User\MockInteractor\Edit\MockEditUserInteractor;
 use User\UseCase\CreateUserUseCase\CreateUserUseCaseInterface;
+use User\UseCase\DeleteUseCase\DeleteUserUseCaseInterface;
 use User\UseCase\EditUserUseCase\EditUserUseCaseInterface;
 
 class AppServiceProvider extends ServiceProvider
@@ -203,6 +205,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             EditUserUseCaseInterface::class,
             MockEditUserInteractor::class,
+        );
+
+        $this->app->bind(
+            DeleteUserUseCaseInterface::class,
+            MockDeleteUserInteractor::class
         );
     }
 }
