@@ -66,7 +66,7 @@ class SearchUserTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_index_abad_name(): void
+    public function test_index_bad_name(): void
     {
         $this->withoutVite();
 
