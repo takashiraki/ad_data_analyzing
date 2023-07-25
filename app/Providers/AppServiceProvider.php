@@ -50,9 +50,11 @@ use User\Domain\User\UserRepositoryInterface;
 use User\MockInteractor\Create\MockCreateUserInteractor;
 use User\MockInteractor\Delete\MockDeleteUserInteractor;
 use User\MockInteractor\Edit\MockEditUserInteractor;
+use User\MockInteractor\Search\MockSearchUserInteractor;
 use User\UseCase\CreateUserUseCase\CreateUserUseCaseInterface;
 use User\UseCase\DeleteUseCase\DeleteUserUseCaseInterface;
 use User\UseCase\EditUserUseCase\EditUserUseCaseInterface;
+use User\UseCase\SearchUserUseCase\SearchUserUseCaseInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -210,6 +212,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             DeleteUserUseCaseInterface::class,
             MockDeleteUserInteractor::class
+        );
+
+        $this->app->bind(
+            SearchUserUseCaseInterface::class,
+            MockSearchUserInteractor::class,
         );
     }
 }
