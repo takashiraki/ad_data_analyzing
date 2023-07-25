@@ -11,6 +11,8 @@ interface UserRepositoryInterface
 
     public function delete(User $user): User;
 
+    public function search(?UserName $name, ?Email $email, ?Privilege $privilege): ?array;
+
     public function findById(UserId $id): ?User;
 
     public function findByEmail(Email $email): ?User;
