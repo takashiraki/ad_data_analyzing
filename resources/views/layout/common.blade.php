@@ -20,9 +20,14 @@
     </head>
 
     <body>
-        @yield('header')
         @yield('side')
-        @yield('contents')
+
+        <section id="content">
+            @yield('header')
+            @yield('form')
+            @yield('table')
+        </section>
+
     </body>
 
 </html>
