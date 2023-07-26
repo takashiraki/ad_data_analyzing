@@ -13,8 +13,6 @@
         <meta name="format-detection" content="telepfhone=no">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0">
         <title>@yield('title') | ADAS</title>
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-        {{-- <link rel="stylesheet" href="/css/style.css"> --}}
         <link rel="stylesheet" href="/js/table.js">
         <link rel="stylesheet" href="/js/nav.js">
         <script src="https://kit.fontawesome.com/60583edc38.js" crossorigin="anonymous"></script>

@@ -13,7 +13,10 @@
                 <form method="post" class="add-form" action="/medium/store">
                     @csrf
                     <label>
-                        <span>媒体名a</span>
+            
+                        <img src="{{ asset('image/btn-add.svg') }}" alt="" srcset="">
+            
+                        <span>媒体名</span>
                         <input type="search" class="add-field" placeholder="" name="medium_name">
                     </label>
                     <input type="submit" class="add-submit" value="登録する">
