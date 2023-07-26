@@ -35,6 +35,7 @@
             "Lp\\": "packages/Lp/",
             "Form\\": "packages/Form/",
             "User\\": "packages/User/",
+            "Url\\": "packages/Url/",
             "Basic\\": "packages/Basic/"
         }
     },
