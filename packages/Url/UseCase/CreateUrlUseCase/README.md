@@ -113,6 +113,7 @@ output: "Url情報登録ユースケースの仕様並びに設計"
     チェック内容
     | バリデーション項目 | バリデーション内容 |
     | -- | -- |
+    | `url_name` | 入力必須 , string , 1文字以上50文字以内 |
     | `medium_id` | 入力必須 , string , 36文字 |
     | `medium_dtl_id` | 入力必須 , string , 36文字 |
     | `lp_id` | 入力必須 , string , 36文字 |
@@ -149,7 +150,14 @@ output: "Url情報登録ユースケースの仕様並びに設計"
     ```
 
 4. インタラクターは、リクエスト内容を受け取る
-5. ドメインサービスはリクエストで取得したIDの存在確認をする
+5. ドメインサービスは、広告コード名の重複があるかないかを確かめる
+
+    下記関数を追記する必要あり
+    | 関数名 | 処理内容 | 引数 | 戻り値 |
+    | -- | -- | -- | -- |
+    | `existByName` | 保存を実行する | `UrlName` | `bool` |
+
+6. ドメインサービスはリクエストで取得したIDの存在確認をする
 
     それぞれDomain Serviceに存在する関数で存在確認を行う
     | 処理項目 | 処理内容 | ファイル |
@@ -159,14 +167,14 @@ output: "Url情報登録ユースケースの仕様並びに設計"
     | `lp_id` | `lp_id` の存在確認 | `LpDomainService.php` |
     | `form_id` | `form_id` の存在確認 | `FormDomainService.php` |
 
-6. リポジトリは保存する
+7. リポジトリは保存する
 
     下記関数を追記する必要あり
     | 関数名 | 処理内容 | 引数 | 戻り値 |
     | -- | -- | -- | -- |
-    | `save` | 保存を実行する | `medium_id` , `medium_dtl_id` , `lp_id` , `form_id` , `url_id` , `url_name` |
+    | `save` | 保存を実行する | `medium_id` , `medium_dtl_id` , `lp_id` , `form_id` , `url_id` , `url_name` | `Url`
 
-7. リポジトリはそれぞれデータの名前を取得する
+8. リポジトリはそれぞれデータの名前を取得する
 
     それぞれDomain Serviceに存在する関数で存在確認を行う
     | 処理項目 | 処理内容 | ファイル |
@@ -176,7 +184,7 @@ output: "Url情報登録ユースケースの仕様並びに設計"
     | LP系 | `lp_id` の存在確認 | `LpRepositoryInterface.php` |
     | FORM系 | `form_id` の存在確認 | `FormepositoryInterface.php` |
 
-8. インタラクターはレスポンスの作成をする
+9.  インタラクターはレスポンスの作成をする
 
     レスポンスのプロパティは
     ```php
@@ -196,22 +204,22 @@ output: "Url情報登録ユースケースの仕様並びに設計"
     private $medium_name;
 
     /**
-     * @var MediumDtl
+     * @var string
      */
     private $medium_dtl_name;
 
     /**
-     * @var Lp
+     * @var string
      */
     private $lp_name;
 
     /**
-     * @var Form
+     * @var string
      */
     private $form_name;
     ```
 
-9. コントローラーはビューモデルを作成する
+10. コントローラーはビューモデルを作成する
 
     ビューモデルのプロパティは
     ```php
@@ -231,19 +239,19 @@ output: "Url情報登録ユースケースの仕様並びに設計"
     private $medium_name;
 
     /**
-     * @var MediumDtl
+     * @var string
      */
     private $medium_dtl_name;
 
     /**
-     * @var Lp
+     * @var string
      */
     private $lp_name;
 
     /**
-     * @var Form
+     * @var string
      */
     private $form_name;
     ```
 
-10. ビューに返す
+11. ビューに返す
