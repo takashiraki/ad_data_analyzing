@@ -19,6 +19,7 @@ use App\Http\Controllers\MediaDtl\DeleteMediumDtlController;
 use App\Http\Controllers\mediaDtl\EditMediumDtlController;
 use App\Http\Controllers\MediaDtl\SearchMediumDtlController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Url\CreateUrlController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\DeleteUserController;
 use App\Http\Controllers\User\EditUserController;
@@ -134,5 +135,13 @@ Route::get('/users/{user_id}/delete', [DeleteUserController::class, 'index']);
 Route::post('/users/{user_id}/delete', [DeleteUserController::class, 'handle']);
 
 Route::get('/users', [SearchUserController::class, 'index']);
+
+
+/**
+ * --------------------------------------------------------------------------
+ * Url
+ * --------------------------------------------------------------------------
+ */
+Route::get('/urls/create', [CreateUrlController::class, 'index']);
 
 require __DIR__ . '/auth.php';
