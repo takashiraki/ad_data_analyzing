@@ -125,6 +125,11 @@ output: "Url情報登録ユースケースの仕様並びに設計"
     /**
      * @var string
      */
+    private $url_name;
+
+    /**
+     * @var string
+     */
     private $medium_id;
 
     /**
@@ -176,24 +181,34 @@ output: "Url情報登録ユースケースの仕様並びに設計"
     レスポンスのプロパティは
     ```php
     /**
-     * @var Media
+     * @var string
      */
-    private $medium;
+    private $url_id;
+
+    /**
+     * @var string
+     */
+    private $url_name;
+
+    /**
+     * @var string
+     */
+    private $medium_name;
 
     /**
      * @var MediumDtl
      */
-    private $medium_dtl;
+    private $medium_dtl_name;
 
     /**
      * @var Lp
      */
-    private $lp;
+    private $lp_name;
 
     /**
      * @var Form
      */
-    private $form;
+    private $form_name;
     ```
 
 9. コントローラーはビューモデルを作成する
@@ -201,24 +216,34 @@ output: "Url情報登録ユースケースの仕様並びに設計"
     ビューモデルのプロパティは
     ```php
     /**
-     * @var Media
+     * @var string
      */
-    private $medium;
+    private $url_id;
+
+    /**
+     * @var string
+     */
+    private $url_name;
+
+    /**
+     * @var string
+     */
+    private $medium_name;
 
     /**
      * @var MediumDtl
      */
-    private $medium_dtl;
+    private $medium_dtl_name;
 
     /**
      * @var Lp
      */
-    private $lp;
+    private $lp_name;
 
     /**
      * @var Form
      */
-    private $form;
+    private $form_name;
     ```
 
 10. ビューに返す
