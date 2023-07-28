@@ -143,5 +143,6 @@ Route::get('/users', [SearchUserController::class, 'index']);
  * --------------------------------------------------------------------------
  */
 Route::get('/urls/create', [CreateUrlController::class, 'index']);
+Route::post('/urls/store', [CreateUrlController::class, 'handle']);
 
 require __DIR__ . '/auth.php';

@@ -11,4 +11,8 @@ interface UrlRepositoryInterface
     public function getAllLps(): ?array;
 
     public function getAllForms(): ?array;
+
+    public function findByName(UrlName $name): ?Url;
+
+    public function save(Url $url): Url;
 }
