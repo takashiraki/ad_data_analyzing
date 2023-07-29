@@ -48,7 +48,9 @@ use MediaDtl\UseCase\SearchMediumDtlUseCase\SearchMediumDtlUseCaseInterface;
 use Url\DebugInfrastructure\FileRepository;
 use Url\Domain\Url\UrlRepositoryInterface;
 use Url\MockInteractor\Create\MockCreateUrlInteractor;
+use Url\MockInteractor\Edit\MockEditUrlInteractor;
 use Url\UseCase\CreateUrlUseCase\CreateUrlUseCaseInterface;
+use Url\UseCase\EditUrlUseCase\EditUrlUseCaseInterface;
 use User\DebugInfrastructure\FileUserRepository;
 use User\Domain\User\UserRepositoryInterface;
 use User\MockInteractor\Create\MockCreateUserInteractor;
@@ -231,6 +233,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             CreateUrlUseCaseInterface::class,
             MockCreateUrlInteractor::class,
+        );
+
+        $this->app->bind(
+            EditUrlUseCaseInterface::class,
+            MockEditUrlInteractor::class,
         );
     }
 }
