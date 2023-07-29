@@ -12,7 +12,11 @@ interface UrlRepositoryInterface
 
     public function getAllForms(): ?array;
 
+    public function findById(UrlId $id): ?Url;
+
     public function findByName(UrlName $name): ?Url;
 
     public function save(Url $url): Url;
+
+    public function update(Url $url): Url;
 }
