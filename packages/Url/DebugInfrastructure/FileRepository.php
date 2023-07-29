@@ -54,4 +54,9 @@ class FileRepository implements UrlRepositoryInterface
     {
         return $url;
     }
+
+    public function update(Url $url): Url
+    {
+        return $url;
+    }
 }

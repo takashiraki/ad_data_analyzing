@@ -35,4 +35,156 @@ class EditUrlTest extends TestCase
 
         $response->assertStatus(500);
     }
+
+    public function test_handle(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/urls/' . $this->id . '/update',
+            [
+                'url_id' => $this->id,
+                'url_name' => 'hoge',
+                'medium_id' => $this->id,
+                'medium_dtl_id' => $this->id,
+                'lp_id' => $this->id,
+                'form_id' => $this->id,
+            ],
+        );
+
+        $response->assertStatus(200);
+    }
+
+    public function test_handle_bad_url(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/urls/' . $this->id . 'hogehoge/update',
+            [
+                'url_id' => $this->id,
+                'url_name' => 'hoge',
+                'medium_id' => $this->id,
+                'medium_dtl_id' => $this->id,
+                'lp_id' => $this->id,
+                'form_id' => $this->id,
+            ],
+        );
+
+        $response->assertStatus(500);
+    }
+
+    public function test_handle_url_id(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/urls/' . $this->id . '/update',
+            [
+                'url_id' => $this->id . 'hogehoge',
+                'url_name' => 'hoge',
+                'medium_id' => $this->id,
+                'medium_dtl_id' => $this->id,
+                'lp_id' => $this->id,
+                'form_id' => $this->id,
+            ],
+        );
+
+        $response->assertStatus(302);
+    }
+
+    public function test_handle_bad_url_name(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/urls/' . $this->id . '/update',
+            [
+                'url_id' => $this->id,
+                'url_name' => 'hogehogehogehogehogehogehogehogehogehogehogehogehoge',
+                'medium_id' => $this->id,
+                'medium_dtl_id' => $this->id,
+                'lp_id' => $this->id,
+                'form_id' => $this->id,
+            ],
+        );
+
+        $response->assertStatus(302);
+    }
+
+    public function test_handle_bad_medium_id(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/urls/' . $this->id . '/update',
+            [
+                'url_id' => $this->id,
+                'url_name' => 'hoge',
+                'medium_id' => $this->id . 'hogehoge',
+                'medium_dtl_id' => $this->id,
+                'lp_id' => $this->id,
+                'form_id' => $this->id,
+            ],
+        );
+
+        $response->assertStatus(302);
+    }
+
+    public function test_handle_bad_medium_dtl_id(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/urls/' . $this->id . '/update',
+            [
+                'url_id' => $this->id,
+                'url_name' => 'hoge',
+                'medium_id' => $this->id,
+                'medium_dtl_id' => $this->id . 'hogehoge',
+                'lp_id' => $this->id,
+                'form_id' => $this->id,
+            ],
+        );
+
+        $response->assertStatus(302);
+    }
+
+    public function test_handle_bad_lp_id(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/urls/' . $this->id . '/update',
+            [
+                'url_id' => $this->id,
+                'url_name' => 'hoge',
+                'medium_id' => $this->id,
+                'medium_dtl_id' => $this->id,
+                'lp_id' => $this->id . 'hoge',
+                'form_id' => $this->id,
+            ],
+        );
+
+        $response->assertStatus(302);
+    }
+
+    public function test_handle_bad_form_id(): void
+    {
+        $this->withoutVite();
+
+        $response = $this->post(
+            '/urls/' . $this->id . '/update',
+            [
+                'url_id' => $this->id,
+                'url_name' => 'hoge',
+                'medium_id' => $this->id,
+                'medium_dtl_id' => $this->id,
+                'lp_id' => $this->id,
+                'form_id' => $this->id . 'hoge',
+            ],
+        );
+
+        $response->assertStatus(302);
+    }
 }

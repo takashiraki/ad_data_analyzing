@@ -17,4 +17,6 @@ interface UrlRepositoryInterface
     public function findByName(UrlName $name): ?Url;
 
     public function save(Url $url): Url;
+
+    public function update(Url $url): Url;
 }
