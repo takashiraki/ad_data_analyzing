@@ -19,4 +19,6 @@ interface UrlRepositoryInterface
     public function save(Url $url): Url;
 
     public function update(Url $url): Url;
+
+    public function delete(UrlId $id): bool;
 }
