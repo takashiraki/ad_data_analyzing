@@ -59,4 +59,9 @@ class FileRepository implements UrlRepositoryInterface
     {
         return $url;
     }
+
+    public function delete(UrlId $id): bool
+    {
+        return true;
+    }
 }
