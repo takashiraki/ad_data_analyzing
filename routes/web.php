@@ -151,4 +151,5 @@ Route::get('/urls/{url_id}/edit', [EditUrlController::class, 'index']);
 Route::post('/urls/{url_id}/update', [EditUrlController::class, 'handle']);
 
 Route::get('/urls/{url_id}/delete', [DeleteUrlController::class, 'index']);
+Route::post('/urls/{url_id}/delete', [DeleteUrlController::class, 'handle']);
 require __DIR__ . '/auth.php';

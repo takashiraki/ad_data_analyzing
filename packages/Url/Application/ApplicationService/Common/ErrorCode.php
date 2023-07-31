@@ -4,5 +4,5 @@ namespace Url\Application\ApplicationService\Common;
 
 class ErrorCode extends \Exception
 {
-    const URL_ID_ALREADY_EXISTED = 1;
+    const URL_ID_DOSE_NOT_EXIST = 1;
 }

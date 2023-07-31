@@ -27,7 +27,7 @@ class DeleteUrlHandleRequest
      *
      * @return string
      */
-    public function getIUrlId(): string
+    public function getUrlId(): string
     {
         return $this->url_id;
     }

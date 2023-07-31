@@ -3,6 +3,7 @@
 namespace Url\MockInteractor\Delete;
 
 use Url\Application\ApplicationService\Common\ErrorCode;
+use Url\Application\ApplicationService\Delete\DeleteUrlHandleResult;
 use Url\Application\ApplicationService\Delete\DeleteUrlIndexResult;
 use Url\Application\ApplicationService\UrlApplicationService;
 use Url\Domain\DomainService\UrlDomainService;
@@ -69,7 +70,7 @@ class MockDeleteUrlInteractor implements DeleteUrlUseCaseInterface
             $url_id
         )) {
             return new DeleteUrlIndexResponse(
-                DeleteUrlIndexResult::isFail(ErrorCode::URL_ID_ALREADY_EXISTED)
+                DeleteUrlIndexResult::isFail(ErrorCode::URL_ID_DOSE_NOT_EXIST)
             );
         }
 
@@ -82,6 +83,17 @@ class MockDeleteUrlInteractor implements DeleteUrlUseCaseInterface
 
     public function handle(DeleteUrlHandleRequest $request): DeleteUrlHandleResponse
     {
-        return new DeleteUrlHandleResponse();
+        $url_id = new UrlId($request->getUrlId());
+        if (!$this->domain_service->existById($url_id)) {
+            return new DeleteUrlHandleResponse(
+                DeleteUrlHandleResult::fail(ErrorCode::URL_ID_DOSE_NOT_EXIST)
+            );
+        }
+
+        $this->repository->delete($url_id);
+
+        return new DeleteUrlHandleResponse(
+            DeleteUrlHandleResult::success($url_id)
+        );
     }
 }
