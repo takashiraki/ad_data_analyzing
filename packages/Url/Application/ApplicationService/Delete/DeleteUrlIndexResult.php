@@ -5,17 +5,17 @@ namespace Url\Application\ApplicationService\Delete;
 use Url\Domain\DomainService\ValueObject\UrlSummary;
 use Url\Domain\Url\UrlId;
 
-class DeleteUrlResult
+class DeleteUrlIndexResult
 {
     /**
      * Success
      *
      * @param UrlSummary $summary
-     * @return DeleteUrlResult
+     * @return DeleteUrlIndexResult
      */
-    public static function isSuccess(UrlSummary $summary): DeleteUrlResult
+    public static function isIndex(UrlSummary $summary): DeleteUrlIndexResult
     {
-        return new DeleteUrlResult($summary, null);
+        return new DeleteUrlIndexResult($summary, null);
     }
 
 
@@ -24,11 +24,11 @@ class DeleteUrlResult
      * Fail
      *
      * @param integer $code
-     * @return DeleteUrlResult
+     * @return DeleteUrlIndexResult
      */
-    public static function isFail(int $code): DeleteUrlResult
+    public static function isFail(int $code): DeleteUrlIndexResult
     {
-        return new DeleteUrlResult(null, $code);
+        return new DeleteUrlIndexResult(null, $code);
     }
 
 

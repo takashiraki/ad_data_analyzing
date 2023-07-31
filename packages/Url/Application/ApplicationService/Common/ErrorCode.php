@@ -2,7 +2,7 @@
 
 namespace Url\Application\ApplicationService\Common;
 
-class DoseNotExist extends \Exception
+class ErrorCode extends \Exception
 {
     const URL_ID_ALREADY_EXISTED = 1;
 }

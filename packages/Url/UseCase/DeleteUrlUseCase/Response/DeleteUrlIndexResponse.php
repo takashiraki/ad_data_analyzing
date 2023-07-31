@@ -2,14 +2,13 @@
 
 namespace Url\UseCase\DeleteUrlUseCase\Response;
 
-use Url\Application\ApplicationService\Delete\DeleteUrlResult;
-use Url\Domain\DomainService\ValueObject\UrlSummary;
+use Url\Application\ApplicationService\Delete\DeleteUrlIndexResult;
 
 class DeleteUrlIndexResponse
 {
 
     /**
-     * @var null|DeleteUrlResult
+     * @var null|DeleteUrlIndexResult
      */
     private $result;
 
@@ -51,35 +50,32 @@ class DeleteUrlIndexResponse
 
 
     /**
-     * Constructer.
+     * Constructer
      *
-     * @param array|null $error_message
-     * @param string|null $url_id
-     * @param string|null $url_name
-     * @param string|null $medium_name
-     * @param string|null $medium_dtl_name
-     * @param string|null $lp_name
-     * @param string|null $form_name
+     * @param DeleteUrlIndexResult|null $result
      */
     public function __construct(
-        ?DeleteUrlResult $result,
+        ?DeleteUrlIndexResult $result,
     ) {
         $this->result = $result;
-        $this->url_id = $result->getUrlSummary()->getUrlId()->getValue();
-        $this->url_name = $result->getUrlSummary()->getUrlName()->getValue();
-        $this->medium_name = $result->getUrlSummary()->getMedium()->getMediumName()->getValue();
-        $this->medium_dtl_name = $result->getUrlSummary()->getMediumDtl()->getMediumDtlName()->getValue();
-        $this->lp_name = $result->getUrlSummary()->getLp()->getLpName()->getValue();
-        $this->form_name = $result->getUrlSummary()->getForm()->getFormName()->getValue();
+
+        if (!$result->isError()) {
+            $this->url_id = $result->getUrlSummary()->getUrlId()->getValue();
+            $this->url_name = $result->getUrlSummary()->getUrlName()->getValue();
+            $this->medium_name = $result->getUrlSummary()->getMedium()->getMediumName()->getValue();
+            $this->medium_dtl_name = $result->getUrlSummary()->getMediumDtl()->getMediumDtlName()->getValue();
+            $this->lp_name = $result->getUrlSummary()->getLp()->getLpName()->getValue();
+            $this->form_name = $result->getUrlSummary()->getForm()->getFormName()->getValue();
+        }
     }
 
 
     /**
      * Getter of error message.
      *
-     * @return DeleteUrlResult|null
+     * @return DeleteUrlIndexResult|null
      */
-    public function getResult(): ?DeleteUrlResult
+    public function getResult(): ?DeleteUrlIndexResult
     {
         return $this->result;
     }
