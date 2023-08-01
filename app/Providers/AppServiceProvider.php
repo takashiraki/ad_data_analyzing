@@ -50,9 +50,11 @@ use Url\Domain\Url\UrlRepositoryInterface;
 use Url\MockInteractor\Create\MockCreateUrlInteractor;
 use Url\MockInteractor\Delete\MockDeleteUrlInteractor;
 use Url\MockInteractor\Edit\MockEditUrlInteractor;
+use Url\MockInteractor\Search\MockSearchUrlInteractor;
 use Url\UseCase\CreateUrlUseCase\CreateUrlUseCaseInterface;
 use Url\UseCase\DeleteUrlUseCase\DeleteUrlUseCaseInterface;
 use Url\UseCase\EditUrlUseCase\EditUrlUseCaseInterface;
+use Url\UseCase\SearchUrlUseCase\SearchUrlUseCaseInterface;
 use User\DebugInfrastructure\FileUserRepository;
 use User\Domain\User\UserRepositoryInterface;
 use User\MockInteractor\Create\MockCreateUserInteractor;
@@ -245,6 +247,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             DeleteUrlUseCaseInterface::class,
             MockDeleteUrlInteractor::class,
+        );
+
+        $this->app->bind(
+            SearchUrlUseCaseInterface::class,
+            MockSearchUrlInteractor::class,
         );
     }
 }

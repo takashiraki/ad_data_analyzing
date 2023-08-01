@@ -22,6 +22,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Url\CreateUrlController;
 use App\Http\Controllers\Url\DeleteUrlController;
 use App\Http\Controllers\Url\EditUrlController;
+use App\Http\Controllers\Url\SearchUrlController;
 use App\Http\Controllers\User\CreateUserController;
 use App\Http\Controllers\User\DeleteUserController;
 use App\Http\Controllers\User\EditUserController;
@@ -152,4 +153,6 @@ Route::post('/urls/{url_id}/update', [EditUrlController::class, 'handle']);
 
 Route::get('/urls/{url_id}/delete', [DeleteUrlController::class, 'index']);
 Route::post('/urls/{url_id}/delete', [DeleteUrlController::class, 'handle']);
+
+Route::get('/urls', [SearchUrlController::class, 'index']);
 require __DIR__ . '/auth.php';

@@ -3,9 +3,13 @@
 namespace Url\DebugInfrastructure;
 
 use Form\Domain\Form\FormId;
+use Form\Domain\Form\FormName;
 use Lp\Domain\Lp\LpId;
+use Lp\Domain\Lp\LpName;
 use Media\Domain\Media\MediumId;
+use Media\Domain\Media\MediumName;
 use MediaDtl\Domain\MediaDtl\MediumDtlId;
+use MediaDtl\Domain\MediaDtl\MediumDtlName;
 use Url\Domain\Url\UrlName;
 use Url\Domain\Url\Url;
 use Url\Domain\Url\UrlId;
@@ -63,5 +67,15 @@ class FileRepository implements UrlRepositoryInterface
     public function delete(UrlId $id): bool
     {
         return true;
+    }
+
+    public function search(
+        ?UrlName $url_name,
+        ?MediumName $medium_name,
+        ?MediumDtlName $medium_dtl_name,
+        ?LpName $lp_name,
+        ?FormName $form_name
+    ): ?array {
+        return null;
     }
 }
