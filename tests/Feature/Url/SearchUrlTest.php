@@ -13,7 +13,7 @@ class SearchUrlTest extends TestCase
      */
     public function test_index(): void
     {
-        $response = $this->get('/ulrs');
+        $response = $this->get('/urls');
 
         $response->assertStatus(200);
     }
