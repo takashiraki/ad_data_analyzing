@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Form\CreateFormController;
 use App\Http\Controllers\Form\DeleteFormController;
 use App\Http\Controllers\Form\EditFormController;
@@ -44,115 +45,127 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware('guest')->group(function () {
+    /**
+     * --------------------------------------------------------------------------
+     * Authentication
+     * --------------------------------------------------------------------------
+     */
+    Route::get('/login', [AuthenticationController::class, 'index'])->name('login');
+    Route::post('/login', [AuthenticationController::class, 'login']);
 });
 
-/**
- * --------------------------------------------------------------------------
- * Media
- * --------------------------------------------------------------------------
- */
-Route::get('/media', [SearchMediumController::class, 'index']);
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/medium/create', [CreateMediumController::class, 'index']);
-Route::post('/medium/store', [CreateMediumController::class, 'handle']);
+    /**
+     * --------------------------------------------------------------------------
+     * Url
+     * --------------------------------------------------------------------------
+     */
+    Route::post('/logout', [AuthenticationController::class, 'destory'])->name('logout');
 
-Route::get('/medium/search', [SearchMediumController::class, 'index']);
+    /**
+     * --------------------------------------------------------------------------
+     * Media
+     * --------------------------------------------------------------------------
+     */
+    Route::get('/media', [SearchMediumController::class, 'index']);
 
-Route::get('/medium/{medium_id}/edit', [EditMediumController::class, 'index']);
-Route::post('/medium/{medium_id}/update', [EditMediumController::class, 'handle']);
+    Route::get('/medium/create', [CreateMediumController::class, 'index']);
+    Route::post('/medium/store', [CreateMediumController::class, 'handle']);
 
-Route::get('/medium/{medium_id}/delete', [DeleteMediumController::class, 'index']);
-Route::post('/medium/{medium_id}/destroy', [DeleteMediumController::class, 'destroy']);
+    Route::get('/medium/search', [SearchMediumController::class, 'index']);
 
-/**
- * --------------------------------------------------------------------------
- * Media Details
- * --------------------------------------------------------------------------
- */
-Route::get('/medium-dtls', [SearchMediumDtlController::class, 'index']);
+    Route::get('/medium/{medium_id}/edit', [EditMediumController::class, 'index']);
+    Route::post('/medium/{medium_id}/update', [EditMediumController::class, 'handle']);
 
-Route::get('/medium-dtls/create', [CreateMediumDtlController::class, 'index']);
-Route::post('/medium-dtls/store', [CreateMediumDtlController::class, 'handle']);
+    Route::get('/medium/{medium_id}/delete', [DeleteMediumController::class, 'index']);
+    Route::post('/medium/{medium_id}/destroy', [DeleteMediumController::class, 'destroy']);
 
-// Route::get('/medium-dtls/search', [SearchMediumDtlController::class, 'index']);
+    /**
+     * --------------------------------------------------------------------------
+     * Media Details
+     * --------------------------------------------------------------------------
+     */
+    Route::get('/medium-dtls', [SearchMediumDtlController::class, 'index']);
 
-Route::get('/medium-dtls/{medium_dtl_id}/edit', [EditMediumDtlController::class, 'edit']);
-Route::post('/medium-dtls/{medium_dtl_id}/update', [EditMediumDtlController::class, 'update']);
+    Route::get('/medium-dtls/create', [CreateMediumDtlController::class, 'index']);
+    Route::post('/medium-dtls/store', [CreateMediumDtlController::class, 'handle']);
 
-Route::get('/medium-dtls/{medium_dtl_id}/delete', [DeleteMediumDtlController::class, 'index']);
-Route::post('/medium-dtls/{medium_dtl_id}/delete', [DeleteMediumDtlController::class, 'handle']);
+    // Route::get('/medium-dtls/search', [SearchMediumDtlController::class, 'index']);
 
-/**
- * --------------------------------------------------------------------------
- * LP
- * --------------------------------------------------------------------------
- */
-Route::get('/lps', [SearchLpController::class, 'index']);
+    Route::get('/medium-dtls/{medium_dtl_id}/edit', [EditMediumDtlController::class, 'edit']);
+    Route::post('/medium-dtls/{medium_dtl_id}/update', [EditMediumDtlController::class, 'update']);
 
-Route::get('/lps/create', [CreateLpController::class, 'index']);
-Route::post('/lps/store', [CreateLpController::class, 'handle']);
+    Route::get('/medium-dtls/{medium_dtl_id}/delete', [DeleteMediumDtlController::class, 'index']);
+    Route::post('/medium-dtls/{medium_dtl_id}/delete', [DeleteMediumDtlController::class, 'handle']);
 
-Route::get('/lps/{lp_id}/edit', [EditLpController::class, 'index']);
-Route::post('/lps/{lp_id}/update', [EditLpController::class, 'handle']);
+    /**
+     * --------------------------------------------------------------------------
+     * LP
+     * --------------------------------------------------------------------------
+     */
+    Route::get('/lps', [SearchLpController::class, 'index']);
 
-Route::get('/lps/{lp_id}/delete', [DeleteLpController::class, 'index']);
-Route::post('/lps/{lp_id}/delete', [DeleteLpController::class, 'handle']);
+    Route::get('/lps/create', [CreateLpController::class, 'index']);
+    Route::post('/lps/store', [CreateLpController::class, 'handle']);
 
-/**
- * --------------------------------------------------------------------------
- * Form
- * --------------------------------------------------------------------------
- */
-Route::get('/forms/create', [CreateFormController::class, 'index']);
-Route::post('/forms/store', [CreateFormController::class, 'handle']);
+    Route::get('/lps/{lp_id}/edit', [EditLpController::class, 'index']);
+    Route::post('/lps/{lp_id}/update', [EditLpController::class, 'handle']);
 
-Route::get('/forms/{form_id}/edit', [EditFormController::class, 'index']);
-Route::post('/forms/{form_id}/update', [EditFormController::class, 'handle']);
+    Route::get('/lps/{lp_id}/delete', [DeleteLpController::class, 'index']);
+    Route::post('/lps/{lp_id}/delete', [DeleteLpController::class, 'handle']);
 
-Route::get('/forms/{form_id}/delete', [DeleteFormController::class, 'index']);
-Route::post('/forms/{form_id}/delete', [DeleteFormController::class, 'handle']);
+    /**
+     * --------------------------------------------------------------------------
+     * Form
+     * --------------------------------------------------------------------------
+     */
+    Route::get('/forms/create', [CreateFormController::class, 'index']);
+    Route::post('/forms/store', [CreateFormController::class, 'handle']);
 
-Route::get('/forms', [SearchFormController::class, 'index']);
+    Route::get('/forms/{form_id}/edit', [EditFormController::class, 'index']);
+    Route::post('/forms/{form_id}/update', [EditFormController::class, 'handle']);
 
-/**
- * --------------------------------------------------------------------------
- * User
- * --------------------------------------------------------------------------
- */
-Route::get('/users/create', [CreateUserController::class, 'index']);
-Route::post('/users/store', [CreateUserController::class, 'handle']);
+    Route::get('/forms/{form_id}/delete', [DeleteFormController::class, 'index']);
+    Route::post('/forms/{form_id}/delete', [DeleteFormController::class, 'handle']);
 
-Route::get('/users/{user_id}/edit', [EditUserController::class, 'index']);
-Route::post('/users/{user_id}/update', [EditUserController::class, 'handle']);
+    Route::get('/forms', [SearchFormController::class, 'index']);
+
+    /**
+     * --------------------------------------------------------------------------
+     * User
+     * --------------------------------------------------------------------------
+     */
+    Route::get('/users/create', [CreateUserController::class, 'index']);
+    Route::post('/users/store', [CreateUserController::class, 'handle']);
+
+    Route::get('/users/{user_id}/edit', [EditUserController::class, 'index']);
+    Route::post('/users/{user_id}/update', [EditUserController::class, 'handle']);
 
 
-Route::get('/users/{user_id}/delete', [DeleteUserController::class, 'index']);
-Route::post('/users/{user_id}/delete', [DeleteUserController::class, 'handle']);
+    Route::get('/users/{user_id}/delete', [DeleteUserController::class, 'index']);
+    Route::post('/users/{user_id}/delete', [DeleteUserController::class, 'handle']);
 
-Route::get('/users', [SearchUserController::class, 'index']);
+    Route::get('/users', [SearchUserController::class, 'index']);
 
 
-/**
- * --------------------------------------------------------------------------
- * Url
- * --------------------------------------------------------------------------
- */
-Route::get('/urls/create', [CreateUrlController::class, 'index']);
-Route::post('/urls/store', [CreateUrlController::class, 'handle']);
+    /**
+     * --------------------------------------------------------------------------
+     * Url
+     * --------------------------------------------------------------------------
+     */
+    Route::get('/urls/create', [CreateUrlController::class, 'index']);
+    Route::post('/urls/store', [CreateUrlController::class, 'handle']);
 
-Route::get('/urls/{url_id}/edit', [EditUrlController::class, 'index']);
-Route::post('/urls/{url_id}/update', [EditUrlController::class, 'handle']);
+    Route::get('/urls/{url_id}/edit', [EditUrlController::class, 'index']);
+    Route::post('/urls/{url_id}/update', [EditUrlController::class, 'handle']);
 
-Route::get('/urls/{url_id}/delete', [DeleteUrlController::class, 'index']);
-Route::post('/urls/{url_id}/delete', [DeleteUrlController::class, 'handle']);
+    Route::get('/urls/{url_id}/delete', [DeleteUrlController::class, 'index']);
+    Route::post('/urls/{url_id}/delete', [DeleteUrlController::class, 'handle']);
 
-Route::get('/urls', [SearchUrlController::class, 'index']);
-require __DIR__ . '/auth.php';
+    Route::get('/urls', [SearchUrlController::class, 'index']);
+});
